@@ -46,6 +46,6 @@ function getCurrentInput() {
  * Sets the current user input
  * @param {string} s String to set current input to
  */
- function setCurrentInput(s) {
+function setCurrentInput(s) {
     currentline.innerHTML = getPromptString() + s;
 }

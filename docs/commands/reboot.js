@@ -1,6 +1,6 @@
 /**
  * Reloads the site, effectively "rebooting" the terminal
  */
- function Reboot() {
+function Reboot() {
     location.reload();
 }
