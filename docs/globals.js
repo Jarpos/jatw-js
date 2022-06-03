@@ -5,6 +5,11 @@
 let currentline;
 
 /**
+ * Document body
+ */
+const body = () => document.getElementsByTagName("body")[0];
+
+/**
  * History of inputs made
  */
 let cmdhistory = {

@@ -21,8 +21,7 @@ function getPromptString() {
  * @param  {...string} l line contents that are to be added
  */
 function addLine(...l) {
-    const body = document.getElementById("body");
-    const ndiv = body.appendChild(document.createElement("div"));
+    const ndiv = body().appendChild(document.createElement("div"));
     ndiv.innerHTML = l.length !== 0 ? l.join("") : " ";
 }
 
@@ -32,7 +31,7 @@ function addLine(...l) {
 function newCurrentline() {
     currentline = document.createElement("div");
     currentline.innerHTML = getPromptString();
-    body.appendChild(currentline);
+    body().appendChild(currentline);
 }
 
 /**
