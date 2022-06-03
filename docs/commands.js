@@ -6,7 +6,7 @@
  */
 const commands = new Map([
     ["help", /****/ { cmd: Help, info: "Prints this help", }],
-    ["times", /***/ { cmd: Times, info: "Prints a bunch times", }],
+    ["times", /***/ { cmd: Times, info: "Prints a bunch of different times", }],
     ["reboot", /**/ { cmd: Reboot, info: "Reloads terminal", }],
 ]);
 
