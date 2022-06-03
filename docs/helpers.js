@@ -23,7 +23,7 @@ function getPromptString() {
 function addLine(...l) {
     const body = document.getElementById("body");
     const ndiv = body.appendChild(document.createElement("div"));
-    ndiv.innerHTML = l.join("");
+    ndiv.innerHTML = l.length !== 0 ? l.join("") : " ";
 }
 
 /**
