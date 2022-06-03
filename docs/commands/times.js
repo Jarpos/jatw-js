@@ -1,5 +1,6 @@
 /**
  * Prints a bunch of Times
+ * @link https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
  * @TODO: Add more differing timezones
  */
  function Times() {
