@@ -5,7 +5,6 @@
 let currentline;
 
 document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
-    console.log(e.key, isLetter(e.key));
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
         currentline.innerHTML += e.key;
     } else {
@@ -16,6 +15,7 @@ document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
         }
     }
     window.scrollTo(0, document.body.scrollHeight);
+    console.log(e.key, isLetter(e.key));
 });
 
 addLine(getPromptString(), "help");
