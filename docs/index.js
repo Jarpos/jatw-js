@@ -37,7 +37,7 @@ function HandleEnter(e) {
     if /***********/ (command) command.cmd();
     else if (input.length > 0) addLine("Could not find command \"", input, "\"");
     newCurrentline();
-    inputhistory.push(input);
+    cmdhistory.push(input);
 }
 
 /**
@@ -62,9 +62,8 @@ function HandleTab(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleUp(e) {
-    if (inputhistory.index < inputhistory.commands.length - 1)
-        inputhistory.index++;
-    setCurrentInput(inputhistory.get());
+    cmdhistory.up();
+    setCurrentInput(cmdhistory.get());
 }
 
 /**
@@ -72,8 +71,6 @@ function HandleUp(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleDown(e) {
-    if (inputhistory.index >= 0)
-        inputhistory.index--;
-    if (inputhistory.index >= 0) setCurrentInput(inputhistory.get());
-    else /*********************/ setCurrentInput("");
+    cmdhistory.down();
+    setCurrentInput(cmdhistory.get());
 }
