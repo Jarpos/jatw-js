@@ -18,7 +18,7 @@ let inputhistory = {
     get: () => inputhistory.commands[inputhistory.index],
 
     /**
-     * Adds input to the start of the line
+     * Adds command to the start of the command history
      * @param {string} command Command to add to the history
      */
     push: (command) => {
