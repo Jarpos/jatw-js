@@ -23,8 +23,7 @@ document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleBackspace(e) {
-    if (e.ctrlKey) setCurrentInput("");
-    else /*******/ setCurrentInput(getCurrentInput().slice(0, -1));
+    setCurrentInput(e.ctrlKey ? "" : getCurrentInput().slice(0, -1));
 }
 
 /**
