@@ -18,7 +18,8 @@ let cmdhistory = {
     get: () => cmdhistory.index < 0 ? "" : cmdhistory.commands[cmdhistory.index],
 
     /**
-     * Adds command to the start of the command history
+     * Adds command to the start of the command history.
+     * Does not add it if the same command was just exectued.
      * @param {string} command Command to add to the history
      */
     push: (command) => {
@@ -28,6 +29,15 @@ let cmdhistory = {
         }
     },
 
+    /**
+     * Moves up the index for the command history by one if possible
+     * @returns The new index
+     */
     up: () => cmdhistory.index += cmdhistory.index < cmdhistory.commands.length - 1 ? 1 : 0,
+
+    /**
+     * Moves down the index for the command history by one if possible
+     * @returns The new index
+     */
     down: () => cmdhistory.index -= cmdhistory.index >= 0 ? 1 : 0,
 };
