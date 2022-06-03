@@ -45,6 +45,7 @@ function Help() {
  */
 function Times() {
     const now = new Date();
+    // Using swedish locale bc they use the ISO-8601 format (kinda)
     addLine("Your Time now:     ", now.toLocaleString("sv-SE"));
     addLine();
     addLine("UTC Time now:      ", now.toLocaleString("sv-SE", { timeZone: "UTC", }));
