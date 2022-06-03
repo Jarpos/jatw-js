@@ -19,3 +19,7 @@
 .hostname {
     color: #ae95c7;
 }
+
+.command:hover {
+    cursor: pointer;
+}
