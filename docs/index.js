@@ -1,3 +1,7 @@
+newCurrentline();
+setCurrentInput("help");
+HandleEnter(null);
+
 document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
         currentline.innerHTML += e.key;
@@ -13,10 +17,6 @@ document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
     window.scrollTo(0, document.body.scrollHeight);
     console.log(e.key, isLetter(e.key));
 });
-
-addLine(getPromptString(), "help");
-commands.get("help").cmd();
-newCurrentline();
 
 /**
  * Removes some or all content from current line
