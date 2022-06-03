@@ -7,7 +7,7 @@ let currentline;
 /**
  * Document body
  */
-const body = () => document.getElementsByTagName("body")[0];
+const body = () => document.getElementById("body");
 
 /**
  * History of inputs made

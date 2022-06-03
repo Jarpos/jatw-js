@@ -2,7 +2,7 @@ newCurrentline();
 setCurrentInput("help");
 HandleEnter(null);
 
-body().addEventListener("keydown", (e) => {
+document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
         currentline.innerHTML += e.key;
     } else {
