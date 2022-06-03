@@ -1,3 +1,7 @@
+/**
+ * Current line that user can manipulate with input
+ * @type HTMLDivElement
+ */
 let currentline;
 
 document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
