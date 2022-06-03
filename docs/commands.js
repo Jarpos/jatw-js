@@ -6,6 +6,7 @@
  */
 const commands = new Map([
     ["help", /****/ { cmd: Help, info: "Prints this help", }],
+    ["times", /***/ { cmd: Times, info: "Prints a bunch times", }],
     ["reboot", /**/ { cmd: Reboot, info: "Reloads terminal" }],
 ]);
 
@@ -36,6 +37,22 @@ function Help() {
     for (const [key, value] of commands.entries()) {
         addLine(span(key), " ".repeat(10 - key.length), value.info);
     }
+}
+
+/**
+ * Prints a bunch of Times
+ * @TODO: Add more differing timezones
+ */
+function Times() {
+    const now = new Date();
+    addLine("Your Time now:     ", now.toLocaleString("sv-SE"));
+    addLine();
+    addLine("UTC Time now:      ", now.toLocaleString("sv-SE", { timeZone: "UTC", }));
+    addLine("Japan Time now:    ", now.toLocaleString("sv-SE", { timeZone: "Asia/Tokyo", }));
+    addLine("Sydney Time now:   ", now.toLocaleString("sv-SE", { timeZone: "Australia/Sydney", }));
+    addLine("New York Time now: ", now.toLocaleString("sv-SE", { timeZone: "America/New_York", }));
+    addLine();
+    addLine("Unix time:         ", Date.now());
 }
 
 /**
