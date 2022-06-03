@@ -26,39 +26,3 @@ function getSuggestions(s) {
     }
     return suggestions;
 }
-
-/**
- * Prints help screen
- */
-function Help() {
-    const span = (key) =>
-        `<span class="command" onclick=setCurrentInput("${key}")>${key}</span>`;
-
-    for (const [key, value] of commands.entries()) {
-        addLine(span(key), " ".repeat(10 - key.length), value.info);
-    }
-}
-
-/**
- * Prints a bunch of Times
- * @TODO: Add more differing timezones
- */
-function Times() {
-    const now = new Date();
-    // Using swedish locale bc they use the ISO-8601 format (kinda)
-    addLine("Your Time now:     ", now.toLocaleString("sv-SE"));
-    addLine();
-    addLine("UTC Time now:      ", now.toLocaleString("sv-SE", { timeZone: "UTC", }));
-    addLine("Japan Time now:    ", now.toLocaleString("sv-SE", { timeZone: "Asia/Tokyo", }));
-    addLine("Sydney Time now:   ", now.toLocaleString("sv-SE", { timeZone: "Australia/Sydney", }));
-    addLine("New York Time now: ", now.toLocaleString("sv-SE", { timeZone: "America/New_York", }));
-    addLine();
-    addLine("Unix time:         ", Date.now());
-}
-
-/**
- * Reloads the site, effectively "rebooting" the terminal
- */
-function Reboot() {
-    location.reload();
-}
