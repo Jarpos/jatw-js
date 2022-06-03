@@ -1,9 +1,3 @@
-/**
- * Current line that user can manipulate with input
- * @type HTMLDivElement
- */
-let currentline;
-
 document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
         currentline.innerHTML += e.key;
@@ -12,6 +6,8 @@ document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
             case "Backspace": /**/ HandleBackspace(e); /**/ break;
             case "Enter": /******/ HandleEnter(e); /******/ break;
             case "Tab": /********/ HandleTab(e); /********/ break;
+            case "ArrowUp": /****/ HandleUp(e); /*********/ break;
+            case "ArrowDown": /**/ HandleDown(e); /*******/ break;
         }
     }
     window.scrollTo(0, document.body.scrollHeight);
@@ -41,6 +37,7 @@ function HandleEnter(e) {
     if /***********/ (command) command.cmd();
     else if (input.length > 0) addLine("Could not find command \"", input, "\"");
     newCurrentline();
+    inputhistory.push(input);
 }
 
 /**
@@ -58,4 +55,25 @@ function HandleTab(e) {
         newCurrentline();
         setCurrentInput(input);
     }
+}
+
+/**
+ * Go one command up in the input history
+ * @param {KeyboardEvent} e KeyboardEvent to process
+ */
+function HandleUp(e) {
+    if (inputhistory.index < inputhistory.commands.length - 1)
+        inputhistory.index++;
+    setCurrentInput(inputhistory.get());
+}
+
+/**
+ * Go one command down in the input history
+ * @param {KeyboardEvent} e KeyboardEvent to process
+ */
+function HandleDown(e) {
+    if (inputhistory.index >= 0)
+        inputhistory.index--;
+    if (inputhistory.index >= 0) setCurrentInput(inputhistory.get());
+    else /*********************/ setCurrentInput("");
 }
