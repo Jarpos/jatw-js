@@ -1,0 +1,21 @@
+:root {
+    --bg-color: #1c2023;
+    --fg-color: #c7ccd1;
+    --fg-bg-color: #747c84;
+}
+
+* {
+    font-size: x-large;
+    font-family: "Courier New", monospace;
+    color: var(--fg-color);
+    background-color: var(--bg-color);
+    white-space: break-space;
+}
+
+.username {
+    color: #95c7ae;
+}
+
+.hostname {
+    color: #ae95c7;
+}
