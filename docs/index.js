@@ -62,6 +62,7 @@ function HandleTab(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleUp(e) {
+    e.preventDefault();
     cmdhistory.up();
     setCurrentInput(cmdhistory.get());
 }
