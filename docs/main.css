@@ -12,6 +12,11 @@
     white-space: break-space;
 }
 
+html {
+    min-height: 100vh;
+    padding: 0;
+}
+
 .username {
     color: #95c7ae;
 }
