@@ -1,6 +1,8 @@
 newCurrentline();
 setCurrentInput("help");
 HandleEnter(null);
+setCurrentInput("viewer");
+HandleEnter(null);
 
 document.getElementsByTagName("body")[0].addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {

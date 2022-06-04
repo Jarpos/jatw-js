@@ -5,9 +5,9 @@
 let currentline;
 
 /**
- * Document body
+ * Terminal reference
  */
-const body = () => document.getElementById("body");
+const terminal = () => document.getElementById("terminal");
 
 /**
  * History of inputs made
