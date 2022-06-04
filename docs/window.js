@@ -31,12 +31,19 @@ class Window extends HTMLElement {
 
         // Set up dragging
         this.isgrabbed = false;
-        this.addEventListener("mousedown", (e) => this.isgrabbed = true);
+        this.graboffset = { x: 0, y: 0 };
+        this.addEventListener("mousedown", (e) => {
+            this.isgrabbed = true;
+            this.graboffset = {
+                x: e.clientX - this.getBoundingClientRect().x,
+                y: e.clientY - this.getBoundingClientRect().y,
+            };
+        });
         this.addEventListener("mouseup", (e) => this.isgrabbed = false);
         this.addEventListener("mousemove", (e) => {
             if (this.isgrabbed) {
-                this.style.left = (e.clientX - this.offsetWidth / 2) + "px";
-                this.style.top = (e.clientY - this.offsetHeight / 2) + "px";
+                this.style.left = (e.clientX - this.graboffset.x) + "px";
+                this.style.top = (e.clientY - this.graboffset.y) + "px";
             }
         });
     }
