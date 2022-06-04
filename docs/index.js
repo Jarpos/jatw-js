@@ -14,6 +14,7 @@ body().addEventListener("keydown", (e) => {
             case "Tab": /********/ HandleTab(e); /********/ break;
             case "ArrowUp": /****/ HandleUp(e); /*********/ break;
             case "ArrowDown": /**/ HandleDown(e); /*******/ break;
+            case "c": /**********/ newCurrentline(); /****/ break;
         }
     }
 
