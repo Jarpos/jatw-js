@@ -1,8 +1,6 @@
 newCurrentline();
 setCurrentInput("help");
 HandleEnter(null);
-setCurrentInput("viewer");
-HandleEnter(null);
 
 body().addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
