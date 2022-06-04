@@ -35,10 +35,15 @@ function HandleBackspace(e) {
 function HandleEnter(e) {
     const input = getCurrentInput();
     const command = commands.get(input);
-    if /***********/ (command) command.cmd();
-    else if (input.length > 0) addLine("Could not find command \"", input, "\"");
-    newCurrentline();
+
+    if (command) {
+        command.cmd();
+    } else if (input.length > 0) {
+        addLine("Could not find command \"", input, "\"");
+    }
+
     cmdhistory.push(input);
+    newCurrentline();
 }
 
 /**
@@ -49,6 +54,7 @@ function HandleTab(e) {
     e.preventDefault();
     const input = getCurrentInput();
     const suggestions = getSuggestions(input);
+
     if (suggestions.length === 1) {
         setCurrentInput(suggestions[0]);
     } else if (suggestions.length > 1) {
