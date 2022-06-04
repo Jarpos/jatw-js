@@ -42,11 +42,17 @@ class Window extends HTMLElement {
         }
     }
 
+    /**
+     * Setup for Window name
+     */
     setupWindowName() {
         this.name = document.createElement("div");
         this.name.innerHTML = this.getAttribute("name");
     }
 
+    /**
+     * Setup for Close button
+     */
     setupCloseButton() {
         this.close = document.createElement("button");
         this.close.innerHTML = "X";
@@ -55,6 +61,9 @@ class Window extends HTMLElement {
         this.close.style.border = 0;
     }
 
+    /**
+     * Setup for Image shown in the viewer
+     */
     setupImage() {
         this.image = document.createElement("img");
         this.image.src = this.src;
@@ -63,6 +72,9 @@ class Window extends HTMLElement {
         this.image.setAttribute("ondragstart", "return false;");
     }
 
+    /**
+     * Setup for Window dragging
+     */
     setupDragging() {
         this.isgrabbed = false;
         this.graboffset = { x: 0, y: 0 };
