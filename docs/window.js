@@ -10,7 +10,7 @@ class Window extends HTMLElement {
 
         // Title of the window
         this.name = document.createElement("div");
-        this.name.innerHTML = this.title;
+        this.name.innerHTML = this.getAttribute("name");
         shadow.appendChild(this.name);
 
         // Close button
@@ -48,7 +48,7 @@ class Window extends HTMLElement {
         });
     }
 
-    static get observedAttributes() { return ["src", "title"]; }
+    static get observedAttributes() { return ["src", "name"]; }
     attributeChangedCallback(name, oldVal, newVal) {
         if (newVal !== oldVal) {
             switch (name) {
@@ -56,7 +56,7 @@ class Window extends HTMLElement {
                     this.image.src = newVal;
                     break;
 
-                case "title":
+                case "name":
                     this.name.innerHTML = newVal;
                     this.name.appendChild(this.close);
                     break;
