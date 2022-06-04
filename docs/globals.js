@@ -25,7 +25,7 @@ const html = () => document.getElementsByTagName("html")[0];
 /**
  * History of inputs made
  */
-let cmdhistory = {
+const cmdhistory = {
     index: 0,
     commands: ["help",],
 
