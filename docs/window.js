@@ -76,18 +76,16 @@ class Window extends HTMLElement {
      * Setup for Window dragging
      */
     setupDragging() {
-        this.isgrabbed = false;
-        this.graboffset = { x: 0, y: 0 };
+        this.graboffset = null;
         this.addEventListener("mousedown", (e) => {
-            this.isgrabbed = true;
             this.graboffset = {
                 x: e.clientX - this.getBoundingClientRect().x,
                 y: e.clientY - this.getBoundingClientRect().y,
             };
         });
-        this.addEventListener("mouseup", (e) => this.isgrabbed = false);
+        this.addEventListener("mouseup", (e) => this.graboffset = null);
         html().addEventListener("mousemove", (e) => {
-            if (this.isgrabbed) {
+            if (this.graboffset) {
                 this.style.left = (e.clientX - this.graboffset.x) + "px";
                 this.style.top = (e.clientY - this.graboffset.y) + "px";
             }
