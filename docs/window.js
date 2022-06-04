@@ -11,43 +11,19 @@ class Window extends HTMLElement {
         shadow.appendChild(style);
 
         // Title of the window
-        this.name = document.createElement("div");
-        this.name.innerHTML = this.getAttribute("name");
+        this.setupWindowName();
         shadow.appendChild(this.name);
 
         // Close button
-        this.close = document.createElement("button");
-        this.close.innerHTML = "X";
-        this.close.addEventListener("click", (e) => this.remove());
-        this.close.style.float = "right";
-        this.close.style.border = 0;
+        this.setupCloseButton();
         this.name.appendChild(this.close);
 
         // Image displayed
-        this.image = document.createElement("img");
-        this.image.src = this.src;
-        this.image.width = 500;
-        this.image.setAttribute("draggable", "false");
-        this.image.setAttribute("ondragstart", "return false;");
+        this.setupImage();
         shadow.appendChild(this.image);
 
         // Set up dragging
-        this.isgrabbed = false;
-        this.graboffset = { x: 0, y: 0 };
-        this.addEventListener("mousedown", (e) => {
-            this.isgrabbed = true;
-            this.graboffset = {
-                x: e.clientX - this.getBoundingClientRect().x,
-                y: e.clientY - this.getBoundingClientRect().y,
-            };
-        });
-        this.addEventListener("mouseup", (e) => this.isgrabbed = false);
-        html().addEventListener("mousemove", (e) => {
-            if (this.isgrabbed) {
-                this.style.left = (e.clientX - this.graboffset.x) + "px";
-                this.style.top = (e.clientY - this.graboffset.y) + "px";
-            }
-        });
+        this.setupDragging();
     }
 
     static get observedAttributes() { return ["src", "name"]; }
@@ -64,6 +40,46 @@ class Window extends HTMLElement {
                     break;
             }
         }
+    }
+
+    setupWindowName() {
+        this.name = document.createElement("div");
+        this.name.innerHTML = this.getAttribute("name");
+    }
+
+    setupCloseButton() {
+        this.close = document.createElement("button");
+        this.close.innerHTML = "X";
+        this.close.addEventListener("click", (e) => this.remove());
+        this.close.style.float = "right";
+        this.close.style.border = 0;
+    }
+
+    setupImage() {
+        this.image = document.createElement("img");
+        this.image.src = this.src;
+        this.image.width = 500;
+        this.image.setAttribute("draggable", "false");
+        this.image.setAttribute("ondragstart", "return false;");
+    }
+
+    setupDragging() {
+        this.isgrabbed = false;
+        this.graboffset = { x: 0, y: 0 };
+        this.addEventListener("mousedown", (e) => {
+            this.isgrabbed = true;
+            this.graboffset = {
+                x: e.clientX - this.getBoundingClientRect().x,
+                y: e.clientY - this.getBoundingClientRect().y,
+            };
+        });
+        this.addEventListener("mouseup", (e) => this.isgrabbed = false);
+        html().addEventListener("mousemove", (e) => {
+            if (this.isgrabbed) {
+                this.style.left = (e.clientX - this.graboffset.x) + "px";
+                this.style.top = (e.clientY - this.graboffset.y) + "px";
+            }
+        });
     }
 }
 
