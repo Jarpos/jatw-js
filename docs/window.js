@@ -4,7 +4,6 @@ class Window extends HTMLElement {
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: "open" });
-
         shadow.appendChild(this.getStyle());
 
         // Title of the window
@@ -91,6 +90,7 @@ class Window extends HTMLElement {
                 y: e.clientY - this.getBoundingClientRect().y,
             };
         });
+
         this.addEventListener("mouseup", (e) => this.graboffset = null);
         html().addEventListener("mousemove", (e) => {
             if (this.graboffset) {

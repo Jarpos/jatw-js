@@ -6,7 +6,8 @@
  * @returns Whether it's a character or not (works only on latin or latin adjacent alphabet)
  */
 function isLetter(c) {
-    return c.toLowerCase() !== c.toUpperCase() && c.length === 1;
+    return c.toLowerCase() !== c.toUpperCase()
+        && c.length === 1;
 }
 
 /**
