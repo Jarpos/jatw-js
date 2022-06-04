@@ -8,6 +8,7 @@
 function Times() {
     const now = new Date();
     // Using swedish locale bc they use the ISO-8601 format (kinda)
+    addLine();
     addLine("Your Time now:     ", now.toLocaleString("sv-SE"));
     addLine();
     addLine("UTC Time now:      ", now.toLocaleString("sv-SE", { timeZone: "UTC", }));
@@ -16,4 +17,5 @@ function Times() {
     addLine("New York Time now: ", now.toLocaleString("sv-SE", { timeZone: "America/New_York", }));
     addLine();
     addLine("Unix time:         ", Date.now());
+    addLine();
 }
