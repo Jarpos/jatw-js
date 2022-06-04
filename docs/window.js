@@ -5,10 +5,7 @@ class Window extends HTMLElement {
         super();
         const shadow = this.attachShadow({ mode: "open" });
 
-        const style = document.createElement("link");
-        style.setAttribute("rel", "stylesheet");
-        style.setAttribute("href", "main.css");
-        shadow.appendChild(style);
+        shadow.appendChild(this.getStyle());
 
         // Title of the window
         this.setupWindowName();
@@ -40,6 +37,17 @@ class Window extends HTMLElement {
                     break;
             }
         }
+    }
+
+    /**
+     * Get stylesheet link to `main.css`
+     * @returns Stylesheet element
+     */
+    getStyle() {
+        const style = document.createElement("link");
+        style.setAttribute("rel", "stylesheet");
+        style.setAttribute("href", "main.css");
+        return style;
     }
 
     /**
