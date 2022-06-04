@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Current line that user can manipulate with input
  * @type HTMLDivElement

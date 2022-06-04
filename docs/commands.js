@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Map containing all viable commands
  * @example

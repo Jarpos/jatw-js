@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Reloads the site, effectively "rebooting" the terminal
  */

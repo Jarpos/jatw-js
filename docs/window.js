@@ -1,3 +1,5 @@
+"use strict";
+
 class Window extends HTMLElement {
     constructor() {
         super();

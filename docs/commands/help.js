@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Prints help screen
  */

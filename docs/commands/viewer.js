@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Opens new window with picture viewer
  */

@@ -1,3 +1,5 @@
+"use strict";
+
 newCurrentline();
 setCurrentInput("help");
 HandleEnter(null);

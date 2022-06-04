@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Checks whether a specified Event.Key is a letter
  * @param {string} c character to check
