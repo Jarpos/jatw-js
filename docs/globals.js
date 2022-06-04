@@ -5,9 +5,22 @@
 let currentline;
 
 /**
- * Terminal reference
+ * Pre element with `pre` id
+ * @returns Reference to pre element with terminal id
  */
 const terminal = () => document.getElementById("terminal");
+
+/**
+ * Body element
+ * @returns Reference to body element
+ */
+const body = () => document.getElementsByTagName("body")[0];
+
+/**
+ * Html element
+ * @returns Reference to html element
+ */
+const html = () => document.getElementsByTagName("html")[0];
 
 /**
  * History of inputs made

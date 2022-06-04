@@ -40,7 +40,7 @@ class Window extends HTMLElement {
             };
         });
         this.addEventListener("mouseup", (e) => this.isgrabbed = false);
-        document.getElementsByTagName("html")[0].addEventListener("mousemove", (e) => {
+        html().addEventListener("mousemove", (e) => {
             if (this.isgrabbed) {
                 this.style.left = (e.clientX - this.graboffset.x) + "px";
                 this.style.top = (e.clientY - this.graboffset.y) + "px";
