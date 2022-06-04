@@ -6,6 +6,7 @@
 function Viewer() {
     const viewer = document.createElement("d-window");
     viewer.setAttribute("name", "Picture Viewer");
-    viewer.setAttribute("src", "");
+    const file = "files/" + Array.from(files)[Math.floor(Math.random() * files.size)][0];
+    viewer.setAttribute("src", file);
     terminal().appendChild(viewer);
 }
