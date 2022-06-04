@@ -43,12 +43,17 @@ class Window extends HTMLElement {
 
     static get observedAttributes() { return ["src", "title"]; }
     attributeChangedCallback(name, oldVal, newVal) {
-        switch (name) {
-            case "src": this.image.src = newVal; break;
-            case "title":
-                this.name.innerHTML = newVal;
-                this.name.appendChild(this.close);
-                break;
+        if (newVal !== oldVal) {
+            switch (name) {
+                case "src":
+                    this.image.src = newVal;
+                    break;
+
+                case "title":
+                    this.name.innerHTML = newVal;
+                    this.name.appendChild(this.close);
+                    break;
+            }
         }
     }
 }
