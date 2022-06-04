@@ -29,6 +29,10 @@ html {
     cursor: pointer;
 }
 
+img {
+    background: var(--bg-color);
+}
+
 d-window {
     z-index: 10;
     padding: 1% 1%;
