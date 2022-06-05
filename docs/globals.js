@@ -25,6 +25,12 @@ const body = () => document.getElementsByTagName("body")[0];
 const html = () => document.getElementsByTagName("html")[0];
 
 /**
+ * Css root element
+ * @returns Reference to css root element
+ */
+const styleroot = () => document.documentElement.style;
+
+/**
  * History of inputs made
  */
 const cmdhistory = {
