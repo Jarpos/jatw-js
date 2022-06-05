@@ -22,10 +22,12 @@ function getPromptString() {
 /**
  * Adds line at the end of the screen
  * @param  {...string} l line contents that are to be added
+ * @returns The appended div
  */
 function addLine(...l) {
     const ndiv = terminal().appendChild(document.createElement("div"));
     ndiv.innerHTML = l.length !== 0 ? l.join("") : " ";
+    return ndiv;
 }
 
 /**
