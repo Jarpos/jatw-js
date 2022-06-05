@@ -19,6 +19,7 @@ function Theme() {
         maketheme("default", /******/ 0xc7ccd1, 0x1c2023, 0x95c7ae, 0xae95c7),
         maketheme("alternative", /**/ 0x9ea7a6, 0x232c31, 0xa03b1e, 0x3643b4),
         maketheme("hekr", /*********/ 0x00ff00, 0x000000, 0x00ff00, 0x00ff00),
+        maketheme("light", /********/ 0x303030, 0xfefefe, 0x75b5aa, 0xaa759f),
     ];
 
     const span = (key) => `<span class="command">${key}</span>`;
