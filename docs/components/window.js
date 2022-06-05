@@ -22,11 +22,15 @@ class Window extends HTMLElement {
         this.setupImage();
         shadow.appendChild(this.image);
 
+        // Controls
+        this.setupControls();
+        shadow.append(this.controls);
+
         // Set up dragging
         this.setupDragging();
     }
 
-    static get observedAttributes() { return ["src", "name"]; }
+    static get observedAttributes() { return ["src", "name", "files"]; }
     attributeChangedCallback(name, oldVal, newVal) {
         if (newVal !== oldVal) {
             switch (name) {
@@ -37,6 +41,10 @@ class Window extends HTMLElement {
                 case "name":
                     this.name.innerHTML = newVal;
                     this.name.appendChild(this.close);
+                    break;
+
+                case "files":
+                    this.nextPicture();
                     break;
             }
         }
@@ -83,6 +91,26 @@ class Window extends HTMLElement {
         this.image.setAttribute("ondragstart", "return false;");
     }
 
+    setupControls() {
+        this.i = -1;
+        this.controls = document.createElement("div");
+
+        const left = document.createElement("button");
+        left.innerHTML = "<";
+        left.addEventListener("click", (e) => this.prevPicture());
+        left.style.float = "left";
+        left.style.border = 0;
+
+        const right = document.createElement("button");
+        right.innerHTML = ">";
+        right.addEventListener("click", (e) => this.nextPicture());
+        right.style.float = "right";
+        right.style.border = 0;
+
+        this.controls.appendChild(left);
+        this.controls.appendChild(right);
+    }
+
     /**
      * Setup for Window dragging
      */
@@ -102,6 +130,22 @@ class Window extends HTMLElement {
                 this.style.top = (e.clientY - this.graboffset.y) + "px";
             }
         });
+    }
+
+    get pictures() { return JSON.parse(this.getAttribute("files")); }
+
+    nextPicture() {
+        if (this.i < this.pictures.length - 1) {
+            this.i++;
+        }
+        this.setAttribute("src", "files/" + this.pictures[this.i].name);
+    }
+
+    prevPicture() {
+        if (this.i > 0) {
+            this.i--;
+        }
+        this.setAttribute("src", "files/" + this.pictures[this.i].name);
     }
 }
 
