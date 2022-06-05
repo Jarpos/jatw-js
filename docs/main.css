@@ -1,7 +1,10 @@
 :root {
-    --bg-color: #1c2023;
     --fg-color: #c7ccd1;
-    --fg-bg-color: #747c84;
+    --bg-color: #1c2023;
+    /* --fg-bg-color: #747c84; */
+
+    --username: #95c7ae;
+    --hostname: #ae95c7;
 }
 
 * {
@@ -18,11 +21,11 @@ html {
 }
 
 .username {
-    color: #95c7ae;
+    color: var(--username);
 }
 
 .hostname {
-    color: #ae95c7;
+    color: var(--hostname);
 }
 
 .command:hover {
