@@ -9,7 +9,11 @@ function Help() {
 
     addLine();
     for (const [key, value] of commands.entries()) {
-        addLine("    ", span(key), " ".repeat(15 - key.length), value.info);
+        const line = addLine("    ", span(key), " ".repeat(15 - key.length), value.info);
+        line.addEventListener("click", (e) => {
+            setCurrentInput(key);
+            HandleEnter(null);
+        });
     }
     addLine();
 }
