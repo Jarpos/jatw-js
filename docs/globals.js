@@ -35,7 +35,7 @@ const styleroot = () => document.documentElement.style;
  */
 const cmdhistory = {
     index: 0,
-    commands: ["help",],
+    commands: [],
 
     /**
      * Get the current item from the cmdhistory specified by `cmdhistory.index`
