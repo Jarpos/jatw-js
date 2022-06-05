@@ -22,12 +22,11 @@ function Theme() {
         maketheme("light", /********/ 0x303030, 0xfefefe, 0x75b5aa, 0xaa759f),
     ];
 
-    const span = (key) => `<span class="command">${key}</span>`;
-
     addLine();
     for (const t of themes) {
-        const out = addLine("    ", span(t.name));
-        out.addEventListener("click", (e) => {
+        const line = addLine("    ", t.name);
+        line.classList.add("nomark", "command");
+        line.addEventListener("click", (e) => {
             styleroot().setProperty("--bg-color", "#" + t.bg.toString(16).padStart(6, 0));
             styleroot().setProperty("--fg-color", "#" + t.fg.toString(16).padStart(6, 0));
             styleroot().setProperty("--username", "#" + t.uname.toString(16).padStart(6, 0));
