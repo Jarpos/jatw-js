@@ -10,7 +10,7 @@ function Help() {
         line.classList.add("nomark", "command");
         line.addEventListener("click", (e) => {
             setCurrentInput(key);
-            HandleEnter(null);
+            HandleEnter();
         });
     }
     addLine();
