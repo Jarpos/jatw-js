@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * Html Window element
+ * @TODO Make more generic (maybe split into Window & Viewer class where Viewer extends Window)
+ */
 class Window extends HTMLElement {
     constructor() {
         super();
