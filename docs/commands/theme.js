@@ -12,8 +12,10 @@ function Theme() {
         return { name: n, fg: f, bg: b, uname: u, hname: h, };
     };
 
-    // Array with defined themes
-    // @TODO: Maybe make this a map? Then global and save between pageloads?
+    /**
+     * Array with defined themes
+     * @TODO Maybe make this a map? Then global and save between pageloads?
+     */
     const themes = [
         // ------ Name -------------- fg ------ bg ------ uname --- hname ----
         maketheme("default", /******/ 0xc7ccd1, 0x1c2023, 0x95c7ae, 0xae95c7),

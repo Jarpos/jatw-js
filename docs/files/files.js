@@ -4,6 +4,7 @@
  * Files Map
  * @TODO Add proper descriptions and more info
  * @TODO Try to emulate a filesystem (semi) properly
+ * @TODO Maybe make this an Array?
  */
 const files = new Map([
     ["IMG_0701.png", {}],
