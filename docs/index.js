@@ -2,7 +2,7 @@
 
 newCurrentline();
 setCurrentInput("help");
-HandleEnter(null);
+HandleEnter();
 
 body().addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
