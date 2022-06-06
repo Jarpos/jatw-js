@@ -97,13 +97,13 @@ class Window extends HTMLElement {
 
         const left = document.createElement("button");
         left.innerHTML = "<";
-        left.addEventListener("click", (e) => this.prevPicture());
+        left.addEventListener("click", (e) => this.prevPicture(e.shiftKey));
         left.style.float = "left";
         left.style.border = 0;
 
         const right = document.createElement("button");
         right.innerHTML = ">";
-        right.addEventListener("click", (e) => this.nextPicture());
+        right.addEventListener("click", (e) => this.nextPicture(e.shiftKey));
         right.style.float = "right";
         right.style.border = 0;
 
@@ -134,18 +134,28 @@ class Window extends HTMLElement {
 
     get pictures() { return JSON.parse(this.getAttribute("files")); }
 
-    nextPicture() {
+    /**
+     * Changes to the next picture (or the last one)
+     * @param {boolean} jumpToEnd Toggle if the viewer should jump to the end
+     */
+    nextPicture(jumpToEnd = false) {
         if (this.i < this.pictures.length - 1) {
             this.i++;
         }
-        this.setAttribute("src", "files/" + this.pictures[this.i].name);
+        const i = jumpToEnd ? this.pictures.length - 1 : this.i;
+        this.setAttribute("src", "files/" + this.pictures[i].name);
     }
 
-    prevPicture() {
+    /**
+     * Changes to the previous picture (or the first one)
+     * @param {boolean} jumpToStart Toggle if the viewer should jump to the start
+     */
+    prevPicture(jumpToStart = false) {
         if (this.i > 0) {
             this.i--;
         }
-        this.setAttribute("src", "files/" + this.pictures[this.i].name);
+        const i = jumpToStart ? 0 : this.i;
+        this.setAttribute("src", "files/" + this.pictures[i].name);
     }
 }
 
