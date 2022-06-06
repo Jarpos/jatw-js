@@ -1,8 +1,7 @@
 "use strict";
 
 newCurrentline();
-setCurrentInput("help");
-HandleEnter();
+setAndExecuteCommand("help");
 
 body().addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {

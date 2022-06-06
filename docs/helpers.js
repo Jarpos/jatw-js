@@ -40,6 +40,16 @@ function newCurrentline() {
 }
 
 /**
+ * Sets current command and executes it (also scrolls to the bottom)
+ * @param {string} command Command to execute
+ */
+function setAndExecuteCommand(command) {
+    setCurrentInput(command);
+    HandleEnter();
+    window.scrollTo(0, document.body.scrollHeight);
+}
+
+/**
  * Gives you the current user input
  * @returns Current user input
  */
