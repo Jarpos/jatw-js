@@ -91,6 +91,9 @@ class Window extends HTMLElement {
         this.image.setAttribute("ondragstart", "return false;");
     }
 
+    /**
+     * Setup for the controls of the image viewer
+     */
     setupControls() {
         this.i = -1;
         this.controls = document.createElement("div");
@@ -132,6 +135,9 @@ class Window extends HTMLElement {
         });
     }
 
+    /**
+     * @returns Pictures array that is in the `files` attribute
+     */
     get pictures() { return JSON.parse(this.getAttribute("files")); }
 
     /**
