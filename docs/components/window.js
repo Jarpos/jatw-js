@@ -34,6 +34,13 @@ class Window extends HTMLElement {
         this.setupDragging();
     }
 
+    connectedCallback() {
+        if (this.isConnected === true) {
+            this.style.left = "10%";
+            this.style.top = "10%";
+        }
+    }
+
     static get observedAttributes() { return ["src", "name", "files"]; }
     attributeChangedCallback(name, oldVal, newVal) {
         if (newVal !== oldVal) {
