@@ -3,6 +3,10 @@
 /**
  * Html Window element
  * @TODO Make more generic (maybe split into Window & Viewer class where Viewer extends Window)
+ * @TODO Try to find better way to handle next & previous (controls specific to picture)
+ * @TODO Rework dragging to better work with multiple windows
+ * @TODO Maybe change it so the img and such has to be attached from the outside?
+ * @TODO Probably rework this whole thing...
  */
 class Window extends HTMLElement {
     constructor() {
