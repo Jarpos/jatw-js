@@ -21,6 +21,11 @@ function Theme() {
         maketheme("default", /******/ 0xc7ccd1, 0x1c2023, 0x95c7ae, 0xae95c7),
         maketheme("alternative", /**/ 0x9ea7a6, 0x232c31, 0xa03b1e, 0x3643b4),
         maketheme("hekr", /*********/ 0x00ff00, 0x000000, 0x00ff00, 0x00ff00),
+        maketheme("t-pride", /******/ 0xcccccc, 0x1c2023, 0x5bcefa, 0xf5a9b8),
+        maketheme("nb-pride", /*****/ 0xffffff, 0x000000, 0x9c59d1, 0xfff430),
+        maketheme("gq-pride", /*****/ 0xcccccc, 0x1c2023, 0x498022, 0xb57edc),
+        maketheme("l-pride", /******/ 0xd461a6, 0x200010, 0xd62900, 0xff9b55),
+        maketheme("g-pride", /******/ 0x7bade3, 0x060823, 0x26ceaa, 0x5049cb),
         maketheme("light", /********/ 0x303030, 0xfefefe, 0x75b5aa, 0xaa759f),
     ];
 
