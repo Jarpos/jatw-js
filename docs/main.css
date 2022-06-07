@@ -45,7 +45,7 @@ img {
     background: var(--bg-color);
 }
 
-d-window {
+d-window, d-img-viewer {
     z-index: 10;
     padding: 1% 1%;
     border: 1px solid black;
