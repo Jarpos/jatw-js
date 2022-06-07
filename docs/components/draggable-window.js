@@ -8,7 +8,7 @@
  * @TODO Maybe change it so the img and such has to be attached from the outside?
  * @TODO Probably rework this whole thing...
  */
-class Window extends HTMLElement {
+class DraggableWindow extends HTMLElement {
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: "open" });
@@ -176,4 +176,4 @@ class Window extends HTMLElement {
     }
 }
 
-customElements.define("d-window", Window);
+customElements.define("d-window", DraggableWindow);
