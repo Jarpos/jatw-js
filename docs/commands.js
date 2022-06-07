@@ -11,6 +11,7 @@ const commands = new Map([
     ["times", /***/ { cmd: Times, info: "Prints a bunch of different times", }],
     ["theme", /***/ { cmd: Theme, info: "Choose theme", }],
     ["viewer", /**/ { cmd: Viewer, info: "Opens picture viewer", }],
+    ["clear", /***/ { cmd: Clear, info: "Clears terminal", }],
     ["reboot", /**/ { cmd: Reboot, info: "Reloads terminal", }],
 ]);
 
