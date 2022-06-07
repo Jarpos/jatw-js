@@ -18,7 +18,9 @@ class ImgViewer extends DraggableWindow {
     }
 
     connectedCallback() {
-        if (this.isConnected === true) { }
+        if (this.isConnected === true) {
+            super.connectedCallback();
+        }
     }
 
     static get observedAttributes() { return ["src", "files"].concat(super.observedAttributes); }
