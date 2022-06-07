@@ -24,6 +24,7 @@ function Theme() {
         maketheme("t-pride", /******/ 0xcccccc, 0x1c2023, 0x5bcefa, 0xf5a9b8),
         maketheme("nb-pride", /*****/ 0xffffff, 0x000000, 0x9c59d1, 0xfff430),
         maketheme("gq-pride", /*****/ 0xcccccc, 0x1c2023, 0x498022, 0xb57edc),
+        maketheme("bi-pride", /*****/ 0x9b4f96, 0x1c2023, 0xd60270, 0x006bdb),
         maketheme("l-pride", /******/ 0xd461a6, 0x200010, 0xd62900, 0xff9b55),
         maketheme("g-pride", /******/ 0x7bade3, 0x060823, 0x26ceaa, 0x5049cb),
         maketheme("light", /********/ 0x303030, 0xfefefe, 0x75b5aa, 0xaa759f),
