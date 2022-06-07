@@ -22,14 +22,6 @@ class DraggableWindow extends HTMLElement {
         this.setupCloseButton();
         this.name.appendChild(this.close);
 
-        // Image displayed
-        this.setupImage();
-        shadow.appendChild(this.image);
-
-        // Controls
-        this.setupControls();
-        shadow.append(this.controls);
-
         // Set up dragging
         this.setupDragging();
     }
@@ -41,21 +33,13 @@ class DraggableWindow extends HTMLElement {
         }
     }
 
-    static get observedAttributes() { return ["src", "name", "files"]; }
+    static get observedAttributes() { return ["name"]; }
     attributeChangedCallback(name, oldVal, newVal) {
         if (newVal !== oldVal) {
             switch (name) {
-                case "src":
-                    this.image.src = newVal;
-                    break;
-
                 case "name":
                     this.name.innerHTML = newVal;
                     this.name.appendChild(this.close);
-                    break;
-
-                case "files":
-                    this.nextPicture();
                     break;
             }
         }
@@ -78,6 +62,7 @@ class DraggableWindow extends HTMLElement {
     setupWindowName() {
         this.name = document.createElement("div");
         this.name.innerHTML = this.getAttribute("name");
+        this.name.style.paddingBottom = "1%";
     }
 
     /**
@@ -89,40 +74,6 @@ class DraggableWindow extends HTMLElement {
         this.close.addEventListener("click", (e) => this.remove());
         this.close.style.float = "right";
         this.close.style.border = 0;
-    }
-
-    /**
-     * Setup for Image shown in the viewer
-     */
-    setupImage() {
-        this.image = document.createElement("img");
-        this.image.src = this.src;
-        this.image.width = 500;
-        this.image.setAttribute("draggable", "false");
-        this.image.setAttribute("ondragstart", "return false;");
-    }
-
-    /**
-     * Setup for the controls of the image viewer
-     */
-    setupControls() {
-        this.i = -1;
-        this.controls = document.createElement("div");
-
-        const left = document.createElement("button");
-        left.innerHTML = "<";
-        left.addEventListener("click", (e) => this.prevPicture(e.shiftKey));
-        left.style.float = "left";
-        left.style.border = 0;
-
-        const right = document.createElement("button");
-        right.innerHTML = ">";
-        right.addEventListener("click", (e) => this.nextPicture(e.shiftKey));
-        right.style.float = "right";
-        right.style.border = 0;
-
-        this.controls.appendChild(left);
-        this.controls.appendChild(right);
     }
 
     /**
@@ -144,35 +95,6 @@ class DraggableWindow extends HTMLElement {
                 this.style.top = (e.clientY - this.graboffset.y) + "px";
             }
         });
-    }
-
-    /**
-     * @returns Pictures array that is in the `files` attribute
-     */
-    get pictures() { return JSON.parse(this.getAttribute("files")); }
-
-    /**
-     * Changes to the next picture (or the last one)
-     * @param {boolean} jumpToEnd Toggle if the viewer should jump to the end
-     */
-    nextPicture(jumpToEnd = false) {
-        if (this.i < this.pictures.length - 1) {
-            this.i++;
-        }
-        const i = jumpToEnd ? this.pictures.length - 1 : this.i;
-        this.setAttribute("src", "files/" + this.pictures[i].name);
-    }
-
-    /**
-     * Changes to the previous picture (or the first one)
-     * @param {boolean} jumpToStart Toggle if the viewer should jump to the start
-     */
-    prevPicture(jumpToStart = false) {
-        if (this.i > 0) {
-            this.i--;
-        }
-        const i = jumpToStart ? 0 : this.i;
-        this.setAttribute("src", "files/" + this.pictures[i].name);
     }
 }
 
