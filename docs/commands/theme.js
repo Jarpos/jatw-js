@@ -1,3 +1,8 @@
+"use strict";
+
+/**
+ * Prints theme chooser
+ */
 function Theme() {
     /**
      * Creates a theme object
@@ -17,7 +22,7 @@ function Theme() {
      * @TODO Maybe make this a map? Then global and save between pageloads?
      */
     const themes = [
-        // ------ Name -------------- fg ------ bg ------ uname --- hname ----
+        /*------- Name -------------- fg ------ bg ------ uname --- hname --*/
         maketheme("default", /******/ 0xc7ccd1, 0x1c2023, 0x95c7ae, 0xae95c7),
         maketheme("alternative", /**/ 0x9ea7a6, 0x232c31, 0xa03b1e, 0x3643b4),
         maketheme("hekr", /*********/ 0x00ff00, 0x000000, 0x00ff00, 0x00ff00),
