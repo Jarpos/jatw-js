@@ -26,6 +26,7 @@ body().addEventListener("keydown", (e) => {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleBackspace(e) {
+    e.preventDefault();
     setCurrentInput(e.ctrlKey ? "" : getCurrentInput().slice(0, -1));
 }
 
