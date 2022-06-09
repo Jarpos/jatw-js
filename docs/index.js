@@ -18,7 +18,6 @@ body().addEventListener("keydown", (e) => {
     }
 
     window.scrollTo(0, document.body.scrollHeight);
-    console.log(e.key, isLetter(e.key));
 });
 
 /**
