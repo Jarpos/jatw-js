@@ -8,13 +8,8 @@ class ImgViewer extends DraggableWindow {
     constructor() {
         super();
 
-        // Image displayed
         this.setupImage();
-        this.shadowRoot.appendChild(this.image);
-
-        // Controls
         this.setupControls();
-        this.shadowRoot.append(this.controls);
     }
 
     connectedCallback() {
@@ -51,6 +46,7 @@ class ImgViewer extends DraggableWindow {
         this.image.width = 500;
         this.image.setAttribute("draggable", "false");
         this.image.setAttribute("ondragstart", "return false;");
+        this.shadowRoot.appendChild(this.image);
     }
 
     /**
@@ -74,6 +70,7 @@ class ImgViewer extends DraggableWindow {
 
         this.controls.appendChild(left);
         this.controls.appendChild(right);
+        this.shadowRoot.append(this.controls);
     }
 
     /**
