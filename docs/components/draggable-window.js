@@ -2,7 +2,6 @@
 
 /**
  * Html Draggable Window element
- * @TODO Rework dragging to better work with multiple windows
  */
 class DraggableWindow extends HTMLElement {
     constructor() {
@@ -79,7 +78,7 @@ class DraggableWindow extends HTMLElement {
             };
         });
 
-        this.addEventListener("mouseup", (e) => this.graboffset = null);
+        html().addEventListener("mouseup", (e) => this.graboffset = null);
         html().addEventListener("mousemove", (e) => {
             if (this.graboffset) {
                 this.style.left = (e.clientX - this.graboffset.x) + "px";
