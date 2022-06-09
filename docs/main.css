@@ -39,6 +39,7 @@ html {
 
 .command:hover {
     cursor: pointer;
+    color: var(--username);
 }
 
 img {
