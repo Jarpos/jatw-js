@@ -10,15 +10,8 @@ class DraggableWindow extends HTMLElement {
         const shadow = this.attachShadow({ mode: "open" });
         shadow.appendChild(this.getStyle());
 
-        // Title of the window
         this.setupWindowName();
-        shadow.appendChild(this.name);
-
-        // Close button
         this.setupCloseButton();
-        this.name.appendChild(this.close);
-
-        // Set up dragging
         this.setupDragging();
     }
 
@@ -59,6 +52,7 @@ class DraggableWindow extends HTMLElement {
         this.name = document.createElement("div");
         this.name.innerHTML = this.getAttribute("name");
         this.name.style.paddingBottom = "1%";
+        this.shadowRoot.appendChild(this.name);
     }
 
     /**
@@ -70,6 +64,7 @@ class DraggableWindow extends HTMLElement {
         this.close.addEventListener("click", (e) => this.remove());
         this.close.style.float = "right";
         this.close.style.border = 0;
+        this.name.appendChild(this.close);
     }
 
     /**
