@@ -1,5 +1,10 @@
 "use strict";
 
+for (const line of logos[Math.floor(Math.random() * logos.length)]) {
+    addLine(line);
+}
+bottominfo.forEach(s => addLine(s));
+addLine();
 newCurrentline();
 setAndExecuteCommand("help");
 
