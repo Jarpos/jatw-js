@@ -24,9 +24,11 @@
     user-select: none;
 }
 
-html {
+html, body, #terminal {
     min-height: 100vh;
     padding: 0;
+    margin: 0;
+    padding-left: .25%;
 }
 
 .username {
