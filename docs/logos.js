@@ -84,5 +84,5 @@ const logos = [
 ];
 
 const bottominfo = [
-    "Source: https://github.com/Jarpos/jatw-js",
+    "Source: <a href=\"https://github.com/Jarpos/jatw-js\">https://github.com/Jarpos/jatw-js</a>",
 ];
