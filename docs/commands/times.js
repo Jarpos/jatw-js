@@ -8,7 +8,7 @@
 function Times() {
     // Using swedish locale bc they use the ISO-8601 format (kinda)
     const s = "sv-SE";
-    const t = (l) => { return { timeZone: l } };
+    const t = (l) => { return { timeZone: l, }; };
     const now = new Date();
 
     addLine();
