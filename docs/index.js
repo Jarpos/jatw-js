@@ -36,11 +36,11 @@ function HandleBackspace(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleEnter(e) {
-    const input = getCurrentInput();
-    const command = commands.get(input);
+    const input = getCurrentInput().split(/ +/);
+    const command = commands.get(input[0]);
 
     if (command) {
-        command.cmd();
+        command.cmd(input.slice(1));
     } else if (input.length > 0) {
         addLine("Could not find command \"", input, "\"");
     }
