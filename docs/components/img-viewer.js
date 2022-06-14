@@ -18,7 +18,7 @@ class ImgViewer extends DraggableWindow {
         }
     }
 
-    static get observedAttributes() { return ["src", "files"].concat(super.observedAttributes); }
+    static get observedAttributes() { return ["src", "files", "folder",].concat(super.observedAttributes); }
     attributeChangedCallback(name, oldVal, newVal) {
         if (newVal !== oldVal) {
             switch (name) {
@@ -87,7 +87,7 @@ class ImgViewer extends DraggableWindow {
             this.i++;
         }
         this.i = jumpToEnd ? this.pictures.length - 1 : this.i;
-        this.setAttribute("src", "files/" + this.pictures[this.i].name);
+        this.setAttribute("src", this.getAttribute("folder") + this.pictures[this.i].name);
         this.setAttribute("name", "Viewer - " + this.pictures[this.i].name);
     }
 
