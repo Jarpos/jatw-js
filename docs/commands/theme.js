@@ -19,6 +19,17 @@ function Theme(argv) {
     };
 
     /**
+     * Sets to given theme object
+     * @param {Theme} t Theme to set to
+     */
+    const setTheme = (t) => {
+        styleroot().setProperty("--bg-color", "#" + t.bg.toString(16).padStart(6, 0));
+        styleroot().setProperty("--fg-color", "#" + t.fg.toString(16).padStart(6, 0));
+        styleroot().setProperty("--username", "#" + t.uname.toString(16).padStart(6, 0));
+        styleroot().setProperty("--hostname", "#" + t.hname.toString(16).padStart(6, 0));
+    }
+
+    /**
      * Array with defined themes
      * @TODO Maybe make this a map? Then global and save between pageloads?
      */
@@ -36,16 +47,20 @@ function Theme(argv) {
         ct("light", /********/ 0x303030, 0xfefefe, 0x75b5aa, 0xaa759f),
     ];
 
-    addLine();
-    for (const t of themes) {
-        const line = addLine("    ", t.name);
-        line.classList.add("nomark", "command");
-        line.addEventListener("click", (e) => {
-            styleroot().setProperty("--bg-color", "#" + t.bg.toString(16).padStart(6, 0));
-            styleroot().setProperty("--fg-color", "#" + t.fg.toString(16).padStart(6, 0));
-            styleroot().setProperty("--username", "#" + t.uname.toString(16).padStart(6, 0));
-            styleroot().setProperty("--hostname", "#" + t.hname.toString(16).padStart(6, 0));
-        });
+    if (argv?.length >= 1) {
+        const theme = themes.find(e => e.name === argv[0]);
+        if (theme) {
+            setTheme(theme);
+        } else {
+            addLine("Couldn't find theme: ", argv[0]);
+        }
+    } else {
+        addLine();
+        for (const t of themes) {
+            const line = addLine("    ", t.name);
+            line.classList.add("nomark", "command");
+            line.addEventListener("click", (e) => setTheme(t));
+        }
+        addLine();
     }
-    addLine();
 }
