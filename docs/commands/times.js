@@ -2,10 +2,11 @@
 
 /**
  * Prints a bunch of Times
+ * @param {string[]} argv Arguments
  * @link https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
  * @TODO Add more differing timezones
  */
-function Times() {
+function Times(argv) {
     // Using swedish locale bc they use the ISO-8601 format (kinda)
     const s = "sv-SE";
     const t = (l) => { return { timeZone: l, }; };

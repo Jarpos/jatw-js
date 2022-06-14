@@ -2,8 +2,9 @@
 
 /**
  * Clears terminal
+ * @param {string[]} argv Arguments
  */
-function Clear() {
+function Clear(argv) {
     while (terminal().firstChild) {
         terminal().removeChild(terminal().firstChild);
     }

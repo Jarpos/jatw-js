@@ -2,8 +2,9 @@
 
 /**
  * Prints theme chooser
+ * @param {string[]} argv Arguments
  */
-function Theme() {
+function Theme(argv) {
     /**
      * Creates a theme object
      * @param {string} n Name

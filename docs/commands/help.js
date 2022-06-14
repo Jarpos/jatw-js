@@ -2,8 +2,9 @@
 
 /**
  * Prints help screen
+ * @param {string[]} argv Arguments
  */
-function Help() {
+function Help(argv) {
     addLine();
     for (const [key, value] of commands.entries()) {
         const line = addLine("    ", key.padEnd(15, " "), value.info);

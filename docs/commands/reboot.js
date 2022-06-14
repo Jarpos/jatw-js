@@ -2,7 +2,8 @@
 
 /**
  * Reloads the site, effectively "rebooting" the terminal
+ * @param {string[]} argv Arguments
  */
-function Reboot() {
+function Reboot(argv) {
     location.reload();
 }
