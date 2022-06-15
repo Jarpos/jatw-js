@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Prints theme chooser
+ * Prints theme chooser or sets first theme set in argv
  * @param {string[]} argv Arguments
  */
 function Theme(argv) {
