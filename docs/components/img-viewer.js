@@ -100,7 +100,7 @@ class ImgViewer extends DraggableWindow {
             this.i--;
         }
         this.i = jumpToStart ? 0 : this.i;
-        this.setAttribute("src", "files/" + this.pictures[this.i].name);
+        this.setAttribute("src", this.getAttribute("folder") + this.pictures[this.i].name);
         this.setAttribute("name", "Viewer - " + this.pictures[this.i].name);
     }
 }
