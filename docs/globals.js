@@ -24,6 +24,26 @@ const body = () => document.getElementsByTagName("body")[0];
  */
 const html = () => document.getElementsByTagName("html")[0];
 
+const uri = {
+    /**
+     * Get href of current url (full url)
+     * @returns Href of current location
+     */
+    href: () => document.location.href,
+
+    /**
+     * Get the current hostname
+     * @returns hostname for current site
+     */
+    hostname: () => document.location.hostname,
+
+    /**
+     * Get the commands in the search query part of the uri
+     * @returns All the ; seperated commands in the search query part of the string
+     */
+    commands: () => document.location.search.substring(1).replaceAll("%20", " ").split(";").filter(v => v?.length > 0),
+};
+
 /**
  * Css root element
  * @returns Reference to css root element

@@ -4,6 +4,7 @@ printRandomLogo();
 printBottomInfo();
 newCurrentline();
 setAndExecuteCommand("help");
+uri.commands().forEach(c => setAndExecuteCommand(c));
 
 body().addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
