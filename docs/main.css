@@ -24,7 +24,9 @@
     user-select: none;
 }
 
-html, body, #terminal {
+html,
+body,
+#terminal {
     min-height: 100vh;
     padding: 0;
     margin: 0;
@@ -48,7 +50,8 @@ img {
     background: var(--bg-color);
 }
 
-d-window, d-img-viewer {
+d-window,
+d-img-viewer {
     z-index: 10;
     padding: 1% 1%;
     border: 1px solid black;
