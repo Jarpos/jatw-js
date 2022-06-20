@@ -7,6 +7,14 @@ setAndExecuteCommand("help");
 uri.commands().forEach(c => setAndExecuteCommand(c));
 if (uri.theme()) {
     Theme([uri.theme()]);
+} else {
+    /**
+     * Check on first load if user has light mode, and if so set theme to light,
+     * else just go with default color scheme
+     */
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        Theme(["light"]);
+    }
 }
 
 body().addEventListener("keydown", (e) => {
