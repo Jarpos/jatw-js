@@ -46,7 +46,13 @@ const uri = {
      * Get the commands in the search query part of the uri
      * @returns All the ; seperated commands in the search query part of the string
      */
-    commands: () => document.location.search.substring(1).replaceAll("%20", " ").split(";").filter(v => v?.length > 0),
+    commands: () => {
+        return document.location.search
+            .substring(1)
+            .replaceAll("%20", " ")
+            .split(";")
+            .filter(v => v?.length > 0);
+    },
 
     /**
      * Get the selected theme from the uri
@@ -65,7 +71,16 @@ const styleroot = () => document.documentElement.style;
  * History of inputs made
  */
 const cmdhistory = {
+    /**
+     * Current index for commands array
+     * @type number
+     */
     index: 0,
+
+    /**
+     * Commandhistory from current session
+     * @type string[]
+     */
     commands: [],
 
     /**
