@@ -13,6 +13,11 @@ let currentline;
 const terminal = () => document.getElementById("terminal");
 
 /**
+ * Time that the document loaded
+ */
+const loadtime = new Date();
+
+/**
  * Body element
  * @returns Reference to body element
  */
