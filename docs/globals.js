@@ -42,6 +42,12 @@ const uri = {
      * @returns All the ; seperated commands in the search query part of the string
      */
     commands: () => document.location.search.substring(1).replaceAll("%20", " ").split(";").filter(v => v?.length > 0),
+
+    /**
+     * Get the selected theme from the uri
+     * @returns theme from hash without # sign
+     */
+    theme: () => document.location.hash.replace("#", ""),
 };
 
 /**

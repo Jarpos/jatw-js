@@ -5,6 +5,9 @@ printBottomInfo();
 newCurrentline();
 setAndExecuteCommand("help");
 uri.commands().forEach(c => setAndExecuteCommand(c));
+if (uri.theme()) {
+    Theme([uri.theme()]);
+}
 
 body().addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {

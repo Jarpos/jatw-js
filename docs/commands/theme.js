@@ -27,6 +27,7 @@ function Theme(argv) {
         styleroot().setProperty("--fg-color", "#" + t.fg.toString(16).padStart(6, 0));
         styleroot().setProperty("--username", "#" + t.uname.toString(16).padStart(6, 0));
         styleroot().setProperty("--hostname", "#" + t.hname.toString(16).padStart(6, 0));
+        document.location.hash = t.name;
     }
 
     /**
