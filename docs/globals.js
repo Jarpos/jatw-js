@@ -7,6 +7,15 @@
 let currentline;
 
 /**
+ * Characters that are allowed as input for the terminal
+ */
+const allowedcharacters =
+    "0123456789" +
+    "abcdefghijklmnopqrstuvwxyz" +
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+    "\"\\()[]{}<>|?!.,;:_-+/%=&$#'~";
+
+/**
  * Pre element with `pre` id
  * @returns Reference to pre element with terminal id
  */

@@ -1,13 +1,12 @@
 "use strict";
 
 /**
- * Checks whether a specified Event.Key is a letter
+ * Checks whether a specified Event.Key is a valid input character
  * @param {string} c character to check
- * @returns Whether it's a character or not (works only on latin or latin adjacent alphabet)
+ * @returns Whether it's a character or not
  */
 function isLetter(c) {
-    return c.toLowerCase() !== c.toUpperCase()
-        && c.length === 1;
+    return allowedcharacters.includes(c);
 }
 
 /**
