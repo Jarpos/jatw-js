@@ -15,7 +15,27 @@ function isLetter(c) {
  */
 function getPromptString() {
     return "<span class=\"username\">guest</span>@" +
-        "<span class=\"hostname\">jatw</span>:~/$ ";
+        `<span class=\"hostname\">jatw</span>:${getPwd()}$ `;
+}
+
+/**
+ * Get the PWD string
+ * @returns PrintWorkingDirectory
+ */
+function getPwd() {
+    /**
+     * Traverses up folder and returns string to it
+     * @param {string} s Working Directory string
+     * @param {Folder_c} f Folder to traverse up
+     * @returns String to working directory
+     */
+    const pwd = (s, f) => {
+        if (f === null) {
+            return s;
+        }
+        return pwd(f.name + "/" + s, f.parent);
+    }
+    return pwd("", cwd);
 }
 
 /**
