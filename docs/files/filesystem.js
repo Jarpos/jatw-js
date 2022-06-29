@@ -13,11 +13,14 @@ class Folder_c {
     /**
      * Folder object constructor
      * @param {string} n Name of the folder
-     * @param {Folder_c} p Parent of current folder
      */
-    constructor(n, p) {
+    constructor(n) {
         this.name = n;
-        this.parent = p;
+
+        /**
+         * @type Folder_c
+         */
+        this.parent = null;
 
         /**
          * @type File_c[]
