@@ -13,6 +13,7 @@ const commands = new Map([
     ["viewer", /**/ { cmd: Viewer, /**/ info: "Opens picture viewer", }],
     ["ls", /******/ { cmd: Ls, /******/ info: "Lists items in folder", }],
     ["cd", /******/ { cmd: Cd, /******/ info: "Change directory", }],
+    ["tree", /****/ { cmd: Tree, /****/ info: "Outputs subdirectories and files as tree", }],
     ["clear", /***/ { cmd: Clear, /***/ info: "Clears terminal", }],
     ["reboot", /**/ { cmd: Reboot, /**/ info: "Reloads terminal", }],
 ]);
