@@ -57,7 +57,7 @@ function HandleEnter(e) {
         addLine("Could not find command \"", input, "\"");
     }
 
-    cmdhistory.push(input);
+    cmdhistory.push(input.join(" "));
     newCurrentline();
 }
 
