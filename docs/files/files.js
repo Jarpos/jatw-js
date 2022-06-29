@@ -11,19 +11,6 @@ const fileroot = setUpFilesystem();
  */
 let cwd = fileroot;
 
-/**
- * Create file object with name and type
- * @param {string} name Name of file
- * @param {"picture" | "text"} type Type of file
- * @returns File object
- */
-function MakeFile(name, type) {
-    return {
-        name: name,
-        type: type,
-    };
-}
-
 function setUpFilesystem() {
     /**
      * ~/
@@ -79,5 +66,3 @@ function setUpFilesystem() {
     root.addChildren(pictures, other);
     return root;
 }
-
-console.log(fileroot);
