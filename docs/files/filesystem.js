@@ -28,12 +28,14 @@ class Folder_c {
     /**
      * Add content to folder (children)
      * @param  {...File_c | ...Folder_c} children Children to add
+     * @returns this to be able to make fs initialization easier
      */
     addChildren(...children) {
         this.children = this.children.concat(children);
         for (const child of this.children) {
             child.parent = this;
         }
+        return this;
     }
 
     /**
