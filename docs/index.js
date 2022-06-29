@@ -19,6 +19,7 @@ if (uri.theme()) {
 
 body().addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
+        e.preventDefault();
         currentline.innerHTML += e.key;
     } else {
         switch (e.key) {
