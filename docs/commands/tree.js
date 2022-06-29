@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Outputs subdirectories and files as tree
  * @param {string[]} argv Arguments

@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Lists contents of directory
  * @param {string[]} argv Arguments

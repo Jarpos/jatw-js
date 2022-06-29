@@ -1,4 +1,4 @@
-// Mock file system
+"use strict";
 
 /**
  * Yes, there shouldn't be this many file types, but I'm

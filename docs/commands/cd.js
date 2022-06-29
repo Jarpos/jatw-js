@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Changes directory
  * @param {string[]} argv Arguments
