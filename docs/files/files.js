@@ -1,6 +1,17 @@
 "use strict";
 
 /**
+ * Root folder
+ * @type Folder_c
+ */
+const fileroot = setUpFilesystem();
+
+/**
+ * Current Working Directory
+ */
+let cwd = fileroot;
+
+/**
  * Create file object with name and type
  * @param {string} name Name of file
  * @param {"picture" | "text"} type Type of file
@@ -13,38 +24,60 @@ function MakeFile(name, type) {
     };
 }
 
-/**
- * Files Map
- * @TODO Add proper descriptions and more info
- * @TODO Try to emulate a filesystem (semi) properly
- * @TODO Maybe make this an Array?
- */
-const files = [
-    MakeFile("IMG_0121.jpg", "picture"),
-    MakeFile("IMG_0416.jpg", "picture"),
-    MakeFile("IMG_0428.jpg", "picture"),
-    MakeFile("IMG_0529.jpg", "picture"),
-    MakeFile("IMG_0531.jpg", "picture"),
-    MakeFile("IMG_0591.jpg", "picture"),
-    MakeFile("IMG_0593.jpg", "picture"),
-    MakeFile("IMG_0701.jpg", "picture"),
-    MakeFile("IMG_0755.jpg", "picture"),
-    MakeFile("IMG_0776.jpg", "picture"),
-    MakeFile("IMG_0782.jpg", "picture"),
-    MakeFile("IMG_0843.jpg", "picture"),
-    MakeFile("IMG_0847.jpg", "picture"),
-    MakeFile("IMG_0871.jpg", "picture"),
-    MakeFile("IMG_0919.jpg", "picture"),
-    MakeFile("IMG_0922.jpg", "picture"),
-    MakeFile("IMG_1005.jpg", "picture"),
-    MakeFile("IMG_1011.jpg", "picture"),
-    MakeFile("IMG_1035.jpg", "picture"),
-    MakeFile("IMG_1055.jpg", "picture"),
-    MakeFile("IMG_1080.jpg", "picture"),
-    MakeFile("IMG_1093.jpg", "picture"),
-    MakeFile("IMG_1257.jpg", "picture"),
-    MakeFile("IMG_1492.jpg", "picture"),
-    MakeFile("IMG_1586.jpg", "picture"),
-    MakeFile("IMG_1853.jpg", "picture"),
-    MakeFile("IMG_1906.jpg", "picture"),
-];
+function setUpFilesystem() {
+    /**
+     * ~/
+     * +-- pictures
+     * |   |
+     * |   + IMG_***.jpg
+     * |
+     * +-- other
+     *     |
+     *     + ...
+     */
+
+    const root = new Folder_c("~", null);
+
+    const pictures = new Folder_c("pictures", root)
+    pictures.addChildren(
+        new File_c(FILE_TYPE.PICTURE, "IMG_0121.jpg", "files/pictures/IMG_0121.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0416.jpg", "files/pictures/IMG_0416.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0428.jpg", "files/pictures/IMG_0428.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0529.jpg", "files/pictures/IMG_0529.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0531.jpg", "files/pictures/IMG_0531.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0591.jpg", "files/pictures/IMG_0591.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0593.jpg", "files/pictures/IMG_0593.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0701.jpg", "files/pictures/IMG_0701.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0755.jpg", "files/pictures/IMG_0755.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0776.jpg", "files/pictures/IMG_0776.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0782.jpg", "files/pictures/IMG_0782.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0843.jpg", "files/pictures/IMG_0843.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0847.jpg", "files/pictures/IMG_0847.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0871.jpg", "files/pictures/IMG_0871.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0919.jpg", "files/pictures/IMG_0919.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_0922.jpg", "files/pictures/IMG_0922.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1005.jpg", "files/pictures/IMG_1005.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1011.jpg", "files/pictures/IMG_1011.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1035.jpg", "files/pictures/IMG_1035.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1055.jpg", "files/pictures/IMG_1055.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1080.jpg", "files/pictures/IMG_1080.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1093.jpg", "files/pictures/IMG_1093.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1257.jpg", "files/pictures/IMG_1257.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1492.jpg", "files/pictures/IMG_1492.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1586.jpg", "files/pictures/IMG_1586.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1853.jpg", "files/pictures/IMG_1853.jpg"),
+        new File_c(FILE_TYPE.PICTURE, "IMG_1906.jpg", "files/pictures/IMG_1906.jpg"),
+    );
+
+    const other = new Folder_c("other", root);
+    other.addChildren(
+        new File_c(FILE_TYPE.TEXT, "text.txt", ["Hello", "Line 2"]),
+
+        new Folder_c("another"),
+    );
+
+    root.addChildren(pictures, other);
+    return root;
+}
+
+console.log(fileroot);
