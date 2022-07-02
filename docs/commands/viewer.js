@@ -8,6 +8,6 @@ function Viewer(argv) {
     const viewer = document.createElement("d-img-viewer");
     viewer.setAttribute("name", "Picture Viewer");
     viewer.setAttribute("folder", "files/pictures/");
-    viewer.setAttribute("files", JSON.stringify(files));
+    viewer.setAttribute("files", JSON.stringify(cwd.children.map(e => { return { name: e.name }; })));
     terminal().appendChild(viewer);
 }
