@@ -54,8 +54,8 @@ function HandleEnter(e) {
 
     if (command) {
         command.cmd(input.slice(1));
-    } else if (input.length > 0) {
-        addLine("Could not find command \"", input, "\"");
+    } else if (input.join(" ").length > 0) {
+        addLine("Could not find command \"", input.join(" "), "\"");
     }
 
     cmdhistory.push(input.join(" "));
