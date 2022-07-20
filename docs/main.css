@@ -64,3 +64,20 @@ d-img-viewer {
     -ms-user-select: none;
     user-select: none;
 }
+
+span.caret {
+    animation: blink 1s step-end infinite;
+    border-bottom: 2px solid white;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #fff;
+    }
+}
