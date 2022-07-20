@@ -66,7 +66,6 @@ function HandleEnter(e) {
     }
 
     cmdhistory.push(input.join(" "));
-    currentline.Enter();
     newCurrentline();
 }
 

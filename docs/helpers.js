@@ -53,6 +53,10 @@ function addLine(...l) {
  * Updates CurrentLine variable with new line and adds it to the screen
  */
 function newCurrentline() {
+    if (currentline) {
+        currentline.Deactivate();
+    }
+
     currentline = document.createElement("input-line");
     terminal().appendChild(currentline);
 }

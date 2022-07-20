@@ -80,7 +80,7 @@ class InputLine extends HTMLElement {
     Backspace() { this.left = this.left.slice(0, -1); this.Render(); }
     ClearLine() { this.Input = []; this.Render(); }
     Delete() { this.right.shift(); this.Render(); }
-    Enter() { this.Render(false); }
+    Deactivate() { this.Render(false); }
 
     Render(showcaret = true) {
         while (this.userinput.firstChild) {
