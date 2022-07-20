@@ -112,7 +112,11 @@ function HandleDown(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleLeft(e) {
-    currentline.MoveCaretLeft();
+    if (e.ctrlKey) {
+        currentline.MoveCaretStart();
+    } else {
+        currentline.MoveCaretLeft();
+    }
 }
 
 /**
@@ -120,7 +124,11 @@ function HandleLeft(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleRight(e) {
-    currentline.MoveCaretRight();
+    if (e.ctrlKey) {
+        currentline.MoveCaretEnd();
+    } else {
+        currentline.MoveCaretRight();
+    }
 }
 
 /**

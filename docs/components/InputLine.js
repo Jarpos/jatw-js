@@ -43,16 +43,26 @@ class InputLine extends HTMLElement {
         return style;
     }
 
-    get Input() { return this.left.concat(this.right).join(""); }
-    set Input(s) { this.left = s.split(" "); this.right = ""; this.Render(); }
+    get Input() {
+        return this.left.concat(this.right?.length > 0 ? this.right : [""]).join("");
+    }
+    set Input(s) { this.left = s.split(" "); this.right = []; this.Render(); }
 
     AddInput(input) {
         this.left.push(input);
         this.Render();
     }
 
-    MoveCaretStart() { this.right = this.Input; this.left = []; this.Render(); }
-    MoveCaretEnd() { this.left = this.Input; this.right = []; this.Render(); }
+    MoveCaretStart() {
+        this.right = this.Input.split("");
+        this.left = [];
+        this.Render();
+    }
+    MoveCaretEnd() {
+        this.left = this.Input.split("");
+        this.right = [];
+        this.Render();
+    }
 
     MoveCaretRight() {
         if (this.right?.length > 0) {
@@ -60,7 +70,6 @@ class InputLine extends HTMLElement {
             this.Render();
         }
     }
-
     MoveCaretLeft() {
         if (this.left?.length > 0) {
             this.right.unshift(this.left.pop());
@@ -69,7 +78,7 @@ class InputLine extends HTMLElement {
     }
 
     Backspace() { this.left = this.left.slice(0, -1); this.Render(); }
-    ClearLine() { this.Input = ""; this.Render(); }
+    ClearLine() { this.Input = []; this.Render(); }
     Delete() { this.right.shift(); this.Render(); }
     Enter() { this.Render(false); }
 
