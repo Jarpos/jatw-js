@@ -20,15 +20,18 @@ if (uri.theme()) {
 body().addEventListener("keydown", (e) => {
     if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
         e.preventDefault();
-        currentline.innerHTML += e.key;
+        currentline.AddInput(e.key);
     } else {
         switch (e.key) {
-            case "Backspace": /**/ HandleBackspace(e); /**/ break;
-            case "Enter": /******/ HandleEnter(e); /******/ break;
-            case "Tab": /********/ HandleTab(e); /********/ break;
-            case "ArrowUp": /****/ HandleUp(e); /*********/ break;
-            case "ArrowDown": /**/ HandleDown(e); /*******/ break;
-            case "c": /**********/ newCurrentline(); /****/ break;
+            case "Backspace": /***/ HandleBackspace(e); /**/ break;
+            case "Enter": /*******/ HandleEnter(e); /******/ break;
+            case "Tab": /*********/ HandleTab(e); /********/ break;
+            case "ArrowUp": /*****/ HandleUp(e); /*********/ break;
+            case "ArrowDown": /***/ HandleDown(e); /*******/ break;
+            case "ArrowLeft": /***/ HandleLeft(e); /*******/ break;
+            case "ArrowRight": /**/ HandleRight(e); /******/ break;
+            case "Delete": /******/ HandleDelete(e); /*****/ break;
+            case "c": /***********/ newCurrentline(); /****/ break;
         }
     }
 
@@ -41,7 +44,11 @@ body().addEventListener("keydown", (e) => {
  */
 function HandleBackspace(e) {
     e.preventDefault();
-    setCurrentInput(e.ctrlKey ? "" : getCurrentInput().slice(0, -1));
+    if (e.ctrlKey) {
+        currentline.ClearLine();
+    } else {
+        currentline.Backspace();
+    }
 }
 
 /**
@@ -59,6 +66,7 @@ function HandleEnter(e) {
     }
 
     cmdhistory.push(input.join(" "));
+    currentline.Enter();
     newCurrentline();
 }
 
@@ -97,4 +105,28 @@ function HandleUp(e) {
 function HandleDown(e) {
     cmdhistory.down();
     setCurrentInput(cmdhistory.get());
+}
+
+/**
+ * Go one command down in the input history
+ * @param {KeyboardEvent} e KeyboardEvent to process
+ */
+function HandleLeft(e) {
+    currentline.MoveCaretLeft();
+}
+
+/**
+ * Go one command down in the input history
+ * @param {KeyboardEvent} e KeyboardEvent to process
+ */
+function HandleRight(e) {
+    currentline.MoveCaretRight();
+}
+
+/**
+ * Go one command down in the input history
+ * @param {KeyboardEvent} e KeyboardEvent to process
+ */
+ function HandleDelete(e) {
+    currentline.Delete();
 }

@@ -2,7 +2,7 @@
 
 /**
  * Current line that user can manipulate with input
- * @type HTMLDivElement
+ * @type InputLine
  */
 let currentline;
 

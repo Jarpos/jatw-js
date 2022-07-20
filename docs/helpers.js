@@ -53,8 +53,7 @@ function addLine(...l) {
  * Updates CurrentLine variable with new line and adds it to the screen
  */
 function newCurrentline() {
-    currentline = document.createElement("div");
-    currentline.innerHTML = getPromptString();
+    currentline = document.createElement("input-line");
     terminal().appendChild(currentline);
 }
 
@@ -73,7 +72,7 @@ function setAndExecuteCommand(command) {
  * @returns Current user input
  */
 function getCurrentInput() {
-    return currentline.innerHTML.slice(getPromptString().length).trim();
+    return currentline.Input.trim();
 }
 
 /**
@@ -81,5 +80,5 @@ function getCurrentInput() {
  * @param {string} s String to set current input to
  */
 function setCurrentInput(s) {
-    currentline.innerHTML = getPromptString() + s;
+    currentline.Input = s;
 }
