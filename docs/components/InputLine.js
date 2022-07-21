@@ -46,7 +46,7 @@ class InputLine extends HTMLElement {
     get Input() {
         return this.left.concat(this.right?.length > 0 ? this.right : [""]).join("");
     }
-    set Input(s) { this.left = s.split(" "); this.right = []; this.Render(); }
+    set Input(s) { this.left = s.split(""); this.right = []; this.Render(); }
 
     AddInput(input) {
         this.left.push(input);
