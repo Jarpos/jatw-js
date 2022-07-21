@@ -41,33 +41,44 @@ class InputLine extends HTMLElement {
         return style;
     }
 
+    /**
+     * Get the current input
+     * @returns current input
+     */
     get Input() {
         return this.left.concat(this.right?.length > 0 ? this.right : [""]).join("");
     }
+
+    /**
+     * Set the input to the specified string
+     * @param {string} s String to set the input to
+     */
     set Input(s) { this.left = s.split(""); this.right = []; this.Render(); }
 
+    /**
+     * Append input to the left part of the line
+     * @param {string} input Input to append to the end
+     */
     AddInput(input) {
-        this.left.push(input);
+        this.left.push(input.split(""));
         this.Render();
     }
 
+    /** Moves Caret to the start of the line */
     MoveCaretStart() {
         this.right = this.Input.split("");
         this.left = [];
         this.Render();
     }
+
+    /** Moves Caret to the end of the line */
     MoveCaretEnd() {
         this.left = this.Input.split("");
         this.right = [];
         this.Render();
     }
 
-    MoveCaretRight() {
-        if (this.right?.length > 0) {
-            this.left.push(this.right.shift());
-            this.Render();
-        }
-    }
+    /** Moves the Caret one to the left */
     MoveCaretLeft() {
         if (this.left?.length > 0) {
             this.right.unshift(this.left.pop());
@@ -75,11 +86,31 @@ class InputLine extends HTMLElement {
         }
     }
 
+    /** Moves the Caret one to the right */
+    MoveCaretRight() {
+        if (this.right?.length > 0) {
+            this.left.push(this.right.shift());
+            this.Render();
+        }
+    }
+
+    /** Backspace operation (removes last character from left) */
     Backspace() { this.left = this.left.slice(0, -1); this.Render(); }
-    ClearLine() { this.Input = []; this.Render(); }
+
+    /** Delete operation/key (removes the first character from right) */
     Delete() { this.right.shift(); this.Render(); }
+
+    /** Clear the current line */
+    ClearLine() { this.Input = []; this.Render(); }
+
+    /** Renders the current line, but without the caret */
     Deactivate() { this.Render(false); }
 
+    /**
+     * Renders the line
+     * @param {boolean} showcaret Hide or show caret (should be false if line is not currentline)
+     * @TODO Rework this, to be more optimized
+     */
     Render(showcaret = true) {
         while (this.userinput.firstChild) {
             this.userinput.removeChild(this.userinput.firstChild);
