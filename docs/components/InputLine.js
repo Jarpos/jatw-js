@@ -95,15 +95,14 @@ class InputLine extends HTMLElement {
         if (showcaret) {
             const caret = document.createElement("span");
             caret.setAttribute("class", "caret");
-            // caret.innerText = this.right ? this.right[0] : "";
-            caret.innerText = " ";
+            caret.innerText = this.right?.length > 0 ? this.right[0] : " ";
             this.userinput.append(caret);
         }
 
 
         if (this.right?.length > 0) {
             const right = document.createElement("span");
-            right.innerText = this.right.join("");
+            right.innerText = this.right.slice(showcaret ? 1 : 0).join("");
             this.userinput.append(right);
         }
     }
