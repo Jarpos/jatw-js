@@ -74,10 +74,10 @@ span.caret {
 
     from,
     to {
-        border-color: transparent;
+        border-color: var(--fg-color);
     }
 
     50% {
-        border-color: #fff;
+        border-color: transparent;
     }
 }
