@@ -54,7 +54,7 @@ d-window,
 d-img-viewer {
     z-index: 10;
     padding: 1% 1%;
-    border: 1px solid black;
+    border: 1px solid var(--fg-color);
     position: fixed;
 
     -webkit-touch-callout: none;
