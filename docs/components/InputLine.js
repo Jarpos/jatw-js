@@ -87,7 +87,6 @@ class InputLine extends HTMLElement {
             this.userinput.removeChild(this.userinput.firstChild);
         }
 
-        // this.userinput.innerText = this.Input;
         const left = document.createElement("span");
         left.innerText = this.left.join("");
         this.userinput.append(left);
@@ -98,7 +97,6 @@ class InputLine extends HTMLElement {
             caret.innerText = this.right?.length > 0 ? this.right[0] : " ";
             this.userinput.append(caret);
         }
-
 
         if (this.right?.length > 0) {
             const right = document.createElement("span");
