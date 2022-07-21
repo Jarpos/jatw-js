@@ -17,6 +17,7 @@ let cwd = fileroot;
  */
 function setUpFilesystem() {
     /**
+     * Reference to root folder
      * @example
      *     ~/
      *     +-- pictures

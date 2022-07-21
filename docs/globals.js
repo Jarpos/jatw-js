@@ -38,6 +38,9 @@ const body = () => document.getElementsByTagName("body")[0];
  */
 const html = () => document.getElementsByTagName("html")[0];
 
+/**
+ * Quick access for different parts of the uri
+ */
 const uri = {
     /**
      * Get href of current url (full url)
