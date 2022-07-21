@@ -4,7 +4,6 @@
  * Input element
  * @TODO Rework this / clean up the code
  * @TODO Add more comments/"documentation"
- * @TODO Fix caret
  */
 class InputLine extends HTMLElement {
     constructor() {
@@ -23,7 +22,6 @@ class InputLine extends HTMLElement {
         this.caret = document.createElement("span");
         this.caret.style.borderLeft = "10px solid";
         this.caret.setAttribute("class", "caret");
-        // this.info.appendChild(this.caret);
 
         // Caret is implicitly on the first char of right
         /** @type string[] */ this.left = [];
