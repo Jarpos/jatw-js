@@ -11,22 +11,26 @@ const fileroot = setUpFilesystem();
  */
 let cwd = fileroot;
 
+/**
+ * Sets up the filesystem and returns the root folder reference
+ * @returns the filesystem root folder reference
+ */
 function setUpFilesystem() {
     /**
-     * ~/
-     * +-- pictures
-     * |   |
-     * |   + IMG_***.jpg
-     * |
-     * +-- other
+     * @example
+     *     ~/
+     *     +-- pictures
+     *     |   |
+     *     |   + IMG_***.jpg
      *     |
-     *     + text.txt
-     *     |
-     *     +-- another
+     *     +-- other
      *         |
-     *         + test.txt
+     *         + text.txt
+     *         |
+     *         +-- another
+     *             |
+     *             + test.txt
      */
-
     const root = new Folder_c("~", null).addChildren(
         (new Folder_c("pictures")).addChildren(
             new File_c(FILE_TYPE.PICTURE, "IMG_0121.jpg", "files/pictures/IMG_0121.jpg"),
