@@ -60,7 +60,7 @@ class InputLine extends HTMLElement {
      * @param {string} input Input to append to the end
      */
     AddInput(input) {
-        this.left.push(input.split(""));
+        this.left.push(input.length > 1 ? input.split("") : input);
         this.Render();
     }
 
