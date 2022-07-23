@@ -101,7 +101,7 @@ class InputLine extends HTMLElement {
     Delete() { this.right.shift(); this.Render(); }
 
     /** Clear the current line */
-    ClearLine() { this.Input = []; this.Render(); }
+    ClearLine() { this.Input = ""; this.Render(); }
 
     /** Renders the current line, but without the caret */
     Deactivate() { this.Render(false); }
