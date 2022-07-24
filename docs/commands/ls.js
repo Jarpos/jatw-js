@@ -5,13 +5,22 @@
  * @param {string[]} argv Arguments
  */
 function Ls(argv) {
-    let s = "";
-    for (let i = 1; i < cwd.children.length + 1; i++) {
-        // addLine(file.name);
-        s += cwd.children[i - 1].name + "    ";
-        if (i % 5 === 0) {
-            s += "\n";
+    let listed = addLine();
+    listed.innerHTML = "";
+    for (let i = 0; i < cwd.children.length; i++) {
+        const item = document.createElement("span");
+        item.innerText = cwd.children[i].name + "     ";
+        listed.append(item);
+
+        if (cwd.children[i].isDir()) {
+            item.setAttribute("class", "ls-folder")
+        } else {
+            item.setAttribute("class", "ls-file")
+        }
+
+        if ((i - 4) % 5 === 0) {
+            listed = addLine();
+            listed.innerHTML = "";
         }
     }
-    addLine(s);
 }

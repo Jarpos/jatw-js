@@ -41,6 +41,14 @@ body,
     color: var(--hostname);
 }
 
+.ls-folder {
+    color: var(--hostname);
+}
+
+.ls-file {
+    color: var(--fg-color);
+}
+
 .command:hover {
     cursor: pointer;
     color: var(--username);
