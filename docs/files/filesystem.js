@@ -11,8 +11,17 @@ const FILE_TYPE = {
 
 class Folder_c {
     /**
-     * Folder object constructor
+     * Folder object constructor (Children should be added after object creation)
      * @param {string} n Name of the folder
+     *
+     * @example
+     * (new Folder_c("folder")).addChildren(
+     *     new File_c(FILE_TYPE.TEXT, "File1.txt", ["Hello", "Line 2"]),
+     *     (new Folder_c("another_folder")).addChildren(
+     *         new File_c(FILE_TYPE.PICTURE, "IMG_042.jpg", "files/pictures/IMG_042.jpg"),
+     *         new File_c(FILE_TYPE.TEXT, "File2.txt", ["Testfile"]),
+     *     ),
+     * ),
      */
     constructor(n) {
         /** @type string */
@@ -61,8 +70,8 @@ class File_c {
      * @param {string[] | string} c Content of file (or link to file on actual fs)
      *
      * @example
-     *     const picture = File_c(FILE_TYPE.PICTURE, "IMG_042.jpg", "files/pictures/IMG_042.jpg");
-     *     const text = File_c(FILE_TYPE.TEXT, "Hello.txt", ["Hello :3", "Nice to meet'cha!"]);
+     * const picture = File_c(FILE_TYPE.PICTURE, "IMG_042.jpg", "files/pictures/IMG_042.jpg");
+     * const text = File_c(FILE_TYPE.TEXT, "Hello.txt", ["Heya! :3", "Nice to meet'cha!"]);
      */
     constructor(t, n, c) {
         /** @type string (FILE_TYPE) */
