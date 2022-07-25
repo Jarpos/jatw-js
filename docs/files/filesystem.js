@@ -15,16 +15,13 @@ class Folder_c {
      * @param {string} n Name of the folder
      */
     constructor(n) {
+        /** @type string */
         this.name = n;
 
-        /**
-         * @type Folder_c
-         */
+        /** @type Folder_c */
         this.parent = null;
 
-        /**
-         * @type File_c[]
-         */
+        /** @type File_c[] */
         this.children = [];
     }
 
@@ -49,12 +46,13 @@ class Folder_c {
         this.children = this.children.filter(f => names.find(n => n === f.name) === undefined);
     }
 
+    /**
+     * Check wether this is a directory or not
+     * @returns `true` or `false` wether the file is a directory
+     */
     isDir() { return true; }
 }
 
-/**
- * Tree structure to "mock" a simple filesystem
- */
 class File_c {
     /**
      * File object constructor, beware of the relation between FILE_TYPE (t) and content (c)
@@ -67,10 +65,19 @@ class File_c {
      *     const text = File_c(FILE_TYPE.TEXT, "Hello.txt", ["Hello :3", "Nice to meet'cha!"]);
      */
     constructor(t, n, c) {
+        /** @type string (FILE_TYPE) */
         this.type = t;
+
+        /** @type string */
         this.name = n;
+
+        /** @type string[] | string */
         this.content = c;
     }
 
+    /**
+     * Check wether this is a directory or not
+     * @returns `true` or `false` wether the file is a directory
+     */
     isDir() { return false; }
 }
