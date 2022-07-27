@@ -112,3 +112,40 @@ class File_c {
     }
     return foundfiles;
 }
+
+/**
+ * Resolve a path to a `Folder_c` or `File_c` and return the item if
+ * it was found, null if the function encountered an error
+ * @param {string} pathstring String that is to be resolved to a path
+ * @param {Folder_c} startfolder Folder from which to begin resolving
+ * @returns The end folder, or null if an error was encountered
+ */
+ function resolvePath(pathstring, startfolder = cwd) {
+    let curitem = startfolder;
+    const path_fragments = pathstring.split("/");
+    if (path_fragments[0] === "") {
+        curitem = fileroot;
+        path_fragments.shift();
+    }
+
+    for (const fragment of path_fragments) {
+        switch (fragment) {
+            case ".": curitem = curitem; break;
+            case "..": curitem = curitem.parent ? curitem.parent : curitem; break;
+            case "": break;
+
+            default: {
+                const newitem = curitem.children.find(c => c.name === fragment);
+                if (newitem && newitem.isDir()) {
+                    curitem = newitem;
+                } else if (newitem) {
+                    return newitem;
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
+    return curitem;
+}
