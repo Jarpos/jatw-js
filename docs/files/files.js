@@ -12,28 +12,6 @@ const fileroot = setUpFilesystem();
 let cwd = fileroot;
 
 /**
- * Finds files that satifisy the given condition
- * @param {function (File_c): boolean} constraint constraint for which files are returned
- * @param {Folder_c} curfolder Folder to start search in defaults to `fileroot`
- * @param {(File_c | Folder_c)[]} foundfiles Files that were already found
- * @returns Found files
- *
- * @TODO Maybe use `Tree` utility function
- */
-function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
-    for (const file of curfolder.children) {
-        if (file.isDir()) {
-            findFiles(constraint, file, foundfiles);
-        } else {
-            if (constraint(file)) {
-                foundfiles.push(file);
-            }
-        }
-    }
-    return foundfiles;
-}
-
-/**
  * Sets up the filesystem and returns the root folder reference
  * @returns the filesystem root folder reference
  */

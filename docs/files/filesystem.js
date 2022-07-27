@@ -90,3 +90,25 @@ class File_c {
      */
     isDir() { return false; }
 }
+
+/**
+ * Finds files that satifisy the given condition in the given folder and its subfolders
+ * @param {function (File_c): boolean} constraint constraint for which files are returned
+ * @param {Folder_c} curfolder Folder to start search in defaults to `fileroot`
+ * @param {(File_c | Folder_c)[]} foundfiles Files that were already found
+ * @returns Found files
+ *
+ * @TODO Maybe use `Tree` utility function
+ */
+ function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
+    for (const file of curfolder.children) {
+        if (file.isDir()) {
+            findFiles(constraint, file, foundfiles);
+        } else {
+            if (constraint(file)) {
+                foundfiles.push(file);
+            }
+        }
+    }
+    return foundfiles;
+}
