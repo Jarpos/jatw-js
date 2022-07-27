@@ -3,8 +3,8 @@
 /**
  * Map containing all viable commands
  * @example
- *     commands.get("help").cmd();
- *     commands.get("reboot").cmd();
+ * commands.get("help").cmd();
+ * commands.get("reboot").cmd();
  */
 const commands = new Map([
     ["help", /****/ { cmd: Help, /****/ info: "Prints this help", }],
