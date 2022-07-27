@@ -19,6 +19,6 @@ function Cat(argv) {
             }
         }
     } else {
-        addLine("Error: you need to provide an argument");
+        addLine("Error: You need to provide an input file");
     }
 }
