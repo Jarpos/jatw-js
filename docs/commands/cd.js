@@ -9,7 +9,6 @@ function Cd(argv) {
         cwd = fileroot;
     } else {
         const path_fragments = argv[0].split("/");
-        console.log(path_fragments);
         if (path_fragments[0] === "") {
             cwd = fileroot;
             path_fragments.shift();
