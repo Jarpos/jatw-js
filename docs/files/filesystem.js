@@ -129,7 +129,7 @@ function resolvePath(pathstring, startfolder = cwd) {
     }
 
     let fragment;
-    while ((fragment = path_fragments.shift()).length > 0) {
+    while ((fragment = path_fragments.shift()) !== undefined) {
         switch (fragment) {
             case ".": curitem = curitem; break;
             case "..": curitem = curitem.parent ? curitem.parent : curitem; break;
