@@ -15,6 +15,7 @@ const commands = new Map([
     ["cd", /******/ { cmd: Cd, /******/ info: "Change directory", }],
     ["cat", /*****/ { cmd: Cat, /*****/ info: "Concatenate files and print on the standard output", }],
     ["tree", /****/ { cmd: Tree, /****/ info: "Outputs subdirectories and files as tree", }],
+    ["find", /****/ { cmd: Find, /****/ info: "Finds a file", }],
     ["clear", /***/ { cmd: Clear, /***/ info: "Clears terminal", }],
     ["reboot", /**/ { cmd: Reboot, /**/ info: "Reloads terminal", }],
 ]);
