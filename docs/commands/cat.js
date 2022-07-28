@@ -6,7 +6,7 @@
  */
 function Cat(argv) {
     if (argv?.length >= 1) {
-        const file = cwd.children.find(f => f.name === argv[0]);
+        const file = resolvePath(argv[0]);
         if (file?.type === FILE_TYPE.TEXT) {
             for (const line of file.content) {
                 addLine(line);
