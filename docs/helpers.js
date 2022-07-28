@@ -23,11 +23,20 @@ function getPromptString() {
  * @returns PrintWorkingDirectory
  */
 function getPwd() {
+    return getPath(cwd);
+}
+
+/**
+ * Get the path to a certain File or Folder
+ * @param {Folder_c | File_c} f File to get the absolute path to
+ * @returns The absolute path to a given File or Folder as a string
+ */
+function getPath(f) {
     /**
      * Traverses up folder and returns string to it
      * @param {string} s Working Directory string
      * @param {Folder_c} f Folder to traverse up
-     * @returns String to working directory
+     * @returns {string} String to working directory
      */
     const pwd = (s, f) => {
         if (f === null) {
@@ -35,7 +44,8 @@ function getPwd() {
         }
         return pwd(f.name + "/" + s, f.parent);
     }
-    return pwd("", cwd);
+    const path = pwd("", f);
+    return f.isDir() ? path : path.slice(0, -1);
 }
 
 /**
