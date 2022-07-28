@@ -150,3 +150,24 @@ function resolvePath(pathstring, startfolder = cwd) {
 
     return curitem;
 }
+
+/**
+ * Get the path to a certain File or Folder
+ * @param {Folder_c | File_c} f File to get the absolute path to
+ * @returns The absolute path to a given File or Folder as a string
+ */
+ function getPath(f) {
+    /**
+     * Traverses up folder and returns string to it
+     * @param {string} s Working Directory string
+     * @param {Folder_c} f Folder to traverse up
+     * @returns {string} String to working directory
+     */
+    const pwd = (s, f) => {
+        if (f === null) {
+            return s;
+        }
+        return pwd(f.name + "/" + s, f.parent);
+    }
+    return f.isDir() ? pwd("", f) : pwd("", f).slice(0, -1);
+}

@@ -27,28 +27,6 @@ function getPwd() {
 }
 
 /**
- * Get the path to a certain File or Folder
- * @param {Folder_c | File_c} f File to get the absolute path to
- * @returns The absolute path to a given File or Folder as a string
- */
-function getPath(f) {
-    /**
-     * Traverses up folder and returns string to it
-     * @param {string} s Working Directory string
-     * @param {Folder_c} f Folder to traverse up
-     * @returns {string} String to working directory
-     */
-    const pwd = (s, f) => {
-        if (f === null) {
-            return s;
-        }
-        return pwd(f.name + "/" + s, f.parent);
-    }
-    const path = pwd("", f);
-    return f.isDir() ? path : path.slice(0, -1);
-}
-
-/**
  * Adds line at the end of the screen
  * @param  {...string} l line contents that are to be added
  * @returns The appended div
