@@ -10,7 +10,7 @@ if (uri.theme()) {
 } else {
     /**
      * Check on first load if user has light mode, and if so set theme to light,
-     * else just go with default color scheme
+     * else just go with the default color scheme
      */
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
         Theme(["light"]);
