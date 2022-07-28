@@ -13,7 +13,7 @@ const allowedcharacters =
     "0123456789" +
     "abcdefghijklmnopqrstuvwxyz" +
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-    "\"\\()[]{}<>|?!.,;:_-+/%=&$#'~";
+    "\"\\()[]{}<>|?!.,;:_-+/%=&$#'~*";
 
 /**
  * Pre element with `pre` id
