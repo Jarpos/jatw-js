@@ -62,13 +62,6 @@ function setUpFilesystem() {
             new File_c(FILE_TYPE.PICTURE, "IMG_1853.jpg", "files/pictures/IMG_1853.jpg"),
             new File_c(FILE_TYPE.PICTURE, "IMG_1906.jpg", "files/pictures/IMG_1906.jpg"),
         ),
-        (new Folder_c("other")).addChildren(
-            new File_c(FILE_TYPE.TEXT, "text.txt", ["Hello", "Line 2"]),
-
-            (new Folder_c("another")).addChildren(
-                new File_c(FILE_TYPE.TEXT, "test.txt", ["Testfile"]),
-            ),
-        ),
 
         new File_c(FILE_TYPE.TEXT, "about.txt", [
             "About this website:",
