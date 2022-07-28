@@ -15,7 +15,6 @@ function Cd(argv) {
         }
 
         for (const fragment of path_fragments) {
-            console.log(fragment);
             switch (fragment) {
                 case ".": cwd = cwd; break;
                 case "..": cwd = cwd.parent ? cwd.parent : cwd; break;
