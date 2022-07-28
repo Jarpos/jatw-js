@@ -134,6 +134,6 @@ function HandleRight(e) {
  * Go one command down in the input history
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
- function HandleDelete(e) {
+function HandleDelete(e) {
     currentline.Delete();
 }
