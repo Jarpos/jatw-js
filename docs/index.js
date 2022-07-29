@@ -79,11 +79,11 @@ function HandleTab(e) {
     const suggestions = getSuggestions(input);
 
     if (suggestions.length === 1) {
-        setCurrentInput(suggestions[0]);
+        currentline.Input = suggestions[0];
     } else if (suggestions.length > 1) {
         addLine(suggestions.join("    "));
         newCurrentline();
-        setCurrentInput(input);
+        currentline.Input = input;
     }
 }
 
@@ -94,7 +94,7 @@ function HandleTab(e) {
 function HandleUp(e) {
     e.preventDefault();
     cmdhistory.up();
-    setCurrentInput(cmdhistory.get());
+    currentline.Input = cmdhistory.get();
 }
 
 /**
@@ -103,7 +103,7 @@ function HandleUp(e) {
  */
 function HandleDown(e) {
     cmdhistory.down();
-    setCurrentInput(cmdhistory.get());
+    currentline.Input = cmdhistory.get();
 }
 
 /**

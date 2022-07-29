@@ -54,7 +54,7 @@ function newCurrentline() {
  * @param {string} command Command to execute
  */
 function setAndExecuteCommand(command) {
-    setCurrentInput(command);
+    currentline.Input = command;
     HandleEnter();
     window.scrollTo(0, document.body.scrollHeight);
 }
@@ -65,12 +65,4 @@ function setAndExecuteCommand(command) {
  */
 function getCurrentInput() {
     return currentline.Input.trim();
-}
-
-/**
- * Sets the current user input
- * @param {string} s String to set current input to
- */
-function setCurrentInput(s) {
-    currentline.Input = s;
 }
