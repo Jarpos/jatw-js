@@ -78,6 +78,9 @@ function setUpFilesystem() {
                 " ",
             ]),
             new File_c(FILE_TYPE.TEXT, "features.txt", [
+                "Here's a few features that I found a bit too hard to explain within",
+                "the help command, so I've opted to do it here instead.",
+                " ",
                 "Use the querystring of the url (the ? part) to execute",
                 "semicolon-seperated commands upon opening",
                 "Examples:",
@@ -93,6 +96,7 @@ function setUpFilesystem() {
                 "    #g-pride  Gay-pride theme",
                 "    #l-pride  Lesbian-pride theme",
                 "    #light    Light mode",
+                "    etc.",
                 "Use command: theme to list all available themes and",
                 "theme [theme] to choose a specific theme",
                 " ",
