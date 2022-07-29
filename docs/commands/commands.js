@@ -16,6 +16,7 @@ const commands = new Map([
     ["cat", /*****/ { cmd: Cat, /*****/ info: "Concatenate files and print on the standard output", }],
     ["tree", /****/ { cmd: Tree, /****/ info: "Outputs subdirectories and files as tree", }],
     ["find", /****/ { cmd: Find, /****/ info: "Finds a file", }],
+    ["slisp", /***/ { cmd: sLisp, /***/ info: "Opens sLisp Interpreter", }],
     ["clear", /***/ { cmd: Clear, /***/ info: "Clears terminal", }],
     ["reboot", /**/ { cmd: Reboot, /**/ info: "Reloads terminal", }],
 ]);
