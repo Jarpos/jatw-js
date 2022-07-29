@@ -58,11 +58,3 @@ function setAndExecuteCommand(command) {
     HandleEnter();
     window.scrollTo(0, document.body.scrollHeight);
 }
-
-/**
- * Gives you the current user input
- * @returns Current user input
- */
-function getCurrentInput() {
-    return currentline.Input.trim();
-}

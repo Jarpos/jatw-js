@@ -56,7 +56,7 @@ function HandleBackspace(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleEnter(e) {
-    const input = getCurrentInput().split(/ +/);
+    const input = currentline.Input.split(/ +/);
     const command = commands.get(input[0]);
 
     if (command) {
@@ -75,7 +75,7 @@ function HandleEnter(e) {
  */
 function HandleTab(e) {
     e.preventDefault();
-    const input = getCurrentInput();
+    const input = currentline.Input;
     const suggestions = getSuggestions(input);
 
     if (suggestions.length === 1) {
