@@ -15,6 +15,8 @@ function sLisp(argv) {
     addLine("*                                        *");
     addLine("******************************************");
     enterhandler = sLispEnterHandler;
+    newCurrentline();
+    currentline.info.innerHTML = "> ";
 }
 
 /**
@@ -27,10 +29,12 @@ function sLispEnterHandler(e) {
     if (input === "(exit)") {
         enterhandler = defaultEnterHandler;
         addLine();
+    } else {
+        evaluateSLispExpression(parseSLispExpression(input));
     }
-    // evaluateSLispExpression(parseSLispExpression(input));
 
     newCurrentline();
+    currentline.info.innerHTML = "> ";
 }
 
 function parseSLispExpression(input) { }
