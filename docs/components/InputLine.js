@@ -12,12 +12,15 @@ class InputLine extends HTMLElement {
         const shadow = this.attachShadow({ mode: "open" });
         shadow.appendChild(this.getStyle());
 
-        this.info = document.createElement("div");
+        this.base = document.createElement("div");
+        shadow.appendChild(this.base);
+
+        this.info = document.createElement("span");
         this.info.innerHTML = getPromptString();
-        shadow.appendChild(this.info);
+        this.base.appendChild(this.info);
 
         this.userinput = document.createElement("span");
-        this.info.appendChild(this.userinput);
+        this.base.appendChild(this.userinput);
 
         this.caret = document.createElement("span");
         this.caret.style.borderLeft = "10px solid";
