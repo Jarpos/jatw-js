@@ -34,7 +34,9 @@ function sLispEnterHandler(e) {
     }
 
     newCurrentline();
-    currentline.info.innerHTML = "> ";
+    if (enterhandler === sLispEnterHandler) {
+        currentline.info.innerHTML = "> ";
+    }
 }
 
 function parseSLispExpression(input) { }
