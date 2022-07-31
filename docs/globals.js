@@ -27,7 +27,9 @@ function defaultEnterHandler(e) {
     }
 
     cmdhistory.push(input.join(" "));
-    newCurrentline();
+    if (enterhandler === defaultEnterHandler) {
+        newCurrentline();
+    }
 }
 
 /**
