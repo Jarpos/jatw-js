@@ -1,6 +1,7 @@
 "use strict";
 
 function sLisp(argv) {
+    addLine();
     addLine("******************************************");
     addLine("*                                        *");
     addLine("*   Simple List Processing Interpreter   *");
@@ -13,7 +14,6 @@ function sLisp(argv) {
     addLine("*   See slisp --help for more info       *");
     addLine("*                                        *");
     addLine("******************************************");
-    addLine();
     enterhandler = sLispEnterHandler;
 }
 
@@ -23,12 +23,14 @@ function sLisp(argv) {
  */
 function sLispEnterHandler(e) {
     const input = currentline.Input.replace(/ +/, ", ");
-    newCurrentline();
 
     if (input === "(exit)") {
         enterhandler = defaultEnterHandler;
+        addLine();
     }
     // evaluateSLispExpression(parseSLispExpression(input));
+
+    newCurrentline();
 }
 
 function parseSLispExpression(input) { }
