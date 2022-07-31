@@ -1,5 +1,6 @@
 "use strict";
 
+enterhandler = defaultEnterHandler;
 printRandomLogo();
 printBottomInfo();
 newCurrentline();
@@ -56,17 +57,7 @@ function HandleBackspace(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleEnter(e) {
-    const input = currentline.Input.split(/ +/);
-    const command = commands.get(input[0]);
-
-    if (command) {
-        command.cmd(input.slice(1));
-    } else if (input.join(" ").length > 0) {
-        addLine("Could not find command \"", input.join(" "), "\"");
-    }
-
-    cmdhistory.push(input.join(" "));
-    newCurrentline();
+    enterhandler(e);
 }
 
 /**

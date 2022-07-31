@@ -7,6 +7,30 @@
 let currentline;
 
 /**
+ * Handler that handles... enter
+ * @type function(KeyboardEvent): void
+ */
+let enterhandler;
+
+/**
+ * Default handler for enter presses
+ * @param {KeyboardEvent} e KeyboardEvent to process
+ */
+function defaultEnterHandler(e) {
+    const input = currentline.Input.split(/ +/);
+    const command = commands.get(input[0]);
+
+    if (command) {
+        command.cmd(input.slice(1));
+    } else if (input.join(" ").length > 0) {
+        addLine("Could not find command \"", input.join(" "), "\"");
+    }
+
+    cmdhistory.push(input.join(" "));
+    newCurrentline();
+}
+
+/**
  * Characters that are allowed as input for the terminal
  */
 const allowedcharacters =
