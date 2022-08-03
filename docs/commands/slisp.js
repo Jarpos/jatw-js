@@ -61,23 +61,24 @@ function parseSLispExpression(input) {
  * @param {any[]} expression Expression that is to be evaluated
  */
 function evaluateSLispExpression(expression) {
-    const functions = new Map([
-        ["print", { fnc: (...args) => args.forEach(a => addLine(a)), }],
-        ["+", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur), }],
-        ["-", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur) * -1, }],
-
-        ["exit", {
-            fnc: () => {
-                enterhandler = defaultEnterHandler;
-                addLine();
-            },
-        }],
-    ]);
-
     if (Array.isArray(expression)) {
         const [fname, ...args] = expression;
-        return functions.get(fname).fnc(...args.map(arg => evaluateSLispExpression(arg)));
+        return slispfunctions.get(fname).fnc(...args.map(arg => evaluateSLispExpression(arg)));
     } else {
         return expression; // It's a primitive
     }
 }
+
+const slispfunctions = new Map([
+    ["print", { fnc: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs"}],
+    ["+", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur), h: "Adds given inputs"}],
+    ["-", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur) * -1, h: "Subtracts given inputs"}],
+
+    ["exit", {
+        fnc: () => {
+            enterhandler = defaultEnterHandler;
+            addLine();
+        },
+        h: "Exits slisp interpreter"
+    }],
+]);
