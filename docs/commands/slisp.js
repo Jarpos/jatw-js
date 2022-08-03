@@ -24,7 +24,7 @@ function sLisp(argv) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function sLispEnterHandler(e) {
-    const input = currentline.Input.replace(/ +/, ", ");
+    const input = currentline.Input.replace(/ +/, " ");
 
     if (input === "(exit)") {
         enterhandler = defaultEnterHandler;
@@ -39,6 +39,21 @@ function sLispEnterHandler(e) {
     }
 }
 
-function parseSLispExpression(input) { }
+/**
+ * "Parses" input to SLisp expression
+ * @param {string} input Input to parse
+ *
+ * @TODO Figure out the proper terms to use for "parsing" and other
+ * @TODO Actually parse the input, instead of just converting JSON data...
+ */
+function parseSLispExpression(input) {
+    return JSON.parse(
+        input.replaceAll(/ +/g, " ")
+            .replaceAll("(", "[")
+            .replaceAll(")", "]")
+            .replaceAll("[", " [ ")
+            .replaceAll("]", " ] ")
+    );
+}
 
 function evaluateSLispExpression(expression) { }
