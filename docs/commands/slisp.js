@@ -30,7 +30,7 @@ function sLispEnterHandler(e) {
         enterhandler = defaultEnterHandler;
         addLine();
     } else {
-        evaluateSLispExpression(parseSLispExpression(input));
+        addLine(evaluateSLispExpression(parseSLispExpression(input)));
     }
 
     newCurrentline();
@@ -56,4 +56,28 @@ function parseSLispExpression(input) {
     );
 }
 
-function evaluateSLispExpression(expression) { }
+/**
+ * Evaluate ("execute") SLisp expression
+ * @param {any[]} expression Expression that is to be evaluated
+ */
+function evaluateSLispExpression(expression) {
+    const functions = new Map([
+        ["print", { fnc: (...args) => args.forEach(a => addLine(a)), }],
+        ["+", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur), }],
+        ["-", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur) * -1, }],
+
+        ["exit", {
+            fnc: () => {
+                enterhandler = defaultEnterHandler;
+                addLine();
+            },
+        }],
+    ]);
+
+    if (Array.isArray(expression)) {
+        const [fname, ...args] = expression;
+        return functions.get(fname).fnc(...args.map(arg => evaluateSLispExpression(arg)));
+    } else {
+        return expression; // It's a primitive
+    }
+}
