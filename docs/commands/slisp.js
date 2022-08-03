@@ -85,6 +85,9 @@ function evaluateSLispExpression(expression) {
     }
 }
 
+/**
+ * Functions for slisp
+ */
 const slispfunctions = new Map([
     ["print", { fnc: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
     ["+", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur), h: "Adds given inputs" }],
