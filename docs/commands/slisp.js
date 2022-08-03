@@ -1,22 +1,45 @@
 "use strict";
 
+/**
+ * Opens the sLisp interpreter on the cmdline, interprets a given expression,
+ * or interprets a File_c given as an argument (can also print help)
+ * @param {string[]} argv Arguments
+ */
 function sLisp(argv) {
-    addLine();
-    addLine("******************************************");
-    addLine("*                                        *");
-    addLine("*   Simple List Processing Interpreter   *");
-    addLine("*                                        *");
-    addLine("*   This is just a simple interpreter    *");
-    addLine("*   inspired by the lisp programming     *");
-    addLine("*   language and this blog article:      *");
-    addLine("*   https://stopa.io/post/265            *");
-    addLine("*                                        *");
-    addLine("*   See slisp --help for more info       *");
-    addLine("*                                        *");
-    addLine("******************************************");
-    enterhandler = sLispEnterHandler;
-    newCurrentline();
-    currentline.info.innerHTML = "> ";
+    if (argv.length === 0) {
+        addLine();
+        addLine("******************************************");
+        addLine("*                                        *");
+        addLine("*   Simple List Processing Interpreter   *");
+        addLine("*                                        *");
+        addLine("*   This is just a simple interpreter    *");
+        addLine("*   inspired by the lisp programming     *");
+        addLine("*   language and this blog article:      *");
+        addLine("*   https://stopa.io/post/265            *");
+        addLine("*                                        *");
+        addLine("*   See slisp --help for more info       *");
+        addLine("*                                        *");
+        addLine("******************************************");
+        enterhandler = sLispEnterHandler;
+        newCurrentline();
+        currentline.info.innerHTML = "> ";
+    } else if (argv.length === 1 && argv[0] === "--help") {
+        addLine();
+        addLine("Supported Instructions:");
+        for (const [key, value] of slispfunctions.entries()) {
+            addLine("    ", key.padEnd(10), value.h);
+        }
+        addLine();
+        addLine('Examples:');
+        addLine('    > ["+", 5, 20, ["-", 10, 5 ]]');
+        addLine('    10');
+        addLine('    > ["+", 15, 20, ["-", 10, 5, 5, 15 ]]');
+        addLine('    0');
+        addLine('    > ["print", 15, "Hello!"]');
+        addLine('    15');
+        addLine('    Hello!');
+        addLine();
+    }
 }
 
 /**
