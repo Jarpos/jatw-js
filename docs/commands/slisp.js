@@ -93,9 +93,9 @@ function evaluateSLispExpression(expression) {
 }
 
 const slispfunctions = new Map([
-    ["print", { fnc: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs"}],
-    ["+", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur), h: "Adds given inputs"}],
-    ["-", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur) * -1, h: "Subtracts given inputs"}],
+    ["print", { fnc: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
+    ["+", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur), h: "Adds given inputs" }],
+    ["-", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur) * -1, h: "Subtracts given inputs" }],
 
     ["exit", {
         fnc: () => {
