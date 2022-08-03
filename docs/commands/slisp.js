@@ -47,14 +47,7 @@ function sLisp(argv) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function sLispEnterHandler(e) {
-    const input = currentline.Input.replace(/ +/, " ");
-
-    if (input === "(exit)") {
-        enterhandler = defaultEnterHandler;
-        addLine();
-    } else {
-        addLine(evaluateSLispExpression(parseSLispExpression(input)));
-    }
+    addLine(evaluateSLispExpression(parseSLispExpression(currentline.Input)));
 
     newCurrentline();
     if (enterhandler === sLispEnterHandler) {
