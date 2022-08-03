@@ -88,6 +88,12 @@ const uri = {
         return document.location.search
             .substring(1)
             .replaceAll("%20", " ")
+            .replaceAll("%22", "\"")
+            .replaceAll("%21", "!")
+            .replaceAll("%2A", "*")
+            .replaceAll("%2B", "+")
+            .replaceAll("%2F", "/")
+            .replaceAll("%2C", ",")
             .split(";")
             .filter(v => v?.length > 0);
     },
