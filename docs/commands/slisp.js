@@ -83,7 +83,7 @@ function parseSLispExpression(input) {
 function evaluateSLispExpression(expression) {
     if (Array.isArray(expression)) {
         const [fname, ...args] = expression;
-        return slispfunctions.get(fname).fnc(...args.map(arg => evaluateSLispExpression(arg)));
+        return slispfunctions.get(fname).f(...args.map(arg => evaluateSLispExpression(arg)));
     } else {
         return expression; // It's a primitive
     }
@@ -93,16 +93,16 @@ function evaluateSLispExpression(expression) {
  * Functions for slisp
  */
 const slispfunctions = new Map([
-    ["print", { fnc: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
+    ["print", { f: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
 
-    ["+", { fnc: (...args) => args.reduce((acc, arg) => acc + +arg), h: "Adds given inputs" }],
-    ["-", { fnc: (...args) => args.reduce((acc, arg) => acc + +arg) * -1, h: "Subtracts given inputs" }],
-    ["*", { fnc: (...args) => args.reduce((acc, arg) => acc * +arg), h: "Multiply given inputs" }],
-    ["/", { fnc: (...args) => args.reduce((acc, arg) => acc / +arg), h: "Divide given inputs" }],
-    ["^", { fnc: (...args) => args.reduce((acc, arg) => Math.pow(acc, arg)), h: "Raises number to given powers" }],
+    ["+", { f: (...args) => args.reduce((acc, arg) => acc + +arg), h: "Adds given inputs" }],
+    ["-", { f: (...args) => args.reduce((acc, arg) => acc + +arg) * -1, h: "Subtracts given inputs" }],
+    ["*", { f: (...args) => args.reduce((acc, arg) => acc * +arg), h: "Multiply given inputs" }],
+    ["/", { f: (...args) => args.reduce((acc, arg) => acc / +arg), h: "Divide given inputs" }],
+    ["^", { f: (...args) => args.reduce((acc, arg) => Math.pow(acc, arg)), h: "Raises number to given powers" }],
 
     ["exit", {
-        fnc: () => {
+        f: () => {
             enterhandler = defaultEnterHandler;
             addLine();
         },
