@@ -97,11 +97,17 @@ class InputLine extends HTMLElement {
         }
     }
 
-    /** Backspace operation (removes last character from left) */
-    Backspace() { this.left = this.left.slice(0, -1); this.Render(); }
+    /**
+     * Backspace operation (removes last character from left)
+     * @param {boolean} ctrl Whether the control key was pressed
+    */
+    Backspace(ctrl = false) { this.left = ctrl ? [] : this.left.slice(0, -1); this.Render(); }
 
-    /** Delete operation/key (removes the first character from right) */
-    Delete() { this.right.shift(); this.Render(); }
+    /**
+     * Delete operation/key (removes the first character from right)
+     * @param {boolean} ctrl Whether the control key was pressed
+     */
+    Delete(ctrl = false) { ctrl ? this.right = [] : this.right.shift(); this.Render(); }
 
     /** Clear the current line */
     ClearLine() { this.Input = ""; this.Render(); }

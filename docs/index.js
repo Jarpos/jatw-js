@@ -44,11 +44,7 @@ body().addEventListener("keydown", (e) => {
  */
 function HandleBackspace(e) {
     e.preventDefault();
-    if (e.ctrlKey) {
-        currentline.ClearLine();
-    } else {
-        currentline.Backspace();
-    }
+    currentline.Backspace(e.ctrlKey);
 }
 
 /**
@@ -125,5 +121,5 @@ function HandleRight(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleDelete(e) {
-    currentline.Delete();
+    currentline.Delete(e.ctrlKey);
 }
