@@ -5,7 +5,7 @@ printRandomLogo();
 printBottomInfo();
 newCurrentline();
 setAndExecuteCommand("help");
-uri.commands().forEach(c => setAndExecuteCommand(c));
+uri.commands().forEach(c => setAndExecuteCommand(validateInput(c)));
 if (uri.theme()) {
     Theme([uri.theme()]);
 } else {
