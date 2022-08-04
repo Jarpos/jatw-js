@@ -58,3 +58,12 @@ function setAndExecuteCommand(command) {
     HandleEnter();
     window.scrollTo(0, document.body.scrollHeight);
 }
+
+/**
+ * Validates Input and returns input with only the `allowedcharacters`
+ * @param {string} input Input string to validate
+ * @returns Returns string with only `allowedcharacters`
+ */
+function validateInput(input) {
+    return input.split("").filter(e => allowedcharacters.includes(e));
+}
