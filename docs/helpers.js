@@ -65,5 +65,5 @@ function setAndExecuteCommand(command) {
  * @returns Returns string with only `allowedcharacters`
  */
 function validateInput(input) {
-    return input.split("").filter(e => allowedcharacters.includes(e));
+    return input.split("").filter(e => allowedcharacters.includes(e)).join("");
 }
