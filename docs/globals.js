@@ -10,7 +10,7 @@ let currentline;
  * Handler that handles... enter
  * @type function(KeyboardEvent): void
  */
-let enterhandler;
+let enterhandler = defaultEnterHandler;
 
 /**
  * Default handler for enter presses
@@ -30,6 +30,20 @@ function defaultEnterHandler(e) {
     if (enterhandler === defaultEnterHandler) {
         newCurrentline();
     }
+}
+
+/**
+ * Handler that handles getting the info part of an input line
+ * @type function(): string
+ */
+let inputlineinfohandler = defaultInputLineInfoHandler;
+
+/**
+ * Default handler for getting Input line info
+ * @returns Input line info
+ */
+function defaultInputLineInfoHandler() {
+    return getPromptString();
 }
 
 /**

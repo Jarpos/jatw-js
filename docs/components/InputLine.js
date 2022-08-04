@@ -16,7 +16,7 @@ class InputLine extends HTMLElement {
         shadow.appendChild(this.base);
 
         this.info = document.createElement("span");
-        this.info.innerHTML = getPromptString();
+        this.info.innerHTML = inputlineinfohandler();
         this.base.appendChild(this.info);
 
         this.userinput = document.createElement("span");

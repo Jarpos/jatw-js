@@ -21,8 +21,8 @@ function sLisp(argv) {
         addLine("*                                        *");
         addLine("******************************************");
         enterhandler = sLispEnterHandler;
+        inputlineinfohandler = () => "> ";
         newCurrentline();
-        currentline.info.innerHTML = "> ";
     } else if (argv.length === 1 && argv[0] === "--help") {
         addLine();
         addLine("Supported Instructions:");
@@ -104,6 +104,7 @@ const slispfunctions = new Map([
     ["exit", {
         f: () => {
             enterhandler = defaultEnterHandler;
+            inputlineinfohandler = defaultInputLineInfoHandler;
             addLine();
         },
         h: "Exits slisp interpreter"

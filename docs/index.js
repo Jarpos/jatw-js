@@ -1,6 +1,5 @@
 "use strict";
 
-enterhandler = defaultEnterHandler;
 printRandomLogo();
 printBottomInfo();
 newCurrentline();
