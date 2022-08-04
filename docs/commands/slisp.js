@@ -35,6 +35,10 @@ function sLisp(argv) {
         addLine('    10');
         addLine('    > ["+", 15, 20, ["-", 10, 5, 5, 15 ]]');
         addLine('    0');
+        addLine('    > ["/", ["*", 3, 3, ["+", 1, 1 ]], 2, 2 ]');
+        addLine('    4.5');
+        addLine('    > ["^", 3, 2, 2]');
+        addLine('    81');
         addLine('    > ["print", 15, "Hello!"]');
         addLine('    15');
         addLine('    Hello!');
@@ -90,8 +94,12 @@ function evaluateSLispExpression(expression) {
  */
 const slispfunctions = new Map([
     ["print", { fnc: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
-    ["+", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur), h: "Adds given inputs" }],
-    ["-", { fnc: (...args) => args.reduce((prev, cur) => prev + +cur) * -1, h: "Subtracts given inputs" }],
+
+    ["+", { fnc: (...args) => args.reduce((acc, arg) => acc + +arg), h: "Adds given inputs" }],
+    ["-", { fnc: (...args) => args.reduce((acc, arg) => acc + +arg) * -1, h: "Subtracts given inputs" }],
+    ["*", { fnc: (...args) => args.reduce((acc, arg) => acc * +arg), h: "Multiply given inputs" }],
+    ["/", { fnc: (...args) => args.reduce((acc, arg) => acc / +arg), h: "Divide given inputs" }],
+    ["^", { fnc: (...args) => args.reduce((acc, arg) => Math.pow(acc, arg)), h: "Raises number to given powers" }],
 
     ["exit", {
         fnc: () => {
