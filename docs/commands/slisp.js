@@ -52,11 +52,7 @@ function sLisp(argv) {
  */
 function sLispEnterHandler(e) {
     addLine(evaluateSLispExpression(parseSLispExpression(currentline.Input)));
-
     newCurrentline();
-    if (enterhandler === sLispEnterHandler) {
-        currentline.info.innerHTML = "> ";
-    }
 }
 
 /**
