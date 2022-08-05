@@ -88,7 +88,7 @@ function setUpFilesystem() {
                 "    ?reboot;                Endless loop of reloading the website",
                 "    ?cd pictures;viewer     cds to pictures, and opens the picture viewer",
                 "    ?cat info/features.txt  prints this file to the terminal",
-                "(\"%20\"s are automatically converted to spaces on page load)",
+                "(% encoded characters are mostly converted to their actual char upon pageload)",
                 " ",
                 "The hash part of the url is used to save the theme between pageloads",
                 "Examples:",
