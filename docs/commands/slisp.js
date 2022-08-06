@@ -97,6 +97,10 @@ const slispfunctions = new Map([
     ["/", { f: (...args) => args.reduce((acc, arg) => acc / +arg), h: "Divide given inputs" }],
     ["^", { f: (...args) => args.reduce((acc, arg) => Math.pow(acc, arg)), h: "Raises number to given powers" }],
 
+    ["OR", { f: (...args) => args.reduce((acc, arg) => acc | +arg), h: "Logical or operation" }],
+    ["AND", { f: (...args) => args.reduce((acc, arg) => acc & +arg), h: "Logical and operation" }],
+    ["XOR", { f: (...args) => args.reduce((acc, arg) => acc ^ +arg), h: "Exclusive or operation" }],
+
     ["exit", {
         f: () => {
             enterhandler = defaultEnterHandler;
