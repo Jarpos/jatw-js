@@ -61,6 +61,7 @@ function sLispEnterHandler(e) {
  *
  * @TODO Figure out the proper terms to use for "parsing" and other
  * @TODO Actually parse the input, instead of just converting JSON data...
+ * @returns {[]} Tries to parse the given input to a slisp expression
  */
 function parseSLispExpression(input) {
     return JSON.parse(
