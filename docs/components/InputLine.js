@@ -67,34 +67,32 @@ class InputLine extends HTMLElement {
         this.Render();
     }
 
-    /** Moves Caret to the start of the line */
-    MoveCaretStart() {
-        this.right = this.Input.split("");
-        this.left = [];
-        this.Render();
-    }
-
-    /** Moves Caret to the end of the line */
-    MoveCaretEnd() {
-        this.left = this.Input.split("");
-        this.right = [];
-        this.Render();
-    }
-
-    /** Moves the Caret one to the left */
-    MoveCaretLeft() {
-        if (this.left?.length > 0) {
+    /**
+     * Moves the Caret one to the left
+     * @param {boolean} ctrl Whether the control key was pressed
+     */
+    MoveCaretLeft(ctrl = false) {
+        if (this.left?.length > 0 && !ctrl) {
             this.right.unshift(this.left.pop());
-            this.Render();
+        } else {
+            this.right = this.Input.split("");
+            this.left = [];
         }
+        this.Render();
     }
 
-    /** Moves the Caret one to the right */
-    MoveCaretRight() {
-        if (this.right?.length > 0) {
+    /**
+     * Moves the Caret one to the right
+     * @param {boolean} ctrl Whether the control key was pressed
+     */
+    MoveCaretRight(ctrl = false) {
+        if (this.right?.length > 0 && !ctrl) {
             this.left.push(this.right.shift());
-            this.Render();
+        } else {
+            this.left = this.Input.split("");
+            this.right = [];
         }
+        this.Render();
     }
 
     /**

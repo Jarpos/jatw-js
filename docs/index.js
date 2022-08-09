@@ -97,11 +97,7 @@ function HandleDown(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleLeft(e) {
-    if (e.ctrlKey) {
-        currentline.MoveCaretStart();
-    } else {
-        currentline.MoveCaretLeft();
-    }
+    currentline.MoveCaretLeft(e.ctrlKey);
 }
 
 /**
@@ -109,11 +105,7 @@ function HandleLeft(e) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function HandleRight(e) {
-    if (e.ctrlKey) {
-        currentline.MoveCaretEnd();
-    } else {
-        currentline.MoveCaretRight();
-    }
+    currentline.MoveCaretRight(e.ctrlKey);
 }
 
 /**
