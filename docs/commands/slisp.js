@@ -23,7 +23,7 @@ function sLisp(argv) {
         enterhandler = sLispEnterHandler;
         inputlineinfohandler = () => "> ";
         newCurrentline();
-    } else if (argv.length === 1 && argv[0] === "--help") {
+    } else if (argv.length === 1 && (argv[0] === "--help" || argv[0] === "-h")) {
         addLine();
         addLine("Supported Instructions:");
         for (const [key, value] of slispfunctions.entries()) {
