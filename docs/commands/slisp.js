@@ -102,6 +102,10 @@ const slispfunctions = new Map([
     ["AND", { f: (...args) => args.reduce((acc, arg) => acc & +arg), h: "Logical and operation" }],
     ["XOR", { f: (...args) => args.reduce((acc, arg) => acc ^ +arg), h: "Exclusive or operation" }],
 
+    ["do", {
+        f: (...args) => args.forEach(arg => addLine(evaluateSLispExpression(arg))),
+        h: "Evaluates slisp expressions passed in args"
+    }],
     ["run", {
         f: (...args) => {
             const [commandstr, ...largs] = args;
