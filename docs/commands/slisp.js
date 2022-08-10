@@ -107,10 +107,7 @@ const slispfunctions = new Map([
         h: "Evaluates slisp expressions passed in args"
     }],
     ["run", {
-        f: (...args) => {
-            const [commandstr, ...largs] = args;
-            commands.get(commandstr).cmd(largs);
-        },
+        f: (...args) => commands.get(args[0]).cmd(args.slice(1)),
         h: "Runs given command (1st arg), with given arguments (rest of args)"
     }],
 
