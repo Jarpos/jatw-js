@@ -102,6 +102,14 @@ const slispfunctions = new Map([
     ["AND", { f: (...args) => args.reduce((acc, arg) => acc & +arg), h: "Logical and operation" }],
     ["XOR", { f: (...args) => args.reduce((acc, arg) => acc ^ +arg), h: "Exclusive or operation" }],
 
+    ["run", {
+        f: (...args) => {
+            const [commandstr, ...largs] = args;
+            commands.get(commandstr).cmd(largs);
+        },
+        h: "Runs given command (1st arg), with given arguments (rest of args)"
+    }],
+
     ["exit", {
         f: () => {
             enterhandler = defaultEnterHandler;
