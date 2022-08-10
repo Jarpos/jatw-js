@@ -18,7 +18,7 @@ if (uri.theme()) {
 }
 
 body().addEventListener("keydown", (e) => {
-    if (isLetter(e.key) && !e.ctrlKey || e.key === " ") {
+    if (isValidChar(e.key) && !e.ctrlKey) {
         e.preventDefault();
         currentline.AddInput(e.key);
     } else {

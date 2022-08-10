@@ -5,7 +5,7 @@
  * @param {string} c character to check
  * @returns Whether it's a character or not
  */
-function isLetter(c) {
+function isValidChar(c) {
     return allowedcharacters.includes(c);
 }
 
