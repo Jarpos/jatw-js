@@ -50,6 +50,7 @@ function defaultInputLineInfoHandler() {
  * Characters that are allowed as input for the terminal
  */
 const allowedcharacters =
+    " " +
     "0123456789" +
     "abcdefghijklmnopqrstuvwxyz" +
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
