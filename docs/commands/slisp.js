@@ -42,6 +42,9 @@ function sLisp(argv) {
         addLine('    > ["print", 15, "Hello!"]');
         addLine('    15');
         addLine('    Hello!');
+        addLine('    > ["do", ["run", "cd", "pictures"], ["run", "ls"]]');
+        addLine('    IMG_0121.jpg     IMG_0416.jpg     IMG_0428.jpg     IMG_0529.jpg     IMG_0531.jpg');
+        addLine('    IMG_0591.jpg     IMG_0593.jpg     IMG_0701.jpg     IMG_0755.jpg     ...');
         addLine();
     }
 }
@@ -76,18 +79,25 @@ function parseSLispExpression(input) {
 /**
  * Evaluate ("execute") SLisp expression
  * @param {any[]} expression Expression that is to be evaluated
+ *
+ * @TODO Add support for variables
  */
 function evaluateSLispExpression(expression) {
     if (Array.isArray(expression)) {
+        // It's another expression
         const [fname, ...args] = expression;
         return slispfunctions.get(fname).f(...args.map(arg => evaluateSLispExpression(arg)));
     } else {
-        return expression; // It's a primitive
+        // It's a primitive
+        return expression;
     }
 }
 
 /**
- * Functions for slisp
+ * Supported functions for slisp with a short explanation
+ *
+ * @TODO Add more functions
+ * @TODO Add functions for conditionals
  */
 const slispfunctions = new Map([
     ["print", { f: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
