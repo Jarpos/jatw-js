@@ -67,3 +67,20 @@ function setAndExecuteCommand(command) {
 function validateInput(input) {
     return input.split("").filter(e => allowedcharacters.includes(e)).join("");
 }
+
+/**
+ * Compares `item` to `checkItems` and finds out if it is equal to any of them
+ * @param {any} item Item that is to be checked against checkItems
+ * @param {any[]} checkItems Items to which item is compared to
+ * @param {function(any): any} modifier Modiefies items if specified
+ *
+ * @example isAnyOf("--help", [ argv[0] ], (e) => e.toLowerCase())
+ */
+function isAnyOf(item, checkItems, modifier = null) {
+    for (const checkItem of checkItems) {
+        if (item === (modifier ? modifier(checkItem) : checkItem)) {
+            return true;
+        }
+    }
+    return false;
+}
