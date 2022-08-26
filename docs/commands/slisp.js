@@ -23,7 +23,7 @@ function sLisp(argv) {
         enterhandler = sLispEnterHandler;
         inputlineinfohandler = () => "> ";
         newCurrentline();
-    } else if (argv.length === 1 && (argv[0] === "--help" || argv[0] === "-h")) {
+    } else if (argv.length === 1 && isAnyOf(argv[0], ["--help", "-h"])) {
         addLine();
         addLine("Supported Instructions:");
         for (const [key, value] of slispfunctions.entries()) {
@@ -46,7 +46,29 @@ function sLisp(argv) {
         addLine('    IMG_0121.jpg     IMG_0416.jpg     IMG_0428.jpg     IMG_0529.jpg     IMG_0531.jpg');
         addLine('    IMG_0591.jpg     IMG_0593.jpg     IMG_0701.jpg     IMG_0755.jpg     ...');
         addLine();
+    } else if (argv.length === 2 && isAnyOf(argv[0], ["--input", "-i"])) {
+        const file = resolvePath(argv[1]);
+        if (file?.type === FILE_TYPE.TEXT) {
+            runFile(file);
+        } else if (!file) {
+            addLine("Error: File ", argv[1], " does not exist");
+        } else {
+            addLine("Error: File ", file.name, " does not exist");
+        }
+    } else {
+        addLine("Error: Couldn't process args ", argv.join(" "));
     }
+}
+
+/**
+ * Runs a .sl script file
+ * @param {File_c} f File to run
+ */
+function runFile(f) {
+    evaluateSLispExpression([
+        // "do", JSON.parse(f.content.join(", ")),
+        "do", ...f.content.map(e => JSON.parse(e)),
+    ]);
 }
 
 /**
