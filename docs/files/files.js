@@ -101,7 +101,13 @@ function setUpFilesystem() {
                 "theme [theme] to choose a specific theme",
                 " ",
             ]),
-        )
+        ),
+        new Folder_c("scripts").addChildren(
+            new File_c(FILE_TYPE.TEXT, "hello.sl", [
+                '["print", "Hello World!"]',
+                '["print", "Goodbye World!"]',
+            ]),
+        ),
     );
     return root;
 }
