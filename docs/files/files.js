@@ -107,6 +107,11 @@ function setUpFilesystem() {
                 '["print", "Hello World!"]',
                 '["print", "Goodbye World!"]',
             ]),
+            new File_c(FILE_TYPE.TEXT, "pi.sl", [
+                // Approximations of pi:
+                // https://en.wikipedia.org/wiki/Approximations_of_%CF%80
+                '["/", 9801, ["*", 2206, ["^", 2, 0.5 ]]]',
+            ]),
         ),
     );
     return root;
