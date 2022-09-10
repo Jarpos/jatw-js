@@ -1,6 +1,8 @@
 "use strict";
 
 /**
+ * Valid file types for `File_c` objects
+ * @TODO
  * Yes, there shouldn't be this many file types, but I'm
  * not about to implement a checker for magic numbers or smth like that.
  */

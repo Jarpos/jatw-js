@@ -35,6 +35,9 @@ function defaultEnterHandler(e) {
 /**
  * Handler that handles getting the info part of an input line
  * @type function(): string
+ * @example
+ *     guest@jatw:~/$
+ *     >
  */
 let inputlineinfohandler = defaultInputLineInfoHandler;
 
@@ -57,7 +60,7 @@ const allowedcharacters =
     "\"\\()[]{}|?!.,;:_-+/%=&$#'~*^";
 
 /**
- * Pre element with `pre` id
+ * Pre element with `<terminal>` id
  * @returns Reference to pre element with terminal id
  */
 const terminal = () => document.getElementById("terminal");
@@ -69,13 +72,13 @@ const loadtime = new Date();
 
 /**
  * Body element
- * @returns Reference to body element
+ * @returns Reference to the `<body>` element
  */
 const body = () => document.getElementsByTagName("body")[0];
 
 /**
  * Html element
- * @returns Reference to html element
+ * @returns Reference to the `<html>` element
  */
 const html = () => document.getElementsByTagName("html")[0];
 

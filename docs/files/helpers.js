@@ -23,11 +23,11 @@
 }
 
 /**
- * Resolve a path to a `Folder_c` or `File_c` and return the item if
- * it was found, null if the function encountered an error
+ * Resolve a path to a `Folder_c` or `File_c` and return the item if it was found,
+ * `null` if the function encountered an error or the item was not found
  * @param {string} pathstring String that is to be resolved to a path
  * @param {Folder_c} startfolder Folder from which to begin resolving (Defaults to `cwd`)
- * @returns The end folder, or null if an error was encountered
+ * @returns The end folder, or `null` if an error was encountered
  */
 function resolvePath(pathstring, startfolder = cwd) {
     let curitem = startfolder;
