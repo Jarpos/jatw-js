@@ -9,7 +9,7 @@
  *
  * @TODO Maybe use `Tree` utility function
  */
- function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
+function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
     for (const file of curfolder.children) {
         if (file.isDir()) {
             findFiles(constraint, file, foundfiles);
@@ -65,7 +65,7 @@ function resolvePath(pathstring, startfolder = cwd) {
  * @param {Folder_c | File_c} f File to get the absolute path to
  * @returns The absolute path to a given File or Folder as a string
  */
- function getPath(f) {
+function getPath(f) {
     /**
      * Traverses up folder and returns string to it
      * @param {string} s Working Directory string
