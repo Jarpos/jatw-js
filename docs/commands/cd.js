@@ -1,12 +1,16 @@
 "use strict";
 
+import { addLine } from "../helpers.js";
+import { fileroot, fs } from "../files/files.js";
+import { resolvePath } from "../files/helpers.js";
+
 /**
  * Changes directory
  * @param {string[]} argv Arguments
  */
-function Cd(argv) {
+export function Cd(argv) {
     if (argv.length === 0) {
-        cwd = fileroot;
+        fs.cwd = fileroot;
     } else {
         const result = resolvePath(argv[0]);
         if (!result) {
@@ -14,7 +18,7 @@ function Cd(argv) {
         } else if (!result.isDir()) {
             addLine("Error: File ", result.name, " is not a folder");
         } else {
-            cwd = result;
+            fs.cwd = result;
         }
     }
 }

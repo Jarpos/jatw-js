@@ -1,10 +1,13 @@
 "use strict";
 
+import { addLine } from "../helpers.js";
+import { styleroot } from "../globals.js";
+
 /**
  * Prints theme chooser or sets first theme set in argv
  * @param {string[]} argv Arguments
  */
-function Theme(argv) {
+export function Theme(argv) {
     /**
      * Creates a theme object
      * @param {string} n Name

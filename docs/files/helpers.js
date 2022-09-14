@@ -1,5 +1,7 @@
 "use strict";
 
+import { fileroot, fs } from "../files/files.js";
+
 /**
  * Finds files that satifisy the given condition in the given folder and its subfolders
  * @param {function (File_c): boolean} constraint constraint for which files are returned
@@ -9,7 +11,7 @@
  *
  * @TODO Maybe use `Tree` utility function
  */
-function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
+export function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
     for (const file of curfolder.children) {
         if (file.isDir()) {
             findFiles(constraint, file, foundfiles);
@@ -26,10 +28,10 @@ function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
  * Resolve a path to a `Folder_c` or `File_c` and return the item if it was found,
  * `null` if the function encountered an error or the item was not found
  * @param {string} pathstring String that is to be resolved to a path
- * @param {Folder_c} startfolder Folder from which to begin resolving (Defaults to `cwd`)
+ * @param {Folder_c} startfolder Folder from which to begin resolving (Defaults to `fs.cwd`)
  * @returns The end folder, or `null` if an error was encountered
  */
-function resolvePath(pathstring, startfolder = cwd) {
+export function resolvePath(pathstring, startfolder = fs.cwd) {
     let curitem = startfolder;
     const path_fragments = pathstring.split("/");
     if (path_fragments[0] === "") {
@@ -65,7 +67,7 @@ function resolvePath(pathstring, startfolder = cwd) {
  * @param {Folder_c | File_c} f File to get the absolute path to
  * @returns The absolute path to a given File or Folder as a string
  */
-function getPath(f) {
+export function getPath(f) {
     /**
      * Traverses up folder and returns string to it
      * @param {string} s Working Directory string

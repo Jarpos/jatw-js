@@ -1,5 +1,15 @@
 "use strict";
 
+import { Theme } from "./commands/theme.js";
+import { io, uri, body, cmdhistory } from "./globals.js";
+import { printRandomLogo, printBottomInfo } from "./logos.js";
+import { validateInput, newCurrentline, setAndExecuteCommand, isValidChar } from "./helpers.js";
+import { defaultEnterHandler, defaultInputLineInfoHandler } from "./handlers.js";
+
+io.enterhandler = defaultEnterHandler;
+io.inputlineinfohandler = defaultInputLineInfoHandler;
+io.currentline = document.createElement("input-line");
+
 printRandomLogo();
 printBottomInfo();
 newCurrentline();
@@ -20,7 +30,7 @@ if (uri.theme()) {
 body().addEventListener("keydown", (e) => {
     if (isValidChar(e.key) && !e.ctrlKey) {
         e.preventDefault();
-        currentline.AddInput(e.key);
+        io.currentline.AddInput(e.key);
     } else {
         switch (e.key) {
             case "Backspace": /***/ HandleBackspace(e); /**/ break;
@@ -42,34 +52,34 @@ body().addEventListener("keydown", (e) => {
  * Removes some or all content from current line
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
-function HandleBackspace(e) {
+export function HandleBackspace(e) {
     e.preventDefault();
-    currentline.Backspace(e.ctrlKey);
+    io.currentline.Backspace(e.ctrlKey);
 }
 
 /**
  * Execute line
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
-function HandleEnter(e) {
-    enterhandler(e);
+export function HandleEnter(e) {
+    io.enterhandler(e);
 }
 
 /**
  * Auto complete with suggestion
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
-function HandleTab(e) {
+export function HandleTab(e) {
     e.preventDefault();
-    const input = currentline.Input;
+    const input = io.currentline.Input;
     const suggestions = getSuggestions(input);
 
     if (suggestions.length === 1) {
-        currentline.Input = suggestions[0];
+        io.currentline.Input = suggestions[0];
     } else if (suggestions.length > 1) {
         addLine(suggestions.join("    "));
         newCurrentline();
-        currentline.Input = input;
+        io.currentline.Input = input;
     }
 }
 
@@ -77,41 +87,41 @@ function HandleTab(e) {
  * Go one command up in the input history
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
-function HandleUp(e) {
+export function HandleUp(e) {
     e.preventDefault();
     cmdhistory.up();
-    currentline.Input = cmdhistory.get();
+    io.currentline.Input = cmdhistory.get();
 }
 
 /**
  * Go one command down in the input history
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
-function HandleDown(e) {
+export function HandleDown(e) {
     cmdhistory.down();
-    currentline.Input = cmdhistory.get();
+    io.currentline.Input = cmdhistory.get();
 }
 
 /**
  * Go one command down in the input history
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
-function HandleLeft(e) {
-    currentline.MoveCaretLeft(e.ctrlKey);
+export function HandleLeft(e) {
+    io.currentline.MoveCaretLeft(e.ctrlKey);
 }
 
 /**
  * Go one command down in the input history
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
-function HandleRight(e) {
-    currentline.MoveCaretRight(e.ctrlKey);
+export function HandleRight(e) {
+    io.currentline.MoveCaretRight(e.ctrlKey);
 }
 
 /**
  * Go one command down in the input history
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
-function HandleDelete(e) {
-    currentline.Delete(e.ctrlKey);
+export function HandleDelete(e) {
+    io.currentline.Delete(e.ctrlKey);
 }

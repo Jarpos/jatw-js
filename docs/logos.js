@@ -1,9 +1,11 @@
 "use strict";
 
+import { addLine } from "./helpers.js";
+
 /**
  * Chooses and then prints random logo
  */
-function printRandomLogo() {
+export function printRandomLogo() {
     const logo = logos[Math.floor(Math.random() * logos.length)];
     for (const line of logo) {
         addLine(line);
@@ -13,7 +15,7 @@ function printRandomLogo() {
 /**
  * Prints bottom info with extra line
  */
-function printBottomInfo() {
+export function printBottomInfo() {
     addLine();
     for (const line of bottominfo) {
         addLine(line);

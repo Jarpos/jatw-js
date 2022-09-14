@@ -1,58 +1,34 @@
 "use strict";
 
-/**
- * Current line that user can manipulate with input
- * @type InputLine
- */
-let currentline;
+import { InputLine } from "./components/InputLine.js";
 
-/**
- * Handler that handles... enter
- * @type function(KeyboardEvent): void
- */
-let enterhandler = defaultEnterHandler;
+export const io = {
+    /**
+     * Current line that user can manipulate with input
+     * @type InputLine
+     */
+    currentline: null,
 
-/**
- * Default handler for enter presses
- * @param {KeyboardEvent} e KeyboardEvent to process
- */
-function defaultEnterHandler(e) {
-    const input = currentline.Input.split(/ +/);
-    const command = commands.get(input[0]);
+    /**
+     * Handler that handles... enter
+     * @type function(KeyboardEvent): void
+     */
+    enterhandler: null, // defaultEnterHandler,
 
-    if (command) {
-        command.cmd(input.slice(1));
-    } else if (input.join(" ").length > 0) {
-        addLine("Could not find command \"", input.join(" "), "\"");
-    }
-
-    cmdhistory.push(input.join(" "));
-    if (enterhandler === defaultEnterHandler) {
-        newCurrentline();
-    }
-}
-
-/**
- * Handler that handles getting the info part of an input line
- * @type function(): string
- * @example
- *     guest@jatw:~/$
- *     >
- */
-let inputlineinfohandler = defaultInputLineInfoHandler;
-
-/**
- * Default handler for getting Input line info
- * @returns Input line info
- */
-function defaultInputLineInfoHandler() {
-    return getPromptString();
-}
+    /**
+     * Handler that handles getting the info part of an input line
+     * @type function(): string
+     * @example
+     *     guest@jatw:~/$
+     *     >
+     */
+    inputlineinfohandler: () => "", // defaultInputLineInfoHandler,
+};
 
 /**
  * Characters that are allowed as input for the terminal
  */
-const allowedcharacters =
+export const allowedcharacters =
     " " +
     "0123456789" +
     "abcdefghijklmnopqrstuvwxyz" +
@@ -63,29 +39,29 @@ const allowedcharacters =
  * Pre element with `<terminal>` id
  * @returns Reference to pre element with terminal id
  */
-const terminal = () => document.getElementById("terminal");
+export const terminal = () => document.getElementById("terminal");
 
 /**
  * Time that the document loaded
  */
-const loadtime = new Date();
+export const loadtime = new Date();
 
 /**
  * Body element
  * @returns Reference to the `<body>` element
  */
-const body = () => document.getElementsByTagName("body")[0];
+export const body = () => document.getElementsByTagName("body")[0];
 
 /**
  * Html element
  * @returns Reference to the `<html>` element
  */
-const html = () => document.getElementsByTagName("html")[0];
+export const html = () => document.getElementsByTagName("html")[0];
 
 /**
  * Quick access for different parts of the uri
  */
-const uri = {
+export const uri = {
     /**
      * Get href of current url (full url)
      * @returns Href of current location
@@ -148,12 +124,12 @@ const uri = {
  * Css root element
  * @returns Reference to css root element
  */
-const styleroot = () => document.documentElement.style;
+export const styleroot = () => document.documentElement.style;
 
 /**
  * History of inputs made
  */
-const cmdhistory = {
+export const cmdhistory = {
     /**
      * Current index for commands array
      * @type number

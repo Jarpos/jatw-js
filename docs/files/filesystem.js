@@ -6,12 +6,12 @@
  * Yes, there shouldn't be this many file types, but I'm
  * not about to implement a checker for magic numbers or smth like that.
  */
-const FILE_TYPE = {
+export const FILE_TYPE = {
     PICTURE: "picture",
     TEXT: "text",
 }
 
-class Folder_c {
+export class Folder_c {
     /**
      * Folder object constructor (Children should be added after object creation)
      * @param {string} n Name of the folder
@@ -64,7 +64,7 @@ class Folder_c {
     isDir() { return true; }
 }
 
-class File_c {
+export class File_c {
     /**
      * File object constructor, beware of the relation between FILE_TYPE (t) and content (c)
      * @param {string} t Filetype - See: FILE_TYPE

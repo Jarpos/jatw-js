@@ -1,10 +1,13 @@
 "use strict";
 
+import { addLine } from "../helpers.js";
+import { findFiles, resolvePath, getPath } from "../files/helpers.js";
+
 /**
- * Tries to find the file passed in argv starting from cwd
+ * Tries to find the file passed in argv starting from fs.cwd
  * @param {string[]} argv Arguments
  */
-function Find(argv) {
+export function Find(argv) {
     if (argv.length === 2) {
         const files = findFiles(f => RegExp(argv[1]).exec(f.name), resolvePath(argv[0]));
         for (const file of files) {

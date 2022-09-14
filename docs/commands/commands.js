@@ -1,12 +1,25 @@
 "use strict";
 
+import { Help } from "./help.js";
+import { Times } from "./times.js";
+import { Theme } from "./theme.js";
+import { Viewer } from "./viewer.js";
+import { Ls } from "./ls.js";
+import { Cd } from "./cd.js";
+import { Cat } from "./cat.js";
+import { Tree } from "./tree.js";
+import { Find } from "./find.js";
+import { sLisp } from "./slisp.js";
+import { Clear } from "./clear.js";
+import { Reboot } from "./reboot.js";
+
 /**
  * Map containing all viable commands
  * @example
  * commands.get("help").cmd();
  * commands.get("reboot").cmd();
  */
-const commands = new Map([
+export const commands = new Map([
     ["help", /****/ { cmd: Help, /****/ info: "Prints this help", }],
     ["times", /***/ { cmd: Times, /***/ info: "Prints a bunch of different times", }],
     ["theme", /***/ { cmd: Theme, /***/ info: "Choose theme", }],
@@ -26,7 +39,7 @@ const commands = new Map([
  * @param {string} s input string
  * @returns Possible suggestions for the given string
  */
-function getSuggestions(s) {
+export function getSuggestions(s) {
     let suggestions = [];
     if (s.length > 0) {
         for (const [key, value] of commands.entries()) {

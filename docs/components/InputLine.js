@@ -1,11 +1,13 @@
 "use strict";
 
+import { io } from "../globals.js";
+
 /**
  * Input element
  * @TODO Rework this / clean up the code
  * @TODO Add more comments/"documentation"
  */
-class InputLine extends HTMLElement {
+export class InputLine extends HTMLElement {
     constructor() {
         super();
 
@@ -16,7 +18,7 @@ class InputLine extends HTMLElement {
         shadow.appendChild(this.base);
 
         this.info = document.createElement("span");
-        this.info.innerHTML = inputlineinfohandler();
+        this.info.innerHTML = io.inputlineinfohandler();
         this.base.appendChild(this.info);
 
         this.userinput = document.createElement("span");

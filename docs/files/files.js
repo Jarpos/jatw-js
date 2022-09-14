@@ -1,21 +1,28 @@
 "use strict";
 
+import { File_c, Folder_c, FILE_TYPE } from "./filesystem.js";
+
 /**
  * Root folder
  * @type Folder_c
  */
-const fileroot = setUpFilesystem();
+export const fileroot = setUpFilesystem();
 
 /**
- * Current Working Directory
+ * Filesystem
  */
-let cwd = fileroot;
+export let fs = {
+    /**
+     * Current Working Directory
+     */
+    cwd: fileroot,
+};
 
 /**
  * Sets up the filesystem and returns the root folder reference
  * @returns the filesystem root folder reference
  */
-function setUpFilesystem() {
+export function setUpFilesystem() {
     /**
      * Reference to root folder
      * @example

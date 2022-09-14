@@ -1,9 +1,11 @@
 "use strict";
 
+import { html } from "../globals.js";
+
 /**
  * Html Draggable Window element
  */
-class DraggableWindow extends HTMLElement {
+export class DraggableWindow extends HTMLElement {
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: "open" });

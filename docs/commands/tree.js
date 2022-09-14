@@ -1,10 +1,13 @@
 "use strict";
 
+import { addLine } from "../helpers.js";
+import { fs } from "../files/files.js";
+
 /**
  * Outputs subdirectories and files as tree
  * @param {string[]} argv Arguments
  */
-function Tree(argv) {
+export function Tree(argv) {
     /**
      * Traverses and prints folders and files
      * @param {Folder_c} f Folder that is currently being traversed
@@ -18,6 +21,6 @@ function Tree(argv) {
             }
         }
     };
-    addLine(cwd.name);
-    traverse(cwd, 0);
+    addLine(fs.cwd.name);
+    traverse(fs.cwd, 0);
 }

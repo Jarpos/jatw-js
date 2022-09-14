@@ -1,11 +1,16 @@
 "use strict";
 
+import { fs } from "./files/files.js";
+import { HandleEnter } from "./index.js";
+import { getPath } from "./files/helpers.js";
+import { terminal, io, allowedcharacters } from "./globals.js";
+
 /**
  * Checks whether a specified Event.Key is a valid input character
  * @param {string} c character to check
  * @returns Whether it's a character or not
  */
-function isValidChar(c) {
+export function isValidChar(c) {
     return allowedcharacters.includes(c);
 }
 
@@ -13,7 +18,7 @@ function isValidChar(c) {
  * Gets the prompt string
  * @returns Prompt string with username and hostname
  */
-function getPromptString() {
+export function getPromptString() {
     return "<span class=\"username\">guest</span>@" +
         `<span class=\"hostname\">jatw</span>:${getPwd()}$ `;
 }
@@ -22,8 +27,8 @@ function getPromptString() {
  * Get the PWD string
  * @returns PrintWorkingDirectory
  */
-function getPwd() {
-    return getPath(cwd);
+export function getPwd() {
+    return getPath(fs.cwd);
 }
 
 /**
@@ -31,8 +36,9 @@ function getPwd() {
  * @param  {...string} l line contents that are to be added
  * @returns The appended div
  */
-function addLine(...l) {
-    const ndiv = terminal().appendChild(document.createElement("div"));
+export function addLine(...l) {
+    // const ndiv = terminal().appendChild(document.createElement("div"));
+    const ndiv = document.getElementById("terminal").appendChild(document.createElement("div"));
     ndiv.innerHTML = l.length !== 0 ? l.join("") : " ";
     return ndiv;
 }
@@ -40,21 +46,21 @@ function addLine(...l) {
 /**
  * Updates CurrentLine variable with new line and adds it to the screen
  */
-function newCurrentline() {
-    if (currentline) {
-        currentline.Deactivate();
+export function newCurrentline() {
+    if (io?.currentline) {
+        io.currentline.Deactivate();
     }
 
-    currentline = document.createElement("input-line");
-    terminal().appendChild(currentline);
+    io.currentline = document.createElement("input-line");
+    terminal().appendChild(io.currentline);
 }
 
 /**
  * Sets current command and executes it (also scrolls to the bottom)
  * @param {string} command Command to execute
  */
-function setAndExecuteCommand(command) {
-    currentline.Input = command;
+export function setAndExecuteCommand(command) {
+    io.currentline.Input = command;
     HandleEnter();
     window.scrollTo(0, document.body.scrollHeight);
 }
@@ -64,7 +70,7 @@ function setAndExecuteCommand(command) {
  * @param {string} input Input string to validate
  * @returns Returns string with only `allowedcharacters`
  */
-function validateInput(input) {
+export function validateInput(input) {
     return input.split("").filter(e => allowedcharacters.includes(e)).join("");
 }
 
@@ -76,7 +82,7 @@ function validateInput(input) {
  *
  * @example isAnyOf("--help", [ argv[0] ], (e) => e.toLowerCase())
  */
-function isAnyOf(item, checkItems, modifier = null) {
+export function isAnyOf(item, checkItems, modifier = null) {
     for (const checkItem of checkItems) {
         if (item === (modifier ? modifier(checkItem) : checkItem)) {
             return true;

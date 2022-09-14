@@ -1,10 +1,12 @@
 "use strict";
 
+import { DraggableWindow } from "./DraggableWindow.js";
+
 /**
  * Html Image Viewer Element (extending DraggableWindow, therefore being draggable as well)
  * @TODO Rework controls and how images are saved/loaded as well as Next/Previous buttons
  */
-class ImgViewer extends DraggableWindow {
+export class ImgViewer extends DraggableWindow {
     constructor() {
         super();
 

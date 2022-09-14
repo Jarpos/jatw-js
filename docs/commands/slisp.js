@@ -1,11 +1,17 @@
 "use strict";
 
+import { io } from "../globals.js";
+import { resolvePath } from "../files/helpers.js";
+import { addLine, newCurrentline, isAnyOf } from "../helpers.js";
+import { defaultEnterHandler, defaultInputLineInfoHandler } from "../handlers.js";
+import { FILE_TYPE } from "../files/filesystem.js";
+
 /**
  * Opens the sLisp interpreter on the cmdline, interprets a given expression,
  * or interprets a File_c given as an argument (can also print help)
  * @param {string[]} argv Arguments
  */
-function sLisp(argv) {
+export function sLisp(argv) {
     if (argv.length === 0) {
         addLine();
         addLine("* * * * * * * * * * * * * * * * * * * * * *");
@@ -20,8 +26,8 @@ function sLisp(argv) {
         addLine("*   See slisp --help for more info        *");
         addLine("*                                         *");
         addLine("* * * * * * * * * * * * * * * * * * * * * *");
-        enterhandler = sLispEnterHandler;
-        inputlineinfohandler = () => "> ";
+        io.enterhandler = sLispEnterHandler;
+        io.inputlineinfohandler = () => "> ";
         newCurrentline();
     } else if (argv.length === 1 && isAnyOf(argv[0], ["--help", "-h"])) {
         addLine();
@@ -76,7 +82,7 @@ function runFile(f) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function sLispEnterHandler(e) {
-    addLine(evaluateSLispExpression(parseSLispExpression(currentline.Input)));
+    addLine(evaluateSLispExpression(parseSLispExpression(io.currentline.Input)));
     newCurrentline();
 }
 
@@ -145,8 +151,8 @@ const slispfunctions = new Map([
 
     ["exit", {
         f: () => {
-            enterhandler = defaultEnterHandler;
-            inputlineinfohandler = defaultInputLineInfoHandler;
+            io.enterhandler = defaultEnterHandler;
+            io.inputlineinfohandler = defaultInputLineInfoHandler;
             addLine();
         },
         h: "Exits slisp interpreter"

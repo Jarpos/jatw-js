@@ -1,9 +1,11 @@
 "use strict";
 
+import { addLine } from "../helpers.js";
+
 /**
  * Reloads the site, effectively "rebooting" the terminal
  * @param {string[]} argv Arguments
  */
-function Reboot(argv) {
+export function Reboot(argv) {
     location.reload();
 }

@@ -1,11 +1,15 @@
 "use strict";
 
+import { addLine } from "../helpers.js";
+import { fs } from "../files/files.js";
+import { resolvePath } from "../files/helpers.js";
+
 /**
  * Lists contents of directory
  * @param {string[]} argv Arguments
  */
-function Ls(argv) {
-    const folder = argv.length > 0 ? resolvePath(argv[0]) : cwd;
+export function Ls(argv) {
+    const folder = argv.length > 0 ? resolvePath(argv[0]) : fs.cwd;
 
     if (folder) {
         let listed = addLine();

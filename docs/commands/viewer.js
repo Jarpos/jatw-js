@@ -1,11 +1,16 @@
 "use strict";
 
+import { fs } from "../files/files.js";
+import { addLine } from "../helpers.js";
+import { FILE_TYPE } from "../files/filesystem.js";
+import { terminal } from "../globals.js";
+
 /**
  * Opens new window with picture viewer
  * @param {string[]} argv Arguments
  */
-function Viewer(argv) {
-    const pictures = cwd.children
+export function Viewer(argv) {
+    const pictures = fs.cwd.children
         .filter(e => e.type === FILE_TYPE.PICTURE)
         .map(e => { return { name: e.name }; });
 

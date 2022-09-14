@@ -1,10 +1,12 @@
 "use strict";
 
+import { terminal } from "../globals.js";
+
 /**
  * Clears terminal
  * @param {string[]} argv Arguments
  */
-function Clear(argv) {
+export function Clear(argv) {
     while (terminal().firstChild) {
         terminal().removeChild(terminal().firstChild);
     }

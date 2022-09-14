@@ -1,10 +1,14 @@
 "use strict";
 
+import { addLine } from "../helpers.js";
+import { commands } from "./commands.js";
+import { setAndExecuteCommand } from "../helpers.js";
+
 /**
  * Prints help screen
  * @param {string[]} argv Arguments
  */
-function Help(argv) {
+export function Help(argv) {
     addLine();
     for (const [key, value] of commands.entries()) {
         const line = addLine("    ", key.padEnd(15), value.info);
