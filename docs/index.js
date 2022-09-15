@@ -1,15 +1,12 @@
 "use strict";
 
 import { Theme } from "./commands/theme.js";
+import { resetHandlers } from "./handlers.js";
 import { io, uri, body, cmdhistory } from "./globals.js";
 import { printRandomLogo, printBottomInfo } from "./logos.js";
 import { validateInput, newCurrentline, setAndExecuteCommand, isValidChar } from "./helpers.js";
-import { defaultEnterHandler, defaultInputLineInfoHandler } from "./handlers.js";
 
-io.enterhandler = defaultEnterHandler;
-io.inputlineinfohandler = defaultInputLineInfoHandler;
-io.currentline = document.createElement("input-line");
-
+resetHandlers();
 printRandomLogo();
 printBottomInfo();
 newCurrentline();

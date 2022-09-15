@@ -5,6 +5,16 @@ import { commands } from "./commands/commands.js";
 import { addLine, getPromptString, newCurrentline } from "./helpers.js";
 
 /**
+ * Resets `enterhandler` and `inputlineinfohandler` to
+ * `defaultEnterHandler` and `defaultInputLineInfoHandler`
+ * respectively
+ */
+export function resetHandlers() {
+    io.enterhandler = defaultEnterHandler;
+    io.inputlineinfohandler = defaultInputLineInfoHandler;
+}
+
+/**
  * Default handler for enter presses
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
