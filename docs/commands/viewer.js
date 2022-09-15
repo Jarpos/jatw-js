@@ -2,8 +2,8 @@
 
 import { fs } from "../files/files.js";
 import { addLine } from "../helpers.js";
-import { FILE_TYPE } from "../files/filesystem.js";
 import { terminal } from "../globals.js";
+import { FILE_TYPE } from "../files/filesystem.js";
 
 /**
  * Opens new window with picture viewer

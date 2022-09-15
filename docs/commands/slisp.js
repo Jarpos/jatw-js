@@ -1,10 +1,10 @@
 "use strict";
 
 import { io } from "../globals.js";
-import { resolvePath } from "../files/helpers.js";
-import { addLine, newCurrentline, isAnyOf } from "../helpers.js";
 import { resetHandlers } from "../handlers.js";
+import { resolvePath } from "../files/helpers.js";
 import { FILE_TYPE } from "../files/filesystem.js";
+import { addLine, newCurrentline, isAnyOf } from "../helpers.js";
 
 /**
  * Opens the sLisp interpreter on the cmdline, interprets a given expression,

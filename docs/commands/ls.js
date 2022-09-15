@@ -1,7 +1,7 @@
 "use strict";
 
-import { addLine } from "../helpers.js";
 import { fs } from "../files/files.js";
+import { addLine } from "../helpers.js";
 import { resolvePath } from "../files/helpers.js";
 
 /**

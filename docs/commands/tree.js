@@ -1,7 +1,7 @@
 "use strict";
 
-import { addLine } from "../helpers.js";
 import { fs } from "../files/files.js";
+import { addLine } from "../helpers.js";
 
 /**
  * Outputs subdirectories and files as tree
