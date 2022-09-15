@@ -3,7 +3,7 @@
 import { io } from "../globals.js";
 import { resolvePath } from "../files/helpers.js";
 import { addLine, newCurrentline, isAnyOf } from "../helpers.js";
-import { defaultEnterHandler, defaultInputLineInfoHandler } from "../handlers.js";
+import { resetHandlers } from "../handlers.js";
 import { FILE_TYPE } from "../files/filesystem.js";
 
 /**
@@ -151,8 +151,7 @@ const slispfunctions = new Map([
 
     ["exit", {
         f: () => {
-            io.enterhandler = defaultEnterHandler;
-            io.inputlineinfohandler = defaultInputLineInfoHandler;
+            resetHandlers();
             addLine();
         },
         h: "Exits slisp interpreter"
