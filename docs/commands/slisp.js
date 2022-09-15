@@ -124,8 +124,12 @@ function evaluateSLispExpression(expression) {
 /**
  * Supported functions for slisp with a short explanation
  *
- * @TODO Add more functions
- * @TODO Add functions for conditionals
+ * @TODO Add "if" func (Rework args to be executed inside the func, instead of before calling the func)
+ * @TODO Add "while" func (Needs support for variables)
+ * @TODO Add "dotimes" or "for" func
+ * @TODO Add "list" func
+ * @TODO Add "<", ">" and "="/"eq"/"equal" funcs
+ * @TODO Add "input"/"readline" func
  */
 const slispfunctions = new Map([
     ["print", { f: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
