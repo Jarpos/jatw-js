@@ -153,6 +153,14 @@ const slispfunctions = new Map([
         f: (condition, left, right) =>  evalExp(condition) ? evalExp(left) : evalExp(right),
         h: "If the given condition evaluates as true, first arg is evaluated, if not, second arg is evaluated"
     }],
+    ["dotimes", {
+        f: (amount, args) => {
+            for (let i = 0; i < evalExp(amount); i++) {
+                evalExp(args);
+            }
+        },
+        h: "Runs second argument, first argument amount of times"
+    }],
 
     ["do", {
         f: (...args) => args.forEach(arg => addLine(evalExp(arg))),
