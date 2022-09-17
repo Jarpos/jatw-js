@@ -51,6 +51,13 @@ export function sLisp(argv) {
         addLine('    > ["do", ["run", "cd", "pictures"], ["run", "ls"]]');
         addLine('    IMG_0121.jpg     IMG_0416.jpg     IMG_0428.jpg     IMG_0529.jpg     IMG_0531.jpg');
         addLine('    IMG_0591.jpg     IMG_0593.jpg     IMG_0701.jpg     IMG_0755.jpg     ...');
+        addLine('    > ["if", ["+", 0], "yas", ["print", "nah"]]');
+        addLine('    nah');
+        addLine('    > ["dotimes", ["+", 2, 2], ["print", "aaaaaAAAAA"]]');
+        addLine('    aaaaaAAAAA');
+        addLine('    aaaaaAAAAA');
+        addLine('    aaaaaAAAAA');
+        addLine('    aaaaaAAAAA');
         addLine();
     } else if (argv.length === 2 && isAnyOf(argv[0], ["--input", "-i"])) {
         const file = resolvePath(argv[1]);
