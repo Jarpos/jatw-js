@@ -130,7 +130,6 @@ const evalExp = (expression) => evaluateSLispExpression(expression);
 /**
  * Supported functions for slisp with a short explanation
  *
- * @TODO Add "if" func (Rework args to be executed inside the func, instead of before calling the func)
  * @TODO Add "while" func (Needs support for variables)
  * @TODO Add "dotimes" or "for" func
  * @TODO Add "list" func
