@@ -156,7 +156,7 @@ const slispfunctions = new Map([
     ["XOR", { f: (...args) => args.reduce((acc, arg) => acc ^ +evalExp(arg)), h: "Exclusive or operation" }],
 
     ["if", {
-        f: (condition, left, right) =>  evalExp(condition) ? evalExp(left) : evalExp(right),
+        f: (condition, left, right) => evalExp(condition) ? evalExp(left) : evalExp(right),
         h: "If the given condition evaluates as true, first arg is evaluated, if not, second arg is evaluated"
     }],
     ["dotimes", {
