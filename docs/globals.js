@@ -2,6 +2,9 @@
 
 import { InputLine } from "./components/InputLine.js";
 
+/**
+ * Inputline as well as handlers for the curren t inputline
+ */
 export const io = {
     /**
      * Current line that user can manipulate with input
