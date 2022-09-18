@@ -1,3 +1,11 @@
+/**
+ * @TODO Rework this whole thing
+ * @TODO Rework themeing (e.g. variable names)
+ * @TODO Rework classes (e.g. "ls-folder")
+ * @TODO Rework all the coloring (probably as part of the themeing rework)
+ * @TODO Add error coloring
+ */
+
 :root {
     --fg-color: #c7ccd1;
     --bg-color: #1c2023;
