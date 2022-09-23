@@ -1,6 +1,7 @@
 "use strict";
 
 import { io } from "../globals.js";
+import { commands } from "./commands.js";
 import { resetHandlers } from "../handlers.js";
 import { resolvePath } from "../files/helpers.js";
 import { FILE_TYPE } from "../files/filesystem.js";
