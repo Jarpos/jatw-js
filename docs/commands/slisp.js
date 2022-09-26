@@ -133,7 +133,7 @@ function evaluateSLispExpression(expression) {
  * Just a shorthand for `evaluateSLispExpression`
  * @param {any[]} expression Expression that is to be evaluated
  */
-const evalExp = (expression) => evaluateSLispExpression(expression);
+const ev = (expression) => evaluateSLispExpression(expression);
 
 /**
  * Supported functions for slisp with a short explanation
@@ -146,35 +146,35 @@ const evalExp = (expression) => evaluateSLispExpression(expression);
 const slispfunctions = new Map([
     ["print", { f: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
 
-    ["+", { f: (...args) => args.reduce((acc, arg) => acc + +evalExp(arg)), h: "Adds given inputs" }],
-    ["-", { f: (...args) => args.reduce((acc, arg) => acc + +evalExp(arg)) * -1, h: "Subtracts given inputs" }],
-    ["*", { f: (...args) => args.reduce((acc, arg) => acc * +evalExp(arg)), h: "Multiply given inputs" }],
-    ["/", { f: (...args) => args.reduce((acc, arg) => acc / +evalExp(arg)), h: "Divide given inputs" }],
-    ["^", { f: (...args) => args.reduce((acc, arg) => Math.pow(acc, evalExp(arg))), h: "Raises number to given powers" }],
+    ["+", { f: (...args) => args.reduce((acc, arg) => acc + +ev(arg)), h: "Adds given inputs" }],
+    ["-", { f: (...args) => args.reduce((acc, arg) => acc + +ev(arg)) * -1, h: "Subtracts given inputs" }],
+    ["*", { f: (...args) => args.reduce((acc, arg) => acc * +ev(arg)), h: "Multiply given inputs" }],
+    ["/", { f: (...args) => args.reduce((acc, arg) => acc / +ev(arg)), h: "Divide given inputs" }],
+    ["^", { f: (...args) => args.reduce((acc, arg) => Math.pow(acc, ev(arg))), h: "Raises number to given powers" }],
 
-    ["OR", { f: (...args) => args.reduce((acc, arg) => acc | +evalExp(arg)), h: "Logical or operation" }],
-    ["AND", { f: (...args) => args.reduce((acc, arg) => acc & +evalExp(arg)), h: "Logical and operation" }],
-    ["XOR", { f: (...args) => args.reduce((acc, arg) => acc ^ +evalExp(arg)), h: "Exclusive or operation" }],
+    ["OR", { f: (...args) => args.reduce((acc, arg) => acc | +ev(arg)), h: "Logical or operation" }],
+    ["AND", { f: (...args) => args.reduce((acc, arg) => acc & +ev(arg)), h: "Logical and operation" }],
+    ["XOR", { f: (...args) => args.reduce((acc, arg) => acc ^ +ev(arg)), h: "Exclusive or operation" }],
 
     ["if", {
-        f: (condition, left, right) => evalExp(condition) ? evalExp(left) : evalExp(right),
+        f: (condition, left, right) => ev(condition) ? ev(left) : ev(right),
         h: "If the given condition evaluates as true, first arg is evaluated, if not, second arg is evaluated"
     }],
     ["dotimes", {
         f: (amount, args) => {
-            for (let i = 0; i < evalExp(amount); i++) {
-                evalExp(args);
+            for (let i = 0; i < ev(amount); i++) {
+                ev(args);
             }
         },
         h: "Runs second argument, first argument amount of times"
     }],
 
     ["do", {
-        f: (...args) => args.forEach(arg => addLine(evalExp(arg))),
+        f: (...args) => args.forEach(arg => addLine(ev(arg))),
         h: "Evaluates slisp expressions passed in args"
     }],
     ["run", {
-        f: (...args) => commands.get(args[0]).cmd(args.slice(1).map(arg => evalExp(arg))),
+        f: (...args) => commands.get(args[0]).cmd(args.slice(1).map(arg => ev(arg))),
         h: "Runs given command (1st arg), with given arguments (rest of args)"
     }],
 
