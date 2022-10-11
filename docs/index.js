@@ -2,9 +2,10 @@
 
 import { Theme } from "./commands/theme.js";
 import { resetHandlers } from "./handlers.js";
+import { getSuggestions } from "./commands/commands.js";
 import { io, uri, body, cmdhistory } from "./globals.js";
 import { printRandomLogo, printBottomInfo } from "./logos.js";
-import { validateInput, newCurrentline, setAndExecuteCommand, isValidChar } from "./helpers.js";
+import { validateInput, newCurrentline, setAndExecuteCommand, isValidChar, addLine } from "./helpers.js";
 
 resetHandlers();
 printRandomLogo();
