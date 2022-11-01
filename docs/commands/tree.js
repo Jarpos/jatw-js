@@ -2,6 +2,7 @@
 
 import { fs } from "../files/files.js";
 import { addLine } from "../helpers.js";
+import { Folder_c } from "../files/filesystem.js";
 
 /**
  * Outputs subdirectories and files as tree
