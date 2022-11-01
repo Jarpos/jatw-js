@@ -12,6 +12,7 @@ import { Find } from "./find.js";
 import { sLisp } from "./slisp.js";
 import { Clear } from "./clear.js";
 import { Reboot } from "./reboot.js";
+import { Factorize } from "./factorize.js";
 
 /**
  * Map containing all viable commands
@@ -30,6 +31,7 @@ export const commands = new Map([
     ["tree", /****/ { cmd: Tree, /****/ info: "Outputs subdirectories and files as tree", }],
     ["find", /****/ { cmd: Find, /****/ info: "Finds a file", }],
     ["slisp", /***/ { cmd: sLisp, /***/ info: "Opens sLisp Interpreter", }],
+    ["factorize", { cmd: Factorize, info: "Factorizes a number"}],
     ["clear", /***/ { cmd: Clear, /***/ info: "Clears terminal", }],
     ["reboot", /**/ { cmd: Reboot, /**/ info: "Reloads terminal", }],
 ]);
