@@ -1,6 +1,6 @@
 "use strict";
 
-import { fileroot, fs } from "../files/files.js";
+import { fileroot, fs } from "./files.js";
 import { File_c, Folder_c } from "./filesystem.js";
 
 /**
