@@ -1,6 +1,7 @@
 "use strict";
 
 import { fileroot, fs } from "../files/files.js";
+import { File_c, Folder_c } from "./filesystem.js";
 
 /**
  * Finds files that satifisy the given condition in the given folder and its subfolders
