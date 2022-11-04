@@ -47,6 +47,15 @@ body().addEventListener("keydown", (e) => {
 });
 
 /**
+ * Makes it possible for the user to paste text in from their clipboard
+ */
+body().addEventListener("paste", (e) => {
+    e.preventDefault();
+    const clipboardData = e.clipboardData || window?.Clipboard;
+    io.currentline.AddInput(clipboardData.getData("Text"));
+})
+
+/**
  * Removes some or all content from current line
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
