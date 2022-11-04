@@ -7,26 +7,30 @@ import { addLine } from "../helpers.js";
  * @param {string[]} argv Arguments
  */
 export function Factorize(argv) {
-    try {
-        var number = +argv[0];
-        const sieve = SievePrimes(Math.sqrt(number));
+    if (argv.length > 0) {
+        try {
+            var number = +argv[0];
+            const sieve = SievePrimes(Math.sqrt(number));
 
-        const results = [];
-        for (let i = 2; i < sieve.length; i++) {
-            if (!sieve[i]) {
-                for (; number % i === 0; number /= i) {
-                    results.push(i);
+            const results = [];
+            for (let i = 2; i < sieve.length; i++) {
+                if (!sieve[i]) {
+                    for (; number % i === 0; number /= i) {
+                        results.push(i);
+                    }
                 }
             }
-        }
 
-        if (number > 1) {
-            results.push(number);
+            if (number > 1) {
+                results.push(number);
+            }
+            addLine(results.join(" "));
+        } catch (/** @type Error */ error) {
+            addLine("Error: ", error.toString())
+            return;
         }
-        addLine(results.join(" "));
-    } catch (/** @type Error */ error) {
-        addLine("Error: ", error.toString())
-        return;
+    } else {
+        addLine("Usage: factorize [number to factorize]");
     }
 }
 
