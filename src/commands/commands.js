@@ -15,25 +15,33 @@ import { Reboot } from "./reboot.js";
 import { Factorize } from "./factorize.js";
 
 /**
+ * newCommand Creates a new command object for the commands map
+ * @param {function (argv: string[]): void} cmd Function to call when command is executed
+ * @param {string} info Short bit of information about the command
+ * @returns A command object for the commands map
+ */
+const nc = (cmd, info) => { return { cmd: cmd, info: info }; };
+
+/**
  * Map containing all viable commands
  * @example
  * commands.get("help").cmd();
  * commands.get("reboot").cmd();
  */
 export const commands = new Map([
-    ["help", /****/ { cmd: Help, /****/ info: "Prints this help", }],
-    ["times", /***/ { cmd: Times, /***/ info: "Prints a bunch of different times", }],
-    ["theme", /***/ { cmd: Theme, /***/ info: "Choose theme", }],
-    ["viewer", /**/ { cmd: Viewer, /**/ info: "Opens picture viewer", }],
-    ["ls", /******/ { cmd: Ls, /******/ info: "Lists items in folder", }],
-    ["cd", /******/ { cmd: Cd, /******/ info: "Change directory", }],
-    ["cat", /*****/ { cmd: Cat, /*****/ info: "Concatenate files and print on the standard output", }],
-    ["tree", /****/ { cmd: Tree, /****/ info: "Outputs subdirectories and files as tree", }],
-    ["find", /****/ { cmd: Find, /****/ info: "Finds a file", }],
-    ["slisp", /***/ { cmd: sLisp, /***/ info: "Opens sLisp Interpreter", }],
-    ["factorize", { cmd: Factorize, info: "Factorizes a number"}],
-    ["clear", /***/ { cmd: Clear, /***/ info: "Clears terminal", }],
-    ["reboot", /**/ { cmd: Reboot, /**/ info: "Reloads terminal", }],
+    ["help", /*******/ nc(Help, /*******/ "Prints this help")],
+    ["times", /******/ nc(Times, /******/ "Prints a bunch of different times")],
+    ["theme", /******/ nc(Theme, /******/ "Choose theme")],
+    ["viewer", /*****/ nc(Viewer, /*****/ "Opens picture viewer")],
+    ["ls", /*********/ nc(Ls, /*********/ "Lists items in folder")],
+    ["cd", /*********/ nc(Cd, /*********/ "Change directory")],
+    ["cat", /********/ nc(Cat, /********/ "Concatenate files and print to the standard output")],
+    ["tree", /*******/ nc(Tree, /*******/ "Outputs subdirectories and files as tree")],
+    ["find", /*******/ nc(Find, /*******/ "Finds a file")],
+    ["slisp", /******/ nc(sLisp, /******/ "Opens sLisp Interpreter")],
+    ["factorize", /**/ nc(Factorize, /**/ "Factorizes a number")],
+    ["clear", /******/ nc(Clear, /******/ "Clears terminal")],
+    ["reboot", /*****/ nc(Reboot, /*****/ "Reloads terminal")],
 ]);
 
 /**
