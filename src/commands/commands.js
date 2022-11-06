@@ -16,7 +16,7 @@ import { Factorize } from "./factorize.js";
 
 /**
  * newCommand Creates a new command object for the commands map
- * @param {function (argv: string[]): void} cmd Function to call when command is executed
+ * @param {function (string[]): void} cmd Function to call when command is executed
  * @param {string} info Short bit of information about the command
  * @returns A command object for the commands map
  */
