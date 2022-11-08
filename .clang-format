@@ -1,0 +1,54 @@
+---
+### Configured via: https://zed0.co.uk/clang-format-configurator/
+### Documentation: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+AlignEscapedNewlines: Left
+AllowAllArgumentsOnNextLine: 'true'
+AllowShortCaseLabelsOnASingleLine: 'true'
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
+AlwaysBreakAfterReturnType: None
+AlwaysBreakTemplateDeclarations: 'Yes'
+BinPackParameters: 'false'
+BreakBeforeBraces: Linux
+ColumnLimit: '100'
+IncludeBlocks: Regroup
+
+### Settings for spacing
+PointerAlignment: Left
+SpaceAfterCStyleCast: 'false'
+SpaceAfterTemplateKeyword: 'false'
+SpaceBeforeAssignmentOperators: 'true'
+SpaceBeforeCpp11BracedList: 'true'
+SpaceBeforeCtorInitializerColon: 'true'
+SpaceBeforeInheritanceColon: 'true'
+Cpp11BracedListStyle: 'false'
+
+### Indentation Settings
+CompactNamespaces: 'false'
+ContinuationIndentWidth: '4'
+IndentWidth: '4'
+UseTab: Never
+IndentPPDirectives: BeforeHash
+NamespaceIndentation: Inner
+
+### Comment Settings
+AlignTrailingComments: 'true'
+FixNamespaceComments: 'true'
+ReflowComments: 'true'
+
+### Control Block Settings
+AllowShortLoopsOnASingleLine: 'false'
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortIfStatementsOnASingleLine: 'false'
+IndentCaseLabels: 'true'
+BreakBeforeTernaryOperators: 'true'
+
+### Class Access Modifier Settings
+EmptyLineBeforeAccessModifier: 'Always'
+EmptyLineAfterAccessModifier: 'Never'
+# IndentAccessModifiers: 'true'
+AccessModifierOffset: -4
+
+### Class formatting settings
+BreakConstructorInitializers: AfterColon
+AllowAllConstructorInitializersOnNextLine: 'true'
