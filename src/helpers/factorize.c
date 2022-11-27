@@ -27,9 +27,9 @@ int main()
 
 uint32_t* Factorize(uint64_t number)
 {
-    uint32_t limit = (sqrt(number) / sizeof(uint32_t)) + 1;
-    uint32_t* sieve = malloc(limit);
-    memset(sieve, 0x0000, limit);
+    uint32_t ssize = (sqrt(number) / sizeof(uint32_t)) + 1;
+    uint32_t* sieve = malloc(ssize);
+    memset(sieve, 0x0000, ssize);
 
     SievePrimes(sieve, sqrt(number));
     for (uint64_t i = 2; i < sqrt(number); i++) {
