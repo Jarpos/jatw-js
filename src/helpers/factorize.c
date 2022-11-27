@@ -40,6 +40,10 @@ uint32_t* Factorize(uint64_t number)
         }
     }
 
+    if (number > 1) {
+        printf("%lu ", number);
+    }
+
     return sieve;
 }
 
