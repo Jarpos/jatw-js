@@ -10,9 +10,10 @@ import { Cat } from "./cat.js";
 import { Tree } from "./tree.js";
 import { Find } from "./find.js";
 import { sLisp } from "./slisp.js";
+import { Time } from "./time.js";
+import { Factorize } from "./factorize.js";
 import { Clear } from "./clear.js";
 import { Reboot } from "./reboot.js";
-import { Factorize } from "./factorize.js";
 
 /**
  * newCommand Creates a new command object for the commands map
@@ -39,6 +40,7 @@ export const commands = new Map([
     ["tree", /*******/ nc(Tree, /*******/ "Outputs subdirectories and files as tree")],
     ["find", /*******/ nc(Find, /*******/ "Finds a file")],
     ["slisp", /******/ nc(sLisp, /******/ "Opens sLisp Interpreter")],
+    ["time", /*******/ nc(Time, /*******/ "Times the given command")],
     ["factorize", /**/ nc(Factorize, /**/ "Factorizes a number")],
     ["clear", /******/ nc(Clear, /******/ "Clears terminal")],
     ["reboot", /*****/ nc(Reboot, /*****/ "Reloads terminal")],
