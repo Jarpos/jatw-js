@@ -1,8 +1,11 @@
-// #include <emscripten/emscripten.h>
+#include <emscripten/emscripten.h>
+#ifndef __EMSCRIPTEN__
+    #define EMSCRIPTEN_KEEPALIVE
+#endif
+
 #include <math.h>
 #include <memory.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 #ifdef __cplusplus
@@ -11,21 +14,19 @@
     #define EXTERN
 #endif
 
+// extern void ConsoleLog(uint64_t log);
+EM_JS(void, ConsoleLog, (uint64_t), console.log(i));
+
 #define sob(type) (sizeof(type) * 8)
 #define GetBit(s, in) ((s[in / sob(uint32_t)] >> (in % sob(uint32_t))) & 0x1u)
 #define SetBit(s, in) s[in / sob(uint32_t)] |= (0x1u << (in % sob(uint32_t)))
 
-uint32_t* Factorize(uint64_t number);
+EXTERN EMSCRIPTEN_KEEPALIVE
+void Factorize(uint64_t number);
 void SievePrimes(uint32_t* sieve, uint64_t limit);
 
-int main()
-{
-    printf("Prime factors:\n");
-    free(Factorize(UINT64_MAX - 1));
-    printf("\n");
-}
-
-uint32_t* Factorize(uint64_t number)
+EXTERN EMSCRIPTEN_KEEPALIVE
+void Factorize(uint64_t number)
 {
     uint32_t ssize = (sqrt(number) / sizeof(uint32_t)) + 1;
     uint32_t* sieve = malloc(ssize);
@@ -35,16 +36,16 @@ uint32_t* Factorize(uint64_t number)
     for (uint64_t i = 2; i < sqrt(number); i++) {
         if (!GetBit(sieve, i)) {
             for (; number % i == 0; number /= i) {
-                printf("%lu ", i);
+                ConsoleLog(i);
             }
         }
     }
 
     if (number > 1) {
-        printf("%lu ", number);
+        ConsoleLog(number);
     }
 
-    return sieve;
+    free(sieve);
 }
 
 void SievePrimes(uint32_t* sieve, uint64_t limit)
