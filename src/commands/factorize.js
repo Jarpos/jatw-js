@@ -1,37 +1,45 @@
 "use strict";
 
 import { addLine } from "../helpers.js";
+import { Wasm } from "../helpers/wasm.js";
 
 /**
  * Tries to find the file passed in argv starting from fs.cwd
  * @param {string[]} argv Arguments
  */
 export function Factorize(argv) {
-    if (argv.length > 0) {
-        try {
-            var number = +argv[0];
-            const sieve = SievePrimes(Math.sqrt(number));
-
-            const results = [];
-            for (let i = 2; i < sieve.length; i++) {
-                if (!sieve[i]) {
-                    for (; number % i === 0; number /= i) {
-                        results.push(i);
-                    }
-                }
-            }
-
-            if (number > 1) {
-                results.push(number);
-            }
-            addLine(results.join(" "));
-        } catch (/** @type Error */ error) {
-            addLine("Error: ", error.toString())
-            return;
+    try {
+        if (argv.length === 1 || argv[1] === "--js") {
+            JsFactorize(+argv[0])
+        } else if (argv.length === 2 && argv[1] === "--wasm") {
+            Wasm.Factorize(argv[0]);
+        } else {
+            addLine("Usage: factorize [number to factorize]");
         }
-    } else {
-        addLine("Usage: factorize [number to factorize]");
+    } catch (/** @type Error */ error) {
+        addLine("Error: ", error.toString())
+        return;
     }
+}
+
+function JsFactorize(number) {
+    addLine("Factorizing: ", number);
+
+    const sieve = SievePrimes(Math.sqrt(number));
+    const results = [];
+
+    for (let i = 2; i < sieve.length; i++) {
+        if (!sieve[i]) {
+            for (; number % i === 0; number /= i) {
+                results.push(i);
+            }
+        }
+    }
+
+    if (number > 1) {
+        results.push(number);
+    }
+    addLine(results.join(" "));
 }
 
 /**
