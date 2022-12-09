@@ -14,8 +14,8 @@
     #define EXTERN
 #endif
 
-// extern void ConsoleLog(uint64_t log);
-EM_JS(void, ConsoleLog, (uint64_t), console.log(i));
+// extern void UpdateLine(uint64_t log);
+EM_JS(void, UpdateLine, (uint64_t), console.log(i));
 
 #define sob(type) (sizeof(type) * 8)
 #define GetBit(s, in) ((s[in / sob(uint32_t)] >> (in % sob(uint32_t))) & 0x1u)
@@ -36,13 +36,13 @@ void Factorize(uint64_t number)
     for (uint64_t i = 2; i < sqrt(number); i++) {
         if (!GetBit(sieve, i)) {
             for (; number % i == 0; number /= i) {
-                ConsoleLog(i);
+                UpdateLine(i);
             }
         }
     }
 
     if (number > 1) {
-        ConsoleLog(number);
+        UpdateLine(number);
     }
 
     free(sieve);
