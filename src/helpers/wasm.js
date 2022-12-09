@@ -7,7 +7,8 @@ const importObject = {
     module: {},
     imports: {},
     env: {
-        ConsoleLog: addLine,
+        primes: "",
+        UpdateLine: (prime) => importObject.env.primes += `${prime} `,
         // memory: new WebAssembly.Memory({ initial: 2 ** 16, }),
     },
 };
@@ -15,8 +16,9 @@ const importObject = {
 /**
  * Exported functions from Wasm
  */
-const exports = await WebAssembly.instantiateStreaming(fetch('helpers/factorize.out.wasm'), importObject)
-    .then(result => result.instance.exports);
+const exports =
+    await WebAssembly.instantiateStreaming(fetch('helpers/factorize.out.wasm'), importObject)
+        .then(result => result.instance.exports);
 
 /**
  * Exported Wasm functions
@@ -28,7 +30,9 @@ export const Wasm = {
      * @returns {void} Nothing
      */
     Factorize: (number) => {
+        importObject.env.primes = "";
         addLine("Factorizing: ", BigInt(number));
-        exports.Factorize(BigInt(number))
+        exports.Factorize(BigInt(number));
+        addLine(importObject.env.primes);
     },
 };
