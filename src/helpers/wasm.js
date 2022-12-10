@@ -48,8 +48,8 @@ export const Wasm = {
      */
     Factorize: (number) => {
         importObject.env.primes = "";
-        addLine("Factorizing: ", BigInt(number));
         exports.Factorize(BigInt(number));
+        addLine("Factorizing: ", BigInt(number));
         addLine(importObject.env.primes);
     },
 };
