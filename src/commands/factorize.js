@@ -22,6 +22,10 @@ export function Factorize(argv) {
     }
 }
 
+/**
+ * Finds the prime factors of a number and prints them to the screen
+ * @param {number} number Number to Factorize
+ */
 function JsFactorize(number) {
     const original = number;
     const sieve = SievePrimes(Math.sqrt(number));

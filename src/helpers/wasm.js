@@ -7,9 +7,7 @@ const importObject = {
     module: {},
     imports: {},
     env: {
-        /**
-         * Primes factors string
-         */
+        /** Prime factors string (TODO: Make this better. Maybe return a string from C?) */
         primes: "",
 
         /**
@@ -38,17 +36,18 @@ const exports =
         .then(result => result.instance.exports);
 
 /**
- * Exported Wasm functions accessible from the outside
+ * Exported Wasm functions made accessible for the outside
  */
 export const Wasm = {
     /**
-     * Factorizes number and prints the prime factors to the console
+     * Factorizes number and prints the prime factors to the screen
      * @param {number | string | BigInt } number Number to factorize
      * @returns {void} Nothing
      */
     Factorize: (number) => {
         importObject.env.primes = "";
         exports.Factorize(BigInt(number));
+
         addLine("Factorizing: ", BigInt(number));
         addLine(importObject.env.primes);
     },
