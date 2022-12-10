@@ -11,6 +11,9 @@ export const FILE_TYPE = {
     TEXT: "text",
 }
 
+/**
+ * Folder class which is trying to emulate a filetree
+ */
 export class Folder_c {
     /**
      * Folder object constructor (Children should be added after object creation)
@@ -64,6 +67,9 @@ export class Folder_c {
     isDir() { return true; }
 }
 
+/**
+ * File class which is trying to kinda emulate a file, for the filetree
+ */
 export class File_c {
     /**
      * File object constructor, beware of the relation between FILE_TYPE (t) and content (c)
