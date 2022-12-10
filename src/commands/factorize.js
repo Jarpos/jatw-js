@@ -23,6 +23,7 @@ export function Factorize(argv) {
 }
 
 function JsFactorize(number) {
+    const original = number;
     const sieve = SievePrimes(Math.sqrt(number));
     const results = [];
 
@@ -37,7 +38,7 @@ function JsFactorize(number) {
     if (number > 1) {
         results.push(number);
     }
-    addLine("Factorizing: ", number);
+    addLine("Factorizing: ", original);
     addLine(results.join(" "));
 }
 
