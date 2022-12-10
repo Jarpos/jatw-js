@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CFLAGS="-O3 --no-entry"
+CFLAGS="-O3 --no-entry -sALLOW_MEMORY_GROWTH"
 
 script_dir=$(dirname $0)
 if [ $script_dir = '.' ]; then

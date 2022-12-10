@@ -7,9 +7,25 @@ const importObject = {
     module: {},
     imports: {},
     env: {
+        /**
+         * Primes factors string
+         */
         primes: "",
+
+        /**
+         * Updates the prime factors string
+         * @param {ui64} prime Prime to add to the output primes
+         * @returns updated primes string
+         */
         UpdateLine: (prime) => importObject.env.primes += `${prime} `,
-        // memory: new WebAssembly.Memory({ initial: 2 ** 16, }),
+
+        /**
+         * See:
+         * https://emscripten.org/docs/api_reference/emscripten.h.html#c.emscripten_notify_memory_growth
+         * @param {i32} index Executed when memory is grown
+         */
+        emscripten_notify_memory_growth: (index) => { },
+        memory: new WebAssembly.Memory({ initial: 2 ** 16, }),
     },
 };
 
@@ -17,11 +33,12 @@ const importObject = {
  * Exported functions from Wasm
  */
 const exports =
-    await WebAssembly.instantiateStreaming(fetch('helpers/factorize.out.wasm'), importObject)
+    await WebAssembly
+        .instantiateStreaming(fetch('helpers/factorize.out.wasm'), importObject)
         .then(result => result.instance.exports);
 
 /**
- * Exported Wasm functions
+ * Exported Wasm functions accessible from the outside
  */
 export const Wasm = {
     /**
