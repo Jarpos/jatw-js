@@ -1,6 +1,9 @@
 #!/bin/bash
 
-CFLAGS="-O3 --no-entry -sALLOW_MEMORY_GROWTH"
+CFLAGS="-O3 --no-entry \
+        -sALLOW_MEMORY_GROWTH \
+        -sMALLOC=emmalloc
+        -sAUTO_JS_LIBRARIES"
 
 script_dir=$(dirname $0)
 if [ $script_dir = '.' ]; then
