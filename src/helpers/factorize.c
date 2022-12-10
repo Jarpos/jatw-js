@@ -5,11 +5,14 @@
 
 #ifdef __EMSCRIPTEN__
     #include <emscripten/emscripten.h>
-    EM_JS(void, UpdateLine, (uint64_t), console.log(i));
+/**/ EM_JS(void, UpdateLine, (uint64_t), console.log(i));
 #else
     #define EMSCRIPTEN_KEEPALIVE
     #include <stdio.h>
-    void UpdateLine(uint64_t i) { printf("%llu ", i); }
+/**/ void UpdateLine(uint64_t i)
+/**/ {
+    /**/ printf("%lu ", i);
+/**/ }
 #endif
 
 #ifdef __cplusplus
@@ -22,12 +25,10 @@
 #define GetBit(s, in) ((s[in / sob(uint32_t)] >> (in % sob(uint32_t))) & 0x1u)
 #define SetBit(s, in) s[in / sob(uint32_t)] |= (0x1u << (in % sob(uint32_t)))
 
-EXTERN EMSCRIPTEN_KEEPALIVE
-void Factorize(uint64_t number);
+EXTERN EMSCRIPTEN_KEEPALIVE void Factorize(uint64_t number);
 void SievePrimes(uint32_t* sieve, uint64_t limit);
 
-EXTERN EMSCRIPTEN_KEEPALIVE
-void Factorize(uint64_t number)
+EXTERN EMSCRIPTEN_KEEPALIVE void Factorize(uint64_t number)
 {
     uint32_t ssize = (sqrt(number) / sizeof(uint32_t)) + 1;
     uint32_t* sieve = malloc(ssize);
@@ -57,3 +58,11 @@ void SievePrimes(uint32_t* sieve, uint64_t limit)
         }
     }
 }
+
+#ifndef __EMSCRIPTEN__
+/**/ int main()
+/**/ {
+    /**/ Factorize(1000000);
+    /**/ printf("\n");
+/**/ }
+#endif
