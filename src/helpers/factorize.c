@@ -1,21 +1,22 @@
-#include <emscripten/emscripten.h>
-#ifndef __EMSCRIPTEN__
-    #define EMSCRIPTEN_KEEPALIVE
-#endif
-
 #include <math.h>
 #include <memory.h>
 #include <stdint.h>
 #include <stdlib.h>
+
+#ifdef __EMSCRIPTEN__
+    #include <emscripten/emscripten.h>
+    EM_JS(void, UpdateLine, (uint64_t), console.log(i));
+#else
+    #define EMSCRIPTEN_KEEPALIVE
+    #include <stdio.h>
+    void UpdateLine(uint64_t i) { printf("%llu ", i); }
+#endif
 
 #ifdef __cplusplus
     #define EXTERN extern "C"
 #else
     #define EXTERN
 #endif
-
-// extern void UpdateLine(uint64_t log);
-EM_JS(void, UpdateLine, (uint64_t), console.log(i));
 
 #define sob(type) (sizeof(type) * 8)
 #define GetBit(s, in) ((s[in / sob(uint32_t)] >> (in % sob(uint32_t))) & 0x1u)
