@@ -24,6 +24,9 @@ export function Time(argv) {
         addLine("Total time: ", min, "m ", s, "s ", ms, "ms");
     } else if (argv.join(" ").length > 0) {
         addLine("Could not find command \"", argv.join(" "), "\"");
+    } else {
+        addLine("Usage: time [command]");
+        addLine("Example: time factorize 18446744073709551615 --wasm");
     }
 }
 
