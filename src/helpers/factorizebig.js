@@ -4,33 +4,29 @@ import { addLine } from "../helpers.js";
 
 /**
  * Tries to find the file passed in argv starting from fs.cwd
- * @param {string[]} argv Arguments
+ * @param {string|BigInt|number} arg Number to factorize
  */
-export function FactorizeBig(argv) {
-    if (argv.length > 0) {
-        try {
-            var number = BigInt(argv[0]);
-            const sieve = SievePrimes(Math.sqrt(+argv[0]));
-            const bitcount = sieve.length * 64;
+export function FactorizeBig(arg) {
+    try {
+        var number = BigInt(arg);
+        const sieve = SievePrimes(Math.sqrt(+arg));
+        const bitcount = sieve.length * 64;
 
-            const results = [];
-            for (let i = 2n; i < bitcount; i++) {
-                if (!GetBit(sieve, i)) {
-                    for (; number % i === 0n; number /= i) {
-                        results.push(i);
-                    }
+        const results = [];
+        for (let i = 2n; i < bitcount; i++) {
+            if (!GetBit(sieve, i)) {
+                for (; number % i === 0n; number /= i) {
+                    results.push(i);
                 }
             }
-
-            if (number > 1) {
-                results.push(number);
-            }
-            addLine(results.join(" "));
-        } catch (/** @type Error */ error) {
-            addLine("Error: ", error.toString())
         }
-    } else {
-        addLine("Usage: factorize [number to factorize]");
+
+        if (number > 1) {
+            results.push(number);
+        }
+        addLine(results.join(" "));
+    } catch (/** @type Error */ error) {
+        addLine("Error: ", error.toString())
     }
 }
 

@@ -1,6 +1,7 @@
 "use strict";
 
 import { addLine } from "../helpers.js";
+import { FactorizeBig } from "../helpers/factorizebig.js";
 import { Wasm } from "../helpers/wasm.js";
 
 /**
@@ -13,6 +14,8 @@ export function Factorize(argv) {
             JsFactorize(+argv[0])
         } else if (argv.length === 2 && argv[1] === "--wasm") {
             Wasm.Factorize(argv[0]);
+        } else if (argv.length === 2 && argv[1] === "--js64") {
+            FactorizeBig(argv[0]);
         } else {
             addLine("Usage: factorize [number to factorize]");
         }
