@@ -14,6 +14,7 @@ import { Time } from "./time.js";
 import { Factorize } from "./factorize.js";
 import { Clear } from "./clear.js";
 import { Reboot } from "./reboot.js";
+import { Calculate } from "./calculate.js";
 
 /**
  * newCommand Creates a new command object for the commands map
@@ -42,6 +43,7 @@ export const commands = new Map([
     ["slisp", /******/ nc(sLisp, /******/ "Opens sLisp Interpreter")],
     ["time", /*******/ nc(Time, /*******/ "Times the given command")],
     ["factorize", /**/ nc(Factorize, /**/ "Factorizes a number")],
+    ["calculate", /**/ nc(Calculate, /**/ "Solves a given calulation")],
     ["clear", /******/ nc(Clear, /******/ "Clears terminal")],
     ["reboot", /*****/ nc(Reboot, /*****/ "Reloads terminal")],
 ]);
