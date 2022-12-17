@@ -1,5 +1,8 @@
 #!/bin/bash
 
+FILES=(
+    "factorize.c"
+)
 CFLAGS="-O3 --no-entry        \
         -sMALLOC=emmalloc     \
         -sAUTO_JS_LIBRARIES   \
@@ -11,4 +14,16 @@ if [ $script_dir = '.' ]; then
 fi
 
 cd "$script_dir/../src/helpers"
-emcc factorize.c -o factorize.wasm $CFLAGS
+
+echo "Starting compilation with: $CFLAGS" | tr -s " "
+for f in "${FILES[@]}"; do
+    echo -n "[ ] Compiling ${f} to ${f%.*}.wasm  "
+    ERROR=$(emcc "${f}" -o "${f%.*}.wasm" $CFLAGS 2>&1)
+
+    if [ $? -eq 0 ]; then
+        echo -e "\r[✔] Compiled ${f} to ${f%.*}.wasm  "
+    else
+        echo -e "\r[✘] Error while compiling ${f} to ${f%.*}.wasm"
+        echo "$ERROR"
+    fi
+done
