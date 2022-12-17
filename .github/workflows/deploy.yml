@@ -32,8 +32,9 @@ jobs:
             - name: Setup Pages
               uses: actions/configure-pages@v2
             - name: Download emcc
-              run: sudo apt install -y emscripten && bash ./scripts/build.sh
-              shell: bash
+              run: sudo apt install -y emscripten
+            - name: Build static content
+              run: bash ./scripts/build.sh
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v1
               with:
