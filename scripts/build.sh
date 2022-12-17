@@ -8,12 +8,12 @@ CFLAGS="-O3 --no-entry        \
         -sAUTO_JS_LIBRARIES   \
         -sALLOW_MEMORY_GROWTH"
 
-script_dir=$(dirname $0)
-if [ $script_dir = '.' ]; then
+script_dir=$(dirname "$0")
+if [ "$script_dir" = '.' ]; then
     script_dir=$(pwd)
 fi
 
-cd "$script_dir/../src/helpers"
+cd "$script_dir/../src/helpers" || exit
 
 echo "Starting compilation with: $CFLAGS" | tr -s " "
 for f in "${FILES[@]}"; do
