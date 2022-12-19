@@ -56,3 +56,25 @@ import { addLine } from "../helpers.js";
  */
 export function Calculate(argv) {
 }
+
+/**
+ * Performs a simple calculation with the given operator
+ * @param {"+" | "-" | "*" | "^"} operator Operator for the given input
+ * @param {number} left Number that's "left" on the stack
+ * @param {number} right Number that's "right" on the stack
+ * @returns The end result for the given calculation
+ *
+ * @example
+ *   [5, 9, "+"] = 14
+ *   [2, 1, "-"] = 1
+ *   [4, 2, "*"] = 8
+ *   [3, 2, "^"] = 9
+ */
+function calculateGiven(operator, left, right) {
+    switch (operator) {
+        case "+": return right + left;
+        case "-": return right - left;
+        case "*": return right * left;
+        case "^": return Math.pow(right, left);
+    }
+}
