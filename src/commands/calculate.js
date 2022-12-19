@@ -58,6 +58,35 @@ export function Calculate(argv) {
 }
 
 /**
+ * Calculates a result, from the given term, in postfix notation, as an array
+ * @param {(string | number)[]} expression
+ *     Expression, in postfix notation, in a "Stack" (array in JS)
+ * @returns The result of the calculation
+ */
+function calculatePostfix(expression) {
+    /** @type {number[]} */
+    let stack = [];
+
+    /** @type {number | string} */
+    let current;
+    while (current = expression.shift()) {
+        switch (typeof (current)) {
+            case "number": {
+                stack.push(current);
+                break;
+            }
+
+            case "string": {
+                stack.push(calculateGiven(current, stack.pop(), stack.pop()));
+                break;
+            }
+        }
+    }
+
+    return stack.join(" ");
+}
+
+/**
  * Performs a simple calculation with the given operator
  * @param {"+" | "-" | "*" | "^"} operator Operator for the given input
  * @param {number} left Number that's "left" on the stack
