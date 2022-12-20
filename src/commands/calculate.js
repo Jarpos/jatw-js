@@ -48,6 +48,8 @@ import { addLine } from "../helpers.js";
  *     Possible solution is to just implement:
  *     https://de.wikipedia.org/wiki/Shunting-yard-Algorithmus
  * But I wanna at least *try* to come up with something on my own...
+ * (Although I did skim through the article, so I might come up with
+ * something similar, or just give up and look it up)
  */
 
 /**
@@ -55,12 +57,29 @@ import { addLine } from "../helpers.js";
  * @param {string[]} argv Arguments
  */
 export function Calculate(argv) {
+    let postfixExpression = parseToPostfix(argv.join(""));
+    addLine(calculatePostfix(postfixExpression));
+}
+
+/**
+ * Parses given string in infix notation, to postfix notation
+ * @param {string} input Inputstring, that is to be parsed
+ * @returns Parsed expression, in postfix notation, as a stack
+ *
+ * @example
+ *   (1 + 3) * 4 + 8 => 1 3 + 4 * 8 +
+ *   (3 * 4 + 9) * (5 + 8) * (2 * 3) => 3 4 * 9 + 5 8 + * 2 3 * *
+ *   Note: These are possible translations, not necessarily the only ones
+ *   Note: Returned form looks like this: [2, 3, "+", 34, "*"]
+ */
+function parseToPostfix(input) {
+    return [2, 3, "+", 5, "*"];
 }
 
 /**
  * Calculates a result, from the given term, in postfix notation, as an array
  * @param {(string | number)[]} expression
- *     Expression, in postfix notation, in a "Stack" (array in JS)
+ *     Expression, in postfix notation, as a "Stack" (array in JS)
  * @returns The result of the calculation
  */
 function calculatePostfix(expression) {
@@ -89,8 +108,8 @@ function calculatePostfix(expression) {
 /**
  * Performs a simple calculation with the given operator
  * @param {"+" | "-" | "*" | "^"} operator Operator for the given input
- * @param {number} left Number that's "left" on the stack
  * @param {number} right Number that's "right" on the stack
+ * @param {number} left Number that's "left" on the stack
  * @returns The end result for the given calculation
  *
  * @example
@@ -99,11 +118,14 @@ function calculatePostfix(expression) {
  *   [4, 2, "*"] = 8
  *   [3, 2, "^"] = 9
  */
-function calculateGiven(operator, left, right) {
+function calculateGiven(operator, right, left) {
     switch (operator) {
-        case "+": return right + left;
-        case "-": return right - left;
-        case "*": return right * left;
-        case "^": return Math.pow(right, left);
+        case "+": return left + right;
+        case "-": return left - right;
+        case "*": return left * right;
+        case "^": return Math.pow(left, right);
+        default:
+            throw new SyntaxError(
+                `Operator "${operator}" is unknown and can't be used in a calculation`);
     }
 }
