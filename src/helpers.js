@@ -37,8 +37,7 @@ export function getPwd() {
  * @returns The appended div
  */
 export function addLine(...l) {
-    // const ndiv = terminal().appendChild(document.createElement("div"));
-    const ndiv = document.getElementById("terminal").appendChild(document.createElement("div"));
+    const ndiv = terminal().appendChild(document.createElement("div"));
     ndiv.innerHTML = l.length !== 0 ? l.join("") : " ";
     return ndiv;
 }
