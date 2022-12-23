@@ -31,7 +31,7 @@ void SievePrimes(uint32_t* sieve, uint64_t limit);
 EXTERN EMSCRIPTEN_KEEPALIVE void Factorize(uint64_t number)
 {
     uint32_t* sieve = calloc(
-        (sqrt(number) / sizeof(uint32_t)) + 1, sizeof(uint32_t)
+        (sqrt(number) / sob(uint32_t)) + 1, sizeof(uint32_t)
     );
 
     // uint32_t ssize = (sqrt(number) / sizeof(uint32_t)) + 1;
