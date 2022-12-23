@@ -129,3 +129,15 @@ function calculateGiven(operator, right, left) {
                 `Operator "${operator}" is unknown and can't be used in a calculation`);
     }
 }
+
+/**
+ * Checks wether a given, one character, string is an operator
+ * @param {string} string Input string that might be an operator
+ * @returns `true` if `string` is a operator, `false` if not
+ */
+function isOperator(string) {
+    return string === "+"
+        || string === "-"
+        || string === "*"
+        || string === "^";
+}
