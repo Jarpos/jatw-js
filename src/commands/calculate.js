@@ -173,3 +173,35 @@ function isOperator(string) {
         || string === "*"
         || string === "^";
 }
+
+/**
+ * Checks wether a given, one character, string is an operator
+ * @param {string} string Input string that might be a parenthisis
+ * @returns `true` if `string` is a paranthesis, `false` if not
+ */
+function isParenthesis(string) {
+    return string === "("
+        || string === ")"
+        || string === "{"
+        || string === "}"
+        || string === "["
+        || string === "]";
+}
+
+/**
+ * Checks wether a given, one character, string is a number
+ * @param {string} string Input string that might be a number
+ * @returns `true` if `string` is a number, `false` if not
+ */
+function isNumber(string) {
+    return string === "0"
+        || string === "1"
+        || string === "2"
+        || string === "3"
+        || string === "4"
+        || string === "5"
+        || string === "6"
+        || string === "7"
+        || string === "8"
+        || string === "9";
+}
