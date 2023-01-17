@@ -73,7 +73,39 @@ export function Calculate(argv) {
  *   Note: Returned form looks like this: [2, 3, "+", 34, "*"]
  */
 function parseToPostfix(input) {
-    return [2, 3, "+", 5, "*"];
+    let token;
+    while (([token, input] = getNextToken(input))[0] !== null) {
+        addLine(token);
+    }
+}
+
+/**
+ * Returns the next found token of a string
+ * @param {string} input The (rest of the) string that is to be tokenized
+ * @returns {[number | "+" | "-" | "*" | "^", string]} The parsed `token` and the `rest` of the string
+ */
+function getNextToken(input) {
+    if (input?.length) {
+        if (isOperator(input[0]) || isParenthesis(input[0])) {
+            return [input[0], input.substring(1)];
+        }
+
+        if (isNumber(input[0])) {
+            let i = 1
+            for (; i < input.length; i++) {
+                if (!isNumber(input[i])) {
+                    break;
+                }
+            }
+
+            return [+input.substring(0, i), input.substring(i)];
+        }
+
+        // Skips over invalid tokens (e.g. Spaces)
+        return getNextToken(input.substring(1));
+    }
+
+    return [null, null];
 }
 
 /**
