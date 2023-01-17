@@ -71,12 +71,18 @@ export function Calculate(argv) {
  *   (3 * 4 + 9) * (5 + 8) * (2 * 3) => 3 4 * 9 + 5 8 + * 2 3 * *
  *   Note: These are possible translations, not necessarily the only ones
  *   Note: Returned form looks like this: [2, 3, "+", 34, "*"]
+ *
+ * @link https://en.wikipedia.org/wiki/Shunting_yard_algorithm
+ * @link https://seanlhlee.gitbooks.io/acosa/content/gitBook/Algorithms/Mathematics/shunting_yard.html
  */
 function parseToPostfix(input) {
+    let postfix = [];
+
     let token;
     while (([token, input] = getNextToken(input))[0] !== null) {
-        addLine(token);
     }
+
+    return postfix;
 }
 
 /**
