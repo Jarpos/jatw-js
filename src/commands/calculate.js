@@ -181,16 +181,34 @@ function isOperator(string) {
 }
 
 /**
- * Checks wether a given, one character, string is an operator
- * @param {string} string Input string that might be a parenthisis
+ * Checks wether a given, one character, string is a parenthesis
+ * @param {string} string Input string that might be a parenthesis
  * @returns `true` if `string` is a paranthesis, `false` if not
  */
 function isParenthesis(string) {
+    return isOpenParenthesis(string)
+        || isClosingParenthesis(string);
+}
+
+/**
+ * Checks wether a given, one character, string is an open parenthesis
+ * @param {string} string Input string that might be a open parenthesis
+ * @returns `true` if `string` is a paranthesis, `false` if not
+ */
+function isOpenParenthesis(string) {
     return string === "("
-        || string === ")"
         || string === "{"
+        || string === "[";
+}
+
+/**
+ * Checks wether a given, one character, string is a closing parenthesis
+ * @param {string} string Input string that might be a closing parenthesis
+ * @returns `true` if `string` is a paranthesis, `false` if not
+ */
+function isClosingParenthesis(string) {
+    return string === ")"
         || string === "}"
-        || string === "["
         || string === "]";
 }
 
