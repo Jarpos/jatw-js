@@ -57,7 +57,9 @@ import { addLine } from "../helpers.js";
  * @param {string[]} argv Arguments
  */
 export function Calculate(argv) {
+    addLine(eval(argv.join(" "))); // TODO: Remove after debugging is done...
     let postfixExpression = parseToPostfix(argv.join(""));
+    // addLine(postfixExpression);
     addLine(calculatePostfix(postfixExpression));
 }
 
@@ -76,19 +78,52 @@ export function Calculate(argv) {
  * @link https://seanlhlee.gitbooks.io/acosa/content/gitBook/Algorithms/Mathematics/shunting_yard.html
  */
 function parseToPostfix(input) {
-    let postfix = [];
+    /** @type [number | "+" | "-" | "*" | "^" | "("] */
+    let stack = [];
+    /** @type ["+" | "-" | "*" | "^" | number] */
+    let output = [];
+
+    /** @type function ([]): void */
+    let peekTop = (stack) => stack[stack.length - 1];
 
     let token;
     while (([token, input] = getNextToken(input))[0] !== null) {
+        console.log(token);
+
+        if (typeof (token) === "number") {
+            output.push(token);
+            continue;
+        }
+
+        if (isParenthesis(token)) {
+            if (isOpenParenthesis(token)) {
+                stack.push(token);
+            } else /** isCloseParenthesis */ {
+                let top;
+                while (!isOpenParenthesis(top = stack.pop())) {
+                    output.push(top);
+                }
+            }
+            continue;
+        }
+
+        if (isOperator(token)) {
+            // Needs to take presedence into account...
+            stack.push(token);
+            continue;
+        }
     }
 
-    return postfix;
+    output = output.concat(stack.reverse());
+    console.log(output);
+
+    return output;
 }
 
 /**
  * Returns the next found token of a string
  * @param {string} input The (rest of the) string that is to be tokenized
- * @returns {[number | "+" | "-" | "*" | "^", string]} The parsed `token` and the `rest` of the string
+ * @returns {[number | "+" | "-" | "*" | "^" | "(" | ")", string]} The parsed `token` and the `rest` of the string
  */
 function getNextToken(input) {
     if (input?.length) {
