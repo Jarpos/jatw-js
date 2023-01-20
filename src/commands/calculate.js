@@ -3,6 +3,13 @@
 import { addLine } from "../helpers.js";
 
 /**
+ * TODO: Rework and maybe simplify a bit? (For example introduce
+ *       Map for operators, that save a class instance of operators,
+ *       which could lead to fewer functions (since it'd be methods))
+ * TODO: Rewrite operator-to-stack-adding-while-loop
+ */
+
+/**
  * My attempt to formalize the calculations I could get:
  * (to maybe make it slightly easier to write a parser?)
  *
@@ -107,7 +114,8 @@ function parseToPostfix(input) {
 
         if (isOperator(token)) {
             while (isOperator(peekTop(stack))
-                && (precedences.get(token) <= precedences.get(peekTop(stack) && isLeftAssociative(token))
+                && (precedences.get(token) <= precedences.get(peekTop(stack)
+                    && isLeftAssociative(token))
                     || precedences.get(token) < precedences.get(peekTop(stack)))) {
                 output.push(stack.pop());
             }
