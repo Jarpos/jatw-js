@@ -11,6 +11,7 @@ processing intensive things.
 
 ## Features
 - A mocked terminal with which you can interact, using commands such as:
+  - `calculate` to calculate the result of a given math expression
   - `clear` to clear the screen
   - `factorize` to get the prime factors of a number
   - `help` to get all possible commands, with a short explanation
