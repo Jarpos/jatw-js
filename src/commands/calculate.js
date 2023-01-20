@@ -7,6 +7,8 @@ import { addLine } from "../helpers.js";
  *       Map for operators, that save a class instance of operators,
  *       which could lead to fewer functions (since it'd be methods))
  * TODO: Rewrite operator-to-stack-adding-while-loop
+ * TODO: Add support for non-integer input values
+ * TODO: Add support for negative-value numbers
  */
 
 /**
