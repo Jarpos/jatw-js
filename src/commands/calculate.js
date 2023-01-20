@@ -196,6 +196,7 @@ function calculateGiven(operator, right, left) {
         case "+": return left + right;
         case "-": return left - right;
         case "*": return left * right;
+        case "/": return left / right;
         case "^": return Math.pow(left, right);
         default:
             throw new SyntaxError(
@@ -212,6 +213,7 @@ function isOperator(string) {
     return string === "+"
         || string === "-"
         || string === "*"
+        || string === "/"
         || string === "^";
 }
 
