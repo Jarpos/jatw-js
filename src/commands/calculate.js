@@ -266,10 +266,20 @@ function isNumber(string) {
         || string === "9";
 }
 
+/**
+ * Checks wether a given Operator is Left Associative
+ * @param {string} string Operator that's to be checked
+ * @returns `true` if `string` is Left Associative, `false` if not
+ */
 function isLeftAssociative(string) {
     return !isRightAssociative(string);
 }
 
+/**
+ * Checks wether a given Operator is Right Associative
+ * @param {string} string Operator that's to be checked
+ * @returns `true` if `string` is Right Associative, `false` if not
+ */
 function isRightAssociative(string) {
     return string === "^";
 }
