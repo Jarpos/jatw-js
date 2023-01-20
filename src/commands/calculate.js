@@ -57,9 +57,7 @@ import { addLine } from "../helpers.js";
  * @param {string[]} argv Arguments
  */
 export function Calculate(argv) {
-    addLine(eval(argv.join(" "))); // TODO: Remove after debugging is done...
     let postfixExpression = parseToPostfix(argv.join(""));
-    // addLine(postfixExpression);
     addLine(calculatePostfix(postfixExpression));
 }
 
@@ -83,13 +81,13 @@ function parseToPostfix(input) {
     /** @type ["+" | "-" | "*" | "^" | number] */
     let output = [];
 
-    /** @type function ([]): void */
+    /** @param {[number | "+" | "-" | "*" | "/" | "^" | "("]} stack */
     let peekTop = (stack) => stack[stack.length - 1];
+
+    let precedences = new Map([["+", 0], ["-", 0], ["/", 1], ["*", 1], ["^", 2]]);
 
     let token;
     while (([token, input] = getNextToken(input))[0] !== null) {
-        console.log(token);
-
         if (typeof (token) === "number") {
             output.push(token);
             continue;
@@ -108,16 +106,17 @@ function parseToPostfix(input) {
         }
 
         if (isOperator(token)) {
-            // Needs to take presedence into account...
+            while (isOperator(peekTop(stack))
+                && (precedences.get(token) <= precedences.get(peekTop(stack) && isLeftAssociative(token))
+                    || precedences.get(token) < precedences.get(peekTop(stack)))) {
+                output.push(stack.pop());
+            }
             stack.push(token);
             continue;
         }
     }
 
-    output = output.concat(stack.reverse());
-    console.log(output);
-
-    return output;
+    return output.concat(stack.reverse());
 }
 
 /**
@@ -265,4 +264,12 @@ function isNumber(string) {
         || string === "7"
         || string === "8"
         || string === "9";
+}
+
+function isLeftAssociative(string) {
+    return !isRightAssociative(string);
+}
+
+function isRightAssociative(string) {
+    return string === "^";
 }
