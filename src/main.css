@@ -38,6 +38,17 @@ body,
     margin: 0;
     min-height: 100vh;
     padding-left: .25%;
+
+    /**
+     * Argh... this is the bane of my existance...
+     * on Windows this breaks if there is nothing
+     * to scroll to yet... but on Linux, if there
+     * *is* something to scroll to and this is missing
+     * then the caret is hidden, even if you're
+     * scrolled all the way down...
+     *
+     * TODO: Find a portable way to fix this issue...
+     */
     padding-bottom: .1%;
 }
 
