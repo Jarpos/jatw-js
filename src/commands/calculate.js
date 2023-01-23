@@ -10,6 +10,7 @@ import { addLine } from "../helpers.js";
  * TODO: Add support for non-integer input values
  * TODO: Add support for negative-value numbers
  * TODO: Add proper handling for invalid tokens/characters
+ * TODO: Add support for pow with ^ (or similar) from inputline
  */
 
 /**
