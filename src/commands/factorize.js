@@ -17,7 +17,11 @@ export function Factorize(argv) {
         } else if (argv.length === 2 && argv[1] === "--js64") {
             FactorizeBig(argv[0]);
         } else {
-            addLine("Usage: factorize [number to factorize]");
+            addLine("Usage: factorize [number to factorize] {factorizer}");
+            addLine("Factorizers:");
+            addLine("    --js   Normal JavaScript, using 32 bit floating point (default)");
+            addLine("    --js64 JavaScript using 64 bit integers, which is very slow");
+            addLine("    --wasm C code compiled to WebAssembly, using 64 bit integers");
         }
     } catch (/** @type Error */ error) {
         addLine("Error: ", error.toString())
