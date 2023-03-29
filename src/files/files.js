@@ -119,6 +119,27 @@ export function setUpFilesystem() {
                 // https://en.wikipedia.org/wiki/Approximations_of_%CF%80
                 '["/", 9801, ["*", 2206, ["^", 2, 0.5 ]]]',
             ]),
+            new File_c(FILE_TYPE.TEXT, "timefacs.sl", [
+                '["print", "Demonstrates the time functionality,"]',
+                '["print", "using the factorize command"]',
+                '["print", " "]',
+                '["print", "Factorizing 2^50 with JS:"]',
+                '["print", "(reasonably fast, but inacurate at a certain point)"]',
+                '["run", "time", "factorize", ["^", 2, 50], "--js"]',
+                '["print", " "]',
+                '["print", " "]',
+                '["print", "Factorizing 2^50 with WASM:"]',
+                '["print", "(quite fast comparatively, works all the way up to 2^64)"]',
+                '["run", "time", "factorize", ["^", 2, 50], "--wasm"]',
+                '["print", " "]',
+                '["print", " "]',
+                '["print", "Factorizing 2^42 with JS using BigInt:"]',
+                '["print", "(very slow, but works all the way up to 2^64)"]',
+                '["run", "time", "factorize", ["^", 2, 42], "--js64"]',
+                '["print", " "]',
+                '["print", "Try it yourself!"]',
+                '["run", "factorize"]',
+            ]),
         ),
     );
     return root;

@@ -24,6 +24,7 @@ export function FactorizeBig(arg) {
         if (number > 1) {
             results.push(number);
         }
+        addLine("Factorizing: ", BigInt(arg));
         addLine(results.join(" "));
     } catch (/** @type Error */ error) {
         addLine("Error: ", error.toString())

@@ -76,5 +76,6 @@ const logos = [
  * Bottom Information that is printed below the "logo" text
  */
 const bottominfo = [
+    "Type 'help' to see a list of available commands.",
     "Source: <a href=\"https://github.com/Jarpos/jatw-js\">https://github.com/Jarpos/jatw-js</a>",
 ];
