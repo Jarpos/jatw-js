@@ -21,9 +21,9 @@
     #define EXTERN
 #endif
 
-#define sob(type) (sizeof(type) * 8)
-#define GetBit(s, in) ((s[in / sob(uint32_t)] >> (in % sob(uint32_t))) & 0x1u)
-#define SetBit(s, in) s[in / sob(uint32_t)] |= (0x1u << (in % sob(uint32_t)))
+#define sib(type) (sizeof(type) * 8) // Returns the size in bits for given type
+#define GetBit(s, in) ((s[in / sib(uint32_t)] >> (in % sib(uint32_t))) & 0x1u) // Gets specified bit
+#define SetBit(s, in) s[in / sib(uint32_t)] |= (0x1u << (in % sib(uint32_t)))  // Sets specified bit
 
 EXTERN EMSCRIPTEN_KEEPALIVE void Factorize(uint64_t number);
 void SievePrimes(uint32_t* sieve, uint64_t limit);
@@ -31,7 +31,7 @@ void SievePrimes(uint32_t* sieve, uint64_t limit);
 EXTERN EMSCRIPTEN_KEEPALIVE void Factorize(uint64_t number)
 {
     uint32_t* sieve = calloc(
-        (sqrt(number) / sob(uint32_t)) + 1, sizeof(uint32_t)
+        (sqrt(number) / sib(uint32_t)) + 1, sizeof(uint32_t)
     );
 
     // uint32_t ssize = (sqrt(number) / sizeof(uint32_t)) + 1;
