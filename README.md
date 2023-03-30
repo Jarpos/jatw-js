@@ -29,7 +29,6 @@ processing intensive things.
   - `viewer` to view pictures in current folder
 
 ## Todo
-- [ ] Add `calculate` command, to get a result for a given mathematical expression
 - [ ] Add a simple text editor
 - [ ] Rework themeing
 - [ ] Add mobile support
