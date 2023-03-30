@@ -7,7 +7,7 @@ const importObject = {
     module: {},
     imports: {},
     env: {
-        /** Prime factors string (TODO: Make this better. Maybe return a string from C?) */
+        /** Prime factors string (@TODO: Make this better. Maybe return a string from C?) */
         primes: "",
 
         /**
