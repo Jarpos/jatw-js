@@ -31,7 +31,6 @@ processing intensive things.
 ## Todo
 - [ ] Add `calculate` command, to get a result for a given mathematical expression
 - [ ] Add a simple text editor
-- [ ] Support paths for `viewer` command
 - [ ] Rework themeing
 - [ ] Add mobile support
 - [ ] Regarding `slisp`:
