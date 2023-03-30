@@ -35,4 +35,4 @@ processing intensive things.
 - [ ] Regarding `slisp`:
   - [ ] Write a parser, so the "code" isn't just JSON arrays
   - [ ] Support for variables
-- Also, see: `TODO`s in the code
+- Also, see: `@TODO`s in the code
