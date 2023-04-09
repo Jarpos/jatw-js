@@ -3,6 +3,13 @@ Yes, I know that this is in no way a new idea or anything,
 I just kinda wanted to do some frontend stuff (Also I wanted
 to have a way to show off some of the pictures I've taken).
 
+## Table of Contents
+- [jatw-js - Just Another Terminal Website - JavaScript](#jatw-js---just-another-terminal-website---javascript)
+  - [Table of Contents](#table-of-contents)
+  - [Info](#info)
+  - [Features](#features)
+  - [Todo](#todo)
+
 ## Info
 This is all done with vanilla [JavaScript](https://en.wikipedia.org/wiki/JavaScript),
 [CSS](https://en.wikipedia.org/wiki/CSS) and [HTML](https://en.wikipedia.org/wiki/HTML),
@@ -29,12 +36,10 @@ processing intensive things.
   - `viewer` to view pictures in current folder
 
 ## Todo
-- [ ] Add `calculate` command, to get a result for a given mathematical expression
 - [ ] Add a simple text editor
-- [ ] Support paths for `viewer` command
 - [ ] Rework themeing
 - [ ] Add mobile support
 - [ ] Regarding `slisp`:
   - [ ] Write a parser, so the "code" isn't just JSON arrays
   - [ ] Support for variables
-- Also, see: `TODO`s in the code
+- Also, see: `@TODO`s in the code

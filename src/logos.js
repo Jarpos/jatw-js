@@ -26,7 +26,6 @@ export function printBottomInfo() {
 /**
  * Logos generated with:
  * @link https://patorjk.com/software/taag
- * @TODO Think if I should keep this or remove it...
  */
 const logos = [
     [
