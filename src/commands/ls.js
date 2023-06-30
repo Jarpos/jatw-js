@@ -31,6 +31,6 @@ export function Ls(argv) {
             }
         }
     } else {
-        addLine("Error: Could not find foler ", argv[0]);
+        addLine("Error: Could not find folder ", argv[0]);
     }
 }
