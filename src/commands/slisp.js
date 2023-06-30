@@ -80,7 +80,6 @@ export function sLisp(argv) {
  */
 function runFile(f) {
     evaluateSLispExpression([
-        // "do", JSON.parse(f.content.join(", ")),
         "do", ...f.content.map(e => JSON.parse(e)),
     ]);
 }
@@ -142,6 +141,8 @@ const ev = (expression) => evaluateSLispExpression(expression);
  * @TODO Add "list" func
  * @TODO Add "<", ">" and "="/"eq"/"equal" funcs
  * @TODO Add "input"/"readline" func
+ *
+ * @type {Map<string, {f: (...args) => any, h: string}>}
  */
 const slispfunctions = new Map([
     ["print", { f: (...args) => args.forEach(a => addLine(a)), h: "Prints given inputs" }],
