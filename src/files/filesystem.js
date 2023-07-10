@@ -41,8 +41,8 @@ export class Folder_c {
 
     /**
      * Add content to folder (children)
-     * @param  {...File_c | ...Folder_c} children Children to add
-     * @returns this to be able to make fs initialization easier
+     * @param {...(File_c | Folder_c)} children Children to add
+     * @returns `this` to be able to make fs initialization easier
      */
     addChildren(...children) {
         this.children = this.children.concat(children);
@@ -54,7 +54,7 @@ export class Folder_c {
 
     /**
      * Remove items from children by name
-     * @param  {...string} names Names of items to be deleted
+     * @param {...string} names Names of items to be deleted
      */
     removeChildren(...names) {
         this.children = this.children.filter(f => names.find(n => n === f.name) === undefined);
