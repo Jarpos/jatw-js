@@ -42,4 +42,6 @@ processing intensive things.
 - [ ] Regarding `slisp`:
   - [ ] Write a parser, so the "code" isn't just JSON arrays
   - [ ] Support for variables
+- [ ] Fix: `factorize 1099999999 --wasm`
+  - After calling it more than once it throws: `RuntimeError: index out of bounds`
 - Also, see: `@TODO`s in the code
