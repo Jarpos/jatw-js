@@ -32,7 +32,7 @@ const importObject = {
  */
 const exports =
     await WebAssembly
-        .instantiateStreaming(fetch('helpers/factorize.wasm'), importObject)
+        .instantiateStreaming(fetch('helpers/factorize.c.wasm'), importObject)
         .then(result => result.instance.exports);
 
 /**
