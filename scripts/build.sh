@@ -2,7 +2,11 @@
 
 FILES=(
     "factorize.c"
+    "animation.c"
 )
+
+# For some reason that breaks it??? -sASSERTIONS=2
+# https://github.com/emscripten-core/emscripten/blob/main/src/settings.js
 CFLAGS="-O3 --no-entry        \
         -sMALLOC=emmalloc     \
         -sAUTO_JS_LIBRARIES   \
