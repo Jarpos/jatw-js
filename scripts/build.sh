@@ -4,8 +4,16 @@ FILES=(
     "factorize.c"
     "animation.c"
 )
+TO_FILES=(
+    "factorize.c.wasm"
+    "animation.c.js"
+)
+FLAGS=(
+    ""
+    "-sUSE_SDL=2 --post-js=animation.post.js"
+)
 
-# For some reason that breaks it??? -sASSERTIONS=2
+# Figure out why: -sASSERTIONS=2 breaks it
 # https://github.com/emscripten-core/emscripten/blob/main/src/settings.js
 CFLAGS="-O3 --no-entry        \
         -sMALLOC=emmalloc     \
@@ -17,17 +25,17 @@ if [ "$script_dir" = '.' ]; then
     script_dir=$(pwd)
 fi
 
-cd "$script_dir/../src/helpers" || exit
+cd "$script_dir/../src/helpers/" || exit
 
 echo "Starting compilation with: $CFLAGS" | tr -s " "
-for f in "${FILES[@]}"; do
-    echo -n "[ ] Compiling ${f} to ${f%.*}.c.wasm  "
-    ERROR=$(emcc "${f}" -o "${f%.*}.c.wasm" $CFLAGS 2>&1)
+for i in ${!FILES[@]}; do
+    echo -n "[ ] Compiling ${FILES[i]} to ${TO_FILES[i]} with ${FLAGS[$i]}"
+    ERROR=$(emcc "${FILES[i]}" -o "${TO_FILES[i]}" $CFLAGS ${FLAGS[$i]} 2>&1)
 
     if [ $? -eq 0 ]; then
-        echo -e "\r[✔] Compiled ${f} to ${f%.*}.c.wasm  "
+        echo -e "\r[✔] Compiled ${FILES[i]} to ${TO_FILES[i]} with ${FLAGS[$i]}  "
     else
-        echo -e "\r[✘] Error while compiling ${f} to ${f%.*}.c.wasm"
+        echo -e "\r[✘] Error while compiling ${FILES[i]} with ${FLAGS[$i]}"
         echo "$ERROR"
     fi
 done
