@@ -1,4 +1,5 @@
 import { addLine } from "../helpers.js";
+import Module from "./animation.c.mjs";
 
 /** Options for imported `factorize` module */
 const factorizeImport = {
@@ -22,9 +23,6 @@ const factorizeImport = {
     },
 };
 
-/** Options for imported `animation` module */
-const animationImport = { env: {}, };
-
 /**
  * Exported functions from Wasm
  */
@@ -34,9 +32,8 @@ const exports = {
         .then(result => result.instance.exports)
         .catch(e => console.log(e)),
 
-    animation_c: await WebAssembly
-        .instantiateStreaming(fetch('helpers/animation.c.wasm'), animationImport)
-        .then(result => result.instance.exports)
+    animation_c: await Module()
+        .then(result => result.asm)
         .catch(e => console.log(e)),
 }
 
