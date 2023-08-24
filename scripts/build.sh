@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 FILES=(
     "factorize.c"
@@ -6,16 +6,16 @@ FILES=(
 )
 TO_FILES=(
     "factorize.c.wasm"
-    "animation.c.js"
+    "animation.c.mjs"
 )
 FLAGS=(
     ""
-    "-sUSE_SDL=2 --post-js=animation.post.js"
+    "-sUSE_SDL=2"
 )
 
 # Figure out why: -sASSERTIONS=2 breaks it
 # https://github.com/emscripten-core/emscripten/blob/main/src/settings.js
-CFLAGS="-O3 --no-entry        \
+CFLAGS="-O0 --no-entry        \
         -sMALLOC=emmalloc     \
         -sAUTO_JS_LIBRARIES   \
         -sALLOW_MEMORY_GROWTH"
