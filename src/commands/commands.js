@@ -15,6 +15,7 @@ import { Factorize } from "./factorize.js";
 import { Clear } from "./clear.js";
 import { Reboot } from "./reboot.js";
 import { Calculate } from "./calculate.js";
+import { Animation } from "./animation.js";
 
 /**
  * newCommand Creates a new command object for the commands map
@@ -44,6 +45,7 @@ export const commands = new Map([
     ["time", /*******/ nc(Time, /*******/ "Times the given command")],
     ["factorize", /**/ nc(Factorize, /**/ "Factorizes a number")],
     ["calculate", /**/ nc(Calculate, /**/ "Solves a given calulation")],
+    ["animation", /**/ nc(Animation, /**/ "Plays an animation")],
     ["clear", /******/ nc(Clear, /******/ "Clears terminal")],
     ["reboot", /*****/ nc(Reboot, /*****/ "Reloads terminal")],
 ]);

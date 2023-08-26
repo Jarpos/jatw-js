@@ -33,7 +33,7 @@ const exports = {
         .catch(e => console.log(e)),
 
     animation_c: await Module()
-        .then(result => result.asm)
+        .then(result => result)
         .catch(e => console.log(e)),
 }
 
@@ -56,9 +56,11 @@ export const Wasm = {
 
     /**
      * Does a small little animation
+     * @param {HTMLCanvasElement} canvasElement
      * @returns {void} Nothing
      */
-    Animation: () => {
-        exports.animation_c.Animation();
+    Animation: (canvasElement) => {
+        exports.animation_c["canvas"] = canvasElement;
+        exports.animation_c.asm.Animation();
     },
 };
