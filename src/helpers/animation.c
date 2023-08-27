@@ -1,26 +1,40 @@
+#include <SDL2/SDL.h>
 #include <emscripten/emscripten.h>
-// #include <emscripten/html5.h>
+#include <emscripten/html5.h>
+#include <stdint.h>
+#include <stdio.h>
 // #include <memory.h>
-// #include <stdint.h>
 // #include <stdlib.h>
 // #include <string.h>
 
-// EM_JS(void, AddLine, (const char* const, size_t));
-// EM_JS(void, AddLine, (const char* const str), { console.log(UTF8ToString($0)); });
+#ifdef __cplusplus
+    #define EXTERN extern "C"
+#else
+    #define EXTERN
+#endif
 
-EMSCRIPTEN_KEEPALIVE
-void Animation()
+void Copy_ToCanvas(uint32_t* ptr, int w, int h)
 {
-    // int w, h;
-    // emscripten_get_canvas_element_size("test-canvas", &w, &h);
-    // emscripten_run_script("console.log('I have been called from C!')");
-    EM_ASM(console.log('I have been called from C!'););
+    EM_ASM_(
+        {
+            let data = Module.HEAPU8.slice($0, $0 + $1 * $2 * 4);
+            let context = Module['canvas'].getContext('2d');
+            let imageData = context.getImageData(0, 0, $1, $2);
+            imageData.data.set(data);
+            context.putImageData(imageData, 0, 0);
+        },
+        ptr, w, h);
+}
 
-    // EmscriptenWebGLContextAttributes attr;
-    // emscripten_webgl_init_context_attributes(&attr);
-    // attr.alpha = 0;
+const int SIZE = 640;
+uint32_t screen[SIZE * SIZE];
 
-    // // target the canvas selector
-    // EMSCRIPTEN_WEBGL_CONTEXT_HANDLE ctx = emscripten_webgl_create_context("#canvas", &attr);
-    // emscripten_webgl_make_context_current(ctx);
+EMSCRIPTEN_KEEPALIVE void Animation()
+{
+    memset(screen, 0, SIZE * SIZE * 4);
+    emscripten_set_canvas_size(SIZE, SIZE);
+    for (int x = 0; x < SIZE; x++)
+        for (int y = 0; y < SIZE; y++)
+            screen[x + y * SIZE] = rand();
+    Copy_ToCanvas(screen, SIZE, SIZE);
 }
