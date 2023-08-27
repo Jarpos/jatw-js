@@ -2,7 +2,7 @@ import { terminal } from "../globals.js";
 import { Wasm } from "../helpers/wasm.js";
 
 /**
- * Solves a given calculation e.g. `2^(5+3) * (203 + 302)`
+ * Plays an animation
  * @param {string[]} argv Arguments
  */
 export function Animation(argv) {
