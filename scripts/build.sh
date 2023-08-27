@@ -10,7 +10,7 @@ TO_FILES=(
 )
 FLAGS=(
     ""
-    "-sUSE_SDL=2"
+    "-sUSE_SDL=2 -sDISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=1 -sASYNCIFY"
 )
 
 # Figure out why: -sASSERTIONS=2 breaks it

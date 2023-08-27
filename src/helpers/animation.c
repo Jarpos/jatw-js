@@ -29,12 +29,21 @@ void Copy_ToCanvas(uint32_t* ptr, int w, int h)
 const int SIZE = 640;
 uint32_t screen[SIZE * SIZE];
 
-EMSCRIPTEN_KEEPALIVE void Animation()
+void loop()
 {
-    memset(screen, 0, SIZE * SIZE * 4);
-    emscripten_set_canvas_size(SIZE, SIZE);
     for (int x = 0; x < SIZE; x++)
         for (int y = 0; y < SIZE; y++)
             screen[x + y * SIZE] = rand();
     Copy_ToCanvas(screen, SIZE, SIZE);
+}
+
+// TODO: Find way to be able to have multiple "animations" play at the same time
+EMSCRIPTEN_KEEPALIVE void Animation()
+{
+    memset(screen, 0, SIZE * SIZE * 4);
+    emscripten_set_canvas_size(SIZE, SIZE);
+    for (int i = 0; i < 10; i++) {
+        loop();
+        emscripten_sleep(500);
+    }
 }
