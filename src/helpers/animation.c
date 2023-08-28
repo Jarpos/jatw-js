@@ -13,12 +13,20 @@
     #define EXTERN
 #endif
 
+int running = 1;
+
+EMSCRIPTEN_KEEPALIVE
+void Stop()
+{
+    running = 0;
+}
+
 void Copy_ToCanvas(uint32_t* ptr, int w, int h)
 {
-    EM_ASM_(
+    EM_ASM(
         {
             let data = Module.HEAPU8.slice($0, $0 + $1 * $2 * 4);
-            let context = Module['canvas'].getContext('2d');
+            let context = Module["canvas"].getContext("2d");
             let imageData = context.getImageData(0, 0, $1, $2);
             imageData.data.set(data);
             context.putImageData(imageData, 0, 0);
@@ -41,8 +49,8 @@ void loop()
 EMSCRIPTEN_KEEPALIVE void Animation()
 {
     memset(screen, 0, SIZE * SIZE * 4);
-    emscripten_set_canvas_size(SIZE, SIZE);
-    for (int i = 0; i < 10; i++) {
+    emscripten_set_canvas_element_size("canvas", SIZE, SIZE);
+    while (running) {
         loop();
         emscripten_sleep(500);
     }
