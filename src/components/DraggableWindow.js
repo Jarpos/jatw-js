@@ -20,6 +20,7 @@ export class DraggableWindow extends HTMLElement {
         if (this.isConnected === true) {
             this.style.left = "10%";
             this.style.top = "10%";
+            this.style.zIndex = DraggableWindow.windowZLevel;
         }
     }
 
@@ -71,12 +72,17 @@ export class DraggableWindow extends HTMLElement {
         this.name.appendChild(this.close);
     }
 
+    /** The windows css-z-level */
+    static windowZLevel = 0;
+
     /**
      * Setup for Window dragging
      */
     setupDragging() {
         this.graboffset = null;
         this.addEventListener("mousedown", (e) => {
+            DraggableWindow.windowZLevel++;
+            this.style.zIndex = DraggableWindow.windowZLevel;
             this.graboffset = {
                 x: e.clientX - this.getBoundingClientRect().x,
                 y: e.clientY - this.getBoundingClientRect().y,
