@@ -62,9 +62,12 @@ export class DraggableWindow extends HTMLElement {
     setupCloseButton() {
         this.close = document.createElement("button");
         this.close.innerHTML = "X";
-        this.close.addEventListener("click", (e) => this.remove());
         this.close.style.float = "right";
         this.close.style.border = 0;
+        this.close.addEventListener("click", (e) => {
+            this.dispatchEvent(new Event("close"));
+            this.remove();
+        });
         this.name.appendChild(this.close);
     }
 
