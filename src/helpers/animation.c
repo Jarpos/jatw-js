@@ -1,4 +1,3 @@
-#include <SDL2/SDL.h>
 #include <emscripten/emscripten.h>
 #include <emscripten/html5.h>
 #include <stdint.h>
