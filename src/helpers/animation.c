@@ -19,7 +19,35 @@ void Stop()
     running = 0;
 }
 
-void Copy_ToCanvas(uint32_t* ptr, int w, int h)
+void Animation();
+void Loop();
+void CopyToCanvas(uint32_t* ptr, int w, int h);
+
+void Stop();
+
+const int SIZE = 640;
+uint32_t screen[SIZE * SIZE];
+
+EMSCRIPTEN_KEEPALIVE
+void Animation()
+{
+    memset(screen, 0, SIZE * SIZE * 4);
+    emscripten_set_canvas_element_size("canvas", SIZE, SIZE);
+    while (running) {
+        Loop();
+        emscripten_sleep(500);
+    }
+}
+
+void Loop()
+{
+    for (int x = 0; x < SIZE; x++)
+        for (int y = 0; y < SIZE; y++)
+            screen[x + y * SIZE] = rand();
+    CopyToCanvas(screen, SIZE, SIZE);
+}
+
+void CopyToCanvas(uint32_t* ptr, int w, int h)
 {
     EM_ASM(
         {
@@ -30,26 +58,4 @@ void Copy_ToCanvas(uint32_t* ptr, int w, int h)
             context.putImageData(imageData, 0, 0);
         },
         ptr, w, h);
-}
-
-const int SIZE = 640;
-uint32_t screen[SIZE * SIZE];
-
-void loop()
-{
-    for (int x = 0; x < SIZE; x++)
-        for (int y = 0; y < SIZE; y++)
-            screen[x + y * SIZE] = rand();
-    Copy_ToCanvas(screen, SIZE, SIZE);
-}
-
-// TODO: Find way to be able to have multiple "animations" play at the same time
-EMSCRIPTEN_KEEPALIVE void Animation()
-{
-    memset(screen, 0, SIZE * SIZE * 4);
-    emscripten_set_canvas_element_size("canvas", SIZE, SIZE);
-    while (running) {
-        loop();
-        emscripten_sleep(500);
-    }
 }
