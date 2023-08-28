@@ -78,7 +78,8 @@ img {
 }
 
 d-window,
-d-img-viewer {
+d-img-viewer,
+c-window {
     z-index: 10;
     padding: 1% 1%;
     border: 1px solid var(--fg-color);
