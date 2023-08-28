@@ -1,10 +1,9 @@
 #include <emscripten/emscripten.h>
 #include <emscripten/html5.h>
+#include <memory.h>
 #include <stdint.h>
 #include <stdio.h>
-// #include <memory.h>
-// #include <stdlib.h>
-// #include <string.h>
+#include <stdlib.h>
 
 #ifdef __cplusplus
     #define EXTERN extern "C"
