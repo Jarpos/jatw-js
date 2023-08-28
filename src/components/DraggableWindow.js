@@ -88,6 +88,16 @@ export class DraggableWindow extends HTMLElement {
             }
         });
     }
+
+    /**
+     * @param {string} name Name of window
+     * @returns {DraggableWindow} The window
+     */
+    static GetAsHtmlElement(name) {
+        const window = document.createElement("d-window");
+        window.setAttribute("name", name);
+        return window;
+    }
 }
 
 customElements.define("d-window", DraggableWindow);
