@@ -12,6 +12,10 @@ FLAGS=(
     ""
     "-sUSE_SDL=2 -sDISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=1 -sASYNCIFY"
 )
+AFTER=(
+    ""
+    "mv animation.c.mjs animation.c.js"
+)
 
 # Figure out why: -sASSERTIONS=2 breaks it
 # https://github.com/emscripten-core/emscripten/blob/main/src/settings.js
@@ -34,6 +38,7 @@ for i in ${!FILES[@]}; do
 
     if [ $? -eq 0 ]; then
         echo -e "\r[✔] Compiled ${FILES[i]} to ${TO_FILES[i]} with ${FLAGS[$i]}  "
+        ${AFTER[i]}
     else
         echo -e "\r[✘] Error while compiling ${FILES[i]} with ${FLAGS[$i]}"
         echo "$ERROR"

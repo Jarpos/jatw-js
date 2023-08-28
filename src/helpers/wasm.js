@@ -1,6 +1,6 @@
 import { CanvasWindow } from "../components/CanvasWindow.js";
 import { addLine } from "../helpers.js";
-import Module from "./animation.c.mjs";
+import Module from "./animation.c.js";
 
 /** Options for imported `factorize` module */
 const factorizeImport = {
