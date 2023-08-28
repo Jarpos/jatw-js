@@ -1,3 +1,4 @@
+import { CanvasWindow } from "../components/CanvasWindow.js";
 import { addLine } from "../helpers.js";
 import Module from "./animation.c.mjs";
 
@@ -32,7 +33,7 @@ const exports = {
         .then(result => result.instance.exports)
         .catch(e => console.log(e)),
 
-    animation_c: await Module()
+    animation_c: async () => await Module()
         .then(result => result)
         .catch(e => console.log(e)),
 }
@@ -56,11 +57,13 @@ export const Wasm = {
 
     /**
      * Does a small little animation
-     * @param {HTMLCanvasElement} canvasElement
-     * @returns {void} Nothing
+     * @param {CanvasWindow} canvasWindow
      */
-    Animation: (canvasElement) => {
-        exports.animation_c["canvas"] = canvasElement;
-        exports.animation_c.asm.Animation();
+    Animation: async (canvasWindow) => {
+        const animation_c = await exports.animation_c();
+        animation_c["canvas"] = canvasWindow.canvas;
+        animation_c.asm.Animation();
+
+        canvasWindow.addEventListener("close", () => animation_c.asm.Stop());
     },
 };
