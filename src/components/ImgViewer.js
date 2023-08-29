@@ -105,6 +105,20 @@ export class ImgViewer extends DraggableWindow {
         this.setAttribute("src", this.getAttribute("folder") + this.pictures[this.i].name);
         this.setAttribute("name", "Viewer - " + this.pictures[this.i].name);
     }
+
+    /**
+     * @param {string} name Name of window
+     * @param {string} folder Location of the folder
+     * @param {string[]} pictures The pictures
+     * @returns {ImgViewer} The window
+     */
+    static GetAsHtmlElement(name, folder, pictures) {
+        const window = document.createElement("d-img-viewer");
+        window.setAttribute("name", name);
+        window.setAttribute("folder", folder);
+        window.setAttribute("files", JSON.stringify(pictures));
+        return window;
+    }
 }
 
 customElements.define("d-img-viewer", ImgViewer);
