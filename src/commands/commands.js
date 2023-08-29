@@ -12,10 +12,10 @@ import { Find } from "./find.js";
 import { sLisp } from "./slisp.js";
 import { Time } from "./time.js";
 import { Factorize } from "./factorize.js";
-import { Clear } from "./clear.js";
-import { Reboot } from "./reboot.js";
 import { Calculate } from "./calculate.js";
 import { Animation } from "./animation.js";
+import { Clear } from "./clear.js";
+import { Reboot } from "./reboot.js";
 
 /**
  * newCommand Creates a new command object for the commands map
