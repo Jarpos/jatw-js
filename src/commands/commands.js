@@ -58,7 +58,7 @@ export const commands = new Map([
 export function getSuggestions(s) {
     let suggestions = [];
     if (s.length > 0) {
-        for (const [key, value] of commands.entries()) {
+        for (const [key] of commands.entries()) {
             if (key.indexOf(s) === 0) {
                 suggestions.push(key);
             }
