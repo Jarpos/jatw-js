@@ -6,7 +6,7 @@ import { DraggableWindow } from "./DraggableWindow.js";
  * Html Image Viewer Element (extending DraggableWindow, therefore being draggable as well)
  * @TODO Rework controls and how images are saved/loaded as well as Next/Previous buttons
  */
-export class ImgViewer extends DraggableWindow {
+export class ImageWindow extends DraggableWindow {
     constructor() {
         super();
 
@@ -110,14 +110,14 @@ export class ImgViewer extends DraggableWindow {
      * @param {string} name Name of window
      * @param {string} folder Location of the folder
      * @param {{name: string, link: string}[]} pictures The pictures
-     * @returns {ImgViewer} The window
+     * @returns {ImageWindow} The window
      */
     static GetAsHtmlElement(name, pictures) {
-        const window = document.createElement("d-img-viewer");
+        const window = document.createElement("i-window");
         window.setAttribute("name", name);
         window.setAttribute("files", JSON.stringify(pictures));
         return window;
     }
 }
 
-customElements.define("d-img-viewer", ImgViewer);
+customElements.define("i-window", ImageWindow);

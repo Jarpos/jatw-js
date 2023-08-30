@@ -78,7 +78,7 @@ img {
 }
 
 d-window,
-d-img-viewer,
+i-window,
 c-window {
     z-index: 10;
     padding: 1% 1%;

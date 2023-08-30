@@ -4,7 +4,7 @@ import { addLine } from "../helpers.js";
 import { terminal } from "../globals.js";
 import { FILE_TYPE } from "../files/filesystem.js";
 import { resolvePath } from "../files/helpers.js";
-import { ImgViewer } from "../components/ImgViewer.js";
+import { ImageWindow } from "../components/ImageWindow.js";
 
 /**
  * Opens new window with picture viewer
@@ -17,7 +17,7 @@ export function Viewer(argv) {
         .map(f => { return { name: f.name, link: f.content }; });
 
     if (pictures?.length > 0) {
-        const viewer = ImgViewer.GetAsHtmlElement("Picture Viewer", pictures);
+        const viewer = ImageWindow.GetAsHtmlElement("Picture Viewer", pictures);
         terminal().appendChild(viewer);
     } else {
         addLine("Error: Couldn't find any pictures in the current folder");
