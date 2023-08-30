@@ -25,7 +25,7 @@
 #define GetBit(s, in) ((s[in / sib(uint32_t)] >> (in % sib(uint32_t))) & 0x1u) // Gets specified bit
 #define SetBit(s, in) s[in / sib(uint32_t)] |= (0x1u << (in % sib(uint32_t)))  // Sets specified bit
 
-EXTERN EMSCRIPTEN_KEEPALIVE void Factorize(uint64_t number);
+void Factorize(uint64_t number);
 void SievePrimes(uint32_t* sieve, uint64_t limit);
 
 EXTERN EMSCRIPTEN_KEEPALIVE void Factorize(uint64_t number)
