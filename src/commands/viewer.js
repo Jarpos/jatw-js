@@ -13,11 +13,11 @@ import { ImgViewer } from "../components/ImgViewer.js";
 export function Viewer(argv) {
     const path = argv.length != 0 ? argv[0] : ".";
     const pictures = resolvePath(path).children
-        .filter(e => e.type === FILE_TYPE.PICTURE)
-        .map(e => { return { name: e.name }; });
+        .filter(f => f.type === FILE_TYPE.PICTURE)
+        .map(f => { return { name: f.name, link: f.content }; });
 
     if (pictures?.length > 0) {
-        const viewer = ImgViewer.GetAsHtmlElement("Picture Viewer", "files/pictures/", pictures);
+        const viewer = ImgViewer.GetAsHtmlElement("Picture Viewer", pictures);
         terminal().appendChild(viewer);
     } else {
         addLine("Error: Couldn't find any pictures in the current folder");

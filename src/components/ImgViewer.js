@@ -89,7 +89,7 @@ export class ImgViewer extends DraggableWindow {
             this.i++;
         }
         this.i = jumpToEnd ? this.pictures.length - 1 : this.i;
-        this.setAttribute("src", this.getAttribute("folder") + this.pictures[this.i].name);
+        this.setAttribute("src", this.pictures[this.i].link);
         this.setAttribute("name", "Viewer - " + this.pictures[this.i].name);
     }
 
@@ -102,20 +102,19 @@ export class ImgViewer extends DraggableWindow {
             this.i--;
         }
         this.i = jumpToStart ? 0 : this.i;
-        this.setAttribute("src", this.getAttribute("folder") + this.pictures[this.i].name);
+        this.setAttribute("src", this.pictures[this.i].link);
         this.setAttribute("name", "Viewer - " + this.pictures[this.i].name);
     }
 
     /**
      * @param {string} name Name of window
      * @param {string} folder Location of the folder
-     * @param {string[]} pictures The pictures
+     * @param {{name: string, link: string}[]} pictures The pictures
      * @returns {ImgViewer} The window
      */
-    static GetAsHtmlElement(name, folder, pictures) {
+    static GetAsHtmlElement(name, pictures) {
         const window = document.createElement("d-img-viewer");
         window.setAttribute("name", name);
-        window.setAttribute("folder", folder);
         window.setAttribute("files", JSON.stringify(pictures));
         return window;
     }
