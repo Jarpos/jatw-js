@@ -29,7 +29,7 @@ if [ "$script_dir" = '.' ]; then
     script_dir=$(pwd)
 fi
 
-cd "$script_dir/../src/helpers/" || exit
+cd "$script_dir/../src/wasm/" || exit
 
 echo "Starting compilation with: $CFLAGS" | tr -s " "
 for i in ${!FILES[@]}; do

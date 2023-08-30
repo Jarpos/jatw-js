@@ -29,7 +29,7 @@ const factorizeImport = {
  */
 const exports = {
     factorize_c: await WebAssembly
-        .instantiateStreaming(fetch('helpers/factorize.c.wasm'), factorizeImport)
+        .instantiateStreaming(fetch('wasm/factorize.c.wasm'), factorizeImport)
         .then(result => result.instance.exports)
         .catch(e => console.log(e)),
 

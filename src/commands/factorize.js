@@ -1,8 +1,8 @@
 "use strict";
 
 import { addLine } from "../helpers.js";
-import { FactorizeBig } from "../helpers/factorizebig.js";
-import { Wasm } from "../helpers/wasm.js";
+import { FactorizeBig } from "../wasm/factorizebig.js";
+import { Wasm } from "../wasm/wasm.js";
 
 /**
  * Tries to find the file passed in argv starting from fs.cwd
