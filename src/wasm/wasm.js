@@ -1,6 +1,7 @@
-import { CanvasWindow } from "../components/CanvasWindow.js";
-import { addLine } from "../helpers.js";
 import Module from "./animation.c.js";
+
+import { CanvasWindow } from "../components/CanvasWindow.js";
+import { addLine, nop } from "../helpers.js";
 
 /** Options for imported `factorize` module */
 const factorizeImport = {
@@ -10,33 +11,37 @@ const factorizeImport = {
 
         /**
          * Updates the prime factors string
-         * @param {ui64} prime Prime to add to the output primes
+         * @param {u64} prime Prime to add to the output primes
          * @returns updated primes string
          */
         UpdateLine: (prime) => factorizeImport.env.primes += `${prime} `,
 
         /**
-         * @param {i32} index Executed when memory is grown
+         * Executed when memory is grown
+         * @param {i32} index Which memory has grown
          * @link https://emscripten.org/docs/api_reference/emscripten.h.html#c.emscripten_notify_memory_growth
          */
-        emscripten_notify_memory_growth: (index) => { },
+        emscripten_notify_memory_growth: (index) => nop(),
         memory: new WebAssembly.Memory({ initial: 2 ** 16, }),
     },
 };
 
-/**
- * Exported functions from Wasm
- */
+/** Exported functions from Wasm */
 const exports = {
+    /** Factorize function as normal JavaScript function */
     factorize_c: await WebAssembly
         .instantiateStreaming(fetch('wasm/factorize.c.wasm'), factorizeImport)
         .then(result => result.instance.exports)
         .catch(e => console.log(e)),
 
+    /**
+     * Animation function getter, to make it possible to run
+     * multiple animations at the same time
+     */
     animation_c: async () => await Module()
         .then(result => result)
         .catch(e => console.log(e)),
-}
+};
 
 /**
  * Exported Wasm functions made accessible for the outside
