@@ -5,6 +5,8 @@ import { HandleEnter } from "./index.js";
 import { getPath } from "./files/helpers.js";
 import { terminal, io, allowedcharacters } from "./globals.js";
 
+export const nop = () => { };
+
 /**
  * Checks whether a specified Event.Key is a valid input character
  * @param {string} c character to check
