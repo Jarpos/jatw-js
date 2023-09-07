@@ -13,8 +13,7 @@
 
 int running = 1;
 
-EMSCRIPTEN_KEEPALIVE
-void Stop()
+EXTERN EMSCRIPTEN_KEEPALIVE void Stop()
 {
     running = 0;
 }
@@ -28,8 +27,7 @@ void Stop();
 const int SIZE = 640;
 uint32_t screen[SIZE * SIZE];
 
-EMSCRIPTEN_KEEPALIVE
-void Animation()
+EXTERN EMSCRIPTEN_KEEPALIVE void Animation()
 {
     memset(screen, 0, SIZE * SIZE * 4);
     emscripten_set_canvas_element_size("canvas", SIZE, SIZE);
@@ -39,6 +37,7 @@ void Animation()
     }
 }
 
+EXTERN
 void Loop()
 {
     for (int x = 0; x < SIZE; x++)
@@ -47,6 +46,7 @@ void Loop()
     CopyToCanvas(screen, SIZE, SIZE);
 }
 
+EXTERN
 void CopyToCanvas(uint32_t* ptr, int w, int h)
 {
     EM_ASM(
