@@ -118,7 +118,7 @@ function parseToPostfix(input) {
 
         if (isOperator(token)) {
             while (isOperator(peekTop(stack))
-                && (precedences.get(token) <= precedences.get(peekTop(stack)
+                    && (precedences.get(token) <= precedences.get(peekTop(stack)
                     && isLeftAssociative(token))
                     || precedences.get(token) < precedences.get(peekTop(stack)))) {
                 output.push(stack.pop());
