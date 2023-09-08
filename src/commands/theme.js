@@ -4,6 +4,16 @@ import { addLine } from "../helpers.js";
 import { styleroot } from "../globals.js";
 
 /**
+ * @typedef {{
+ *     name: string;
+ *     fg: number;
+ *     bg: number;
+ *     uname: number;
+ *     hname: number;
+ * }} Theme_t
+ */
+
+/**
  * Prints theme chooser or sets first theme set in argv
  * @param {string[]} argv Arguments
  */
@@ -15,7 +25,7 @@ export function Theme(argv) {
      * @param {number} b Background
      * @param {number} u Username
      * @param {number} h Hostname
-     * @returns Theme object
+     * @returns {Theme_t} Theme object
      */
     const c = (n, f, b, u, h) => {
         return { name: n, fg: f, bg: b, uname: u, hname: h, };
@@ -41,13 +51,7 @@ export function Theme(argv) {
 
     /**
      * Sets to given theme object
-     * @param {{
-     *     name: string;
-     *     fg: number;
-     *     bg: number;
-     *     uname: number;
-     *     hname: number;
-     * }} t Theme to set to
+     * @param {Theme_t} t Theme to set to
      */
     const setTheme = (t) => {
         document.location.hash = t.name;
