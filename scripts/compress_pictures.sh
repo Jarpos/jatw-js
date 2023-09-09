@@ -8,6 +8,11 @@ fi
 cd "$script_dir/../src/files/pictures" || exit
 
 for i in *.png; do
+    if [ ! -e "$i" ]; then
+        echo "No .png found, skipping compression step"
+        continue;
+    fi
+
     o=${i%.png}.jpg
 
     echo "$i -> $o"
