@@ -26,18 +26,18 @@ export function setUpFilesystem() {
     /**
      * Reference to root folder
      * @example
-     *     ~/
-     *     +-- pictures
-     *     |   |
-     *     |   + IMG_***.jpg
+     * ~/
+     * +-- pictures
+     * |   |
+     * |   + IMG_***.jpg
+     * |
+     * +-- other
      *     |
-     *     +-- other
+     *     + text.txt
+     *     |
+     *     +-- another
      *         |
-     *         + text.txt
-     *         |
-     *         +-- another
-     *             |
-     *             + test.txt
+     *         + test.txt
      */
     const root = new Folder_c("~", null).addChildren(
         (new Folder_c("pictures")).addChildren(
