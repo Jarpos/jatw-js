@@ -24,6 +24,10 @@ export class Command extends HTMLElement {
         }
     }
 
+    /**
+     * Sets and executes either the given `<... cmd="x"></...>` or the
+     * given `this.innerHTML`, if there is no `cmd` is set.
+     */
     click() {
         if (this.cmd) {
             setAndExecuteCommand(this.cmd);
