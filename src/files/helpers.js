@@ -35,7 +35,7 @@ export function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
 export function resolvePath(pathstring, startfolder = fs.cwd) {
     let curitem = startfolder;
     const path_fragments = pathstring.split("/");
-    if (path_fragments[0] === "") {
+    if (path_fragments[0] === "~") {
         curitem = fileroot;
         path_fragments.shift();
     }
