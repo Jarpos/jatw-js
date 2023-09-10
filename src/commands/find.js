@@ -11,7 +11,7 @@ export function Find(argv) {
     if (argv.length === 2) {
         const files = findFiles(f => RegExp(argv[1]).exec(f.name), resolvePath(argv[0]));
         for (const file of files) {
-            addLine(getPath(file));
+            addLine(`<j-cmd cmd="cd ${getPath(file.parent)}">`, getPath(file), "</j-cmd>");
         }
     } else {
         addLine("Usage: find [startfolder] [filename as RegExp]");
