@@ -15,6 +15,8 @@ export function Find(argv) {
         }
     } else {
         addLine("Usage: find [startfolder] [filename as RegExp]");
-        addLine("Example: find pictures/ .jpg");
+        addLine("Examples:");
+        addLine("    <j-cmd>find / .txt</j-cmd>");
+        addLine("    <j-cmd>find pictures/ .jpg</j-cmd>");
     }
 }
