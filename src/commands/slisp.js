@@ -24,7 +24,8 @@ export function sLisp(argv) {
         addLine("*   language and this blog article:       *");
         addLine("*   https://stopa.io/post/265             *");
         addLine("*                                         *");
-        addLine("*   See slisp --help for more info        *");
+        addLine("*   See <j-cmd>slisp --help</j-cmd> for more info        *");
+        addLine("*   Use <j-cmd>[\"exit\"]</j-cmd> to exit                  *");
         addLine("*                                         *");
         addLine("* * * * * * * * * * * * * * * * * * * * * *");
         io.enterhandler = sLispEnterHandler;
