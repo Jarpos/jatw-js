@@ -22,6 +22,10 @@ export function Factorize(argv) {
             addLine("    --js   Normal JavaScript, using 32 bit floating point (default)");
             addLine("    --js64 JavaScript using 64 bit integers, which is very slow");
             addLine("    --wasm C code compiled to WebAssembly, using 64 bit integers");
+            addLine("Examples:");
+            addLine("    <j-cmd>factorize 3423423 --wasm</j-cmd>");
+            addLine("    <j-cmd>factorize 9234843 --js64</j-cmd>");
+            addLine("    <j-cmd>factorize 8455233 --js</j-cmd>");
         }
     } catch (/** @type Error */ error) {
         addLine("Error: ", error.toString())
