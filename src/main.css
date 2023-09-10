@@ -68,6 +68,7 @@ body,
     color: var(--fg-color);
 }
 
+j-cmd:hover,
 .command:hover {
     cursor: pointer;
     color: var(--username);
