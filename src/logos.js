@@ -1,7 +1,6 @@
 "use strict";
 
 import { addLine } from "./helpers.js";
-import { Command } from "./components/Command.js";
 
 /**
  * Chooses and then prints random logo
