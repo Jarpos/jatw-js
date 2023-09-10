@@ -90,7 +90,14 @@ function runFile(f) {
  * @param {KeyboardEvent} e KeyboardEvent to process
  */
 function sLispEnterHandler(e) {
-    addLine(evaluateSLispExpression(parseSLispExpression(io.currentline.Input)));
+    if (io.currentline.Input !== "") {
+        try {
+            addLine(evaluateSLispExpression(parseSLispExpression(io.currentline.Input)));
+        } catch (_) {
+            addLine(`Error: Could not parse "${io.currentline.Input}" to valid 'slisp' expression`);
+        }
+    }
+
     newCurrentline();
 }
 
