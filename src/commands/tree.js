@@ -3,6 +3,7 @@
 import { fs } from "../files/files.js";
 import { addLine } from "../helpers.js";
 import { Folder_c } from "../files/filesystem.js";
+import { getPath } from "../files/helpers.js";
 
 /**
  * Outputs subdirectories and files as tree
@@ -16,12 +17,14 @@ export function Tree(argv) {
      */
     const traverse = (f, level) => {
         for (const child of f.children) {
-            addLine("".padStart(level + 4), child.name);
             if (child.isDir()) {
+                addLine("".padStart(level + 4), `<j-cmd cmd="cd ${getPath(child)}">`, child.name, "</j-cmd>");
                 traverse(child, level + 4);
+            } else {
+                addLine("".padStart(level + 4), child.name);
             }
         }
     };
-    addLine(fs.cwd.name);
+    addLine(`<j-cmd cmd="cd ${getPath(fs.cwd)}">${fs.cwd.name}</j-cmd>`);
     traverse(fs.cwd, 0);
 }
