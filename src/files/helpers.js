@@ -1,5 +1,6 @@
 "use strict";
 
+import { isAnyOf } from "../helpers.js";
 import { fileroot, fs } from "./files.js";
 import { File_c, Folder_c } from "./filesystem.js";
 
@@ -35,7 +36,7 @@ export function findFiles(constraint, curfolder = fileroot, foundfiles = []) {
 export function resolvePath(pathstring, startfolder = fs.cwd) {
     let curitem = startfolder;
     const path_fragments = pathstring.split("/");
-    if (path_fragments[0] === "~") {
+    if (isAnyOf(path_fragments[0], ["~", ""])) {
         curitem = fileroot;
         path_fragments.shift();
     }
