@@ -26,7 +26,7 @@ export function Time(argv) {
         addLine("Could not find command \"", argv.join(" "), "\"");
     } else {
         addLine("Usage: time [command]");
-        addLine("Example: time factorize 18446744073709551615 --wasm");
+        addLine("Example: <j-cmd>time factorize 18446744073709551615 --wasm</j-cmd>");
     }
 }
 
