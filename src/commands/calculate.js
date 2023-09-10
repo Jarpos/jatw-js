@@ -68,8 +68,13 @@ import { addLine } from "../helpers.js";
  * @param {string[]} argv Arguments
  */
 export function Calculate(argv) {
-    let postfixExpression = parseToPostfix(argv.join(""));
-    addLine(calculatePostfix(postfixExpression));
+    if (argv?.length > 0) {
+        let postfixExpression = parseToPostfix(argv.join(""));
+        addLine(calculatePostfix(postfixExpression));
+    } else {
+        addLine("Usage: calculate [mathematical expression]");
+        addLine("Example: <j-cmd>calculate 2^(5+3) * (203 + 302)</j-cmd>");
+    }
 }
 
 /**
