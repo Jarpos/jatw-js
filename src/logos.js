@@ -1,6 +1,7 @@
 "use strict";
 
 import { addLine } from "./helpers.js";
+import { Command } from "./components/Command.js";
 
 /**
  * Chooses and then prints random logo
@@ -75,6 +76,6 @@ const logos = [
  * Bottom Information that is printed below the "logo" text
  */
 const bottominfo = [
-    "Type 'help' to see a list of available commands.",
+    "Type or click '<j-cmd>help</j-cmd>' to see a list of available commands.",
     "Source: <a href=\"https://github.com/Jarpos/jatw-js\">https://github.com/Jarpos/jatw-js</a>",
 ];
