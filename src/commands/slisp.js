@@ -94,7 +94,7 @@ function sLispEnterHandler(e) {
         try {
             addLine(evaluateSLispExpression(parseSLispExpression(io.currentline.Input)));
         } catch (_) {
-            addLine(`Error: Could not parse "${io.currentline.Input}" to valid 'slisp' expression`);
+            addLine(`Error: Could not parse '${io.currentline.Input}' to valid 'slisp' expression`);
         }
     }
 

@@ -14,9 +14,9 @@ export function Cd(argv) {
     } else {
         const result = resolvePath(argv[0]);
         if (!result) {
-            addLine("Error: Invalid path or could not find specified folder")
+            addLine("Error: Invalid path or could not find '", argv[0], "'");
         } else if (!result.isDir()) {
-            addLine("Error: File ", result.name, " is not a folder");
+            addLine("Error: File '", result.name, "' is not a directory");
         } else {
             fs.cwd = result;
         }
