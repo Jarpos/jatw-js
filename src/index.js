@@ -52,7 +52,7 @@ body().addEventListener("paste", (e) => {
     e.preventDefault();
     const clipboardData = e.clipboardData || window?.Clipboard;
     io.currentline.AddInput(clipboardData.getData("Text"));
-})
+});
 
 /**
  * Removes some or all content from current line

@@ -9,7 +9,7 @@
 export const FILE_TYPE = {
     PICTURE: "picture",
     TEXT: "text",
-}
+};
 
 /**
  * Folder class which is trying to emulate a filetree
