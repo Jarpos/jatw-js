@@ -21,6 +21,6 @@ export function Viewer(argv) {
         terminal().appendChild(viewer);
     } else {
         addLine("Error: Couldn't find any pictures in the current folder");
-        addLine("Example: '<j-cmd>viewer ~/pictures</j-cmd>'");
+        addLine("Example: <j-cmd>viewer ~/pictures</j-cmd>");
     }
 }
