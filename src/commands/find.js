@@ -9,7 +9,13 @@ import { findFiles, resolvePath, getPath } from "../files/helpers.js";
  */
 export function Find(argv) {
     if (argv.length === 2) {
-        const files = findFiles(f => RegExp(argv[1]).exec(f.name), resolvePath(argv[0]));
+        const path = resolvePath(argv[0]);
+        if (!path) {
+            addLine("Error: Folder '", argv[0], "' not found");
+            return;
+        }
+
+        const files = findFiles(f => RegExp(argv[1]).exec(f.name), path);
         for (const file of files) {
             addLine(`<j-cmd cmd="cd ${getPath(file.parent)}">`, getPath(file), "</j-cmd>");
         }
