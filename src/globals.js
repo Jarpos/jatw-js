@@ -149,7 +149,12 @@ export const cmdhistory = {
      * Get the current item from the cmdhistory specified by `cmdhistory.index`
      * @returns Current item from cmdhistory
      */
-    get: () => cmdhistory.index < 0 ? "" : cmdhistory.commands[cmdhistory.index],
+    get: () => {
+        if (cmdhistory.commands.length === 0 || cmdhistory.index < 0) {
+            return "";
+        }
+        return cmdhistory.commands[cmdhistory.index];
+    },
 
     /**
      * Adds command to the start of the command history.
