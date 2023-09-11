@@ -33,7 +33,6 @@ export function Theme(argv) {
 
     /**
      * Array with defined themes
-     * @TODO Maybe make this a map? Then global and save between pageloads?
      */
     const themes = [
         /* Name ------------- fg ------ bg ------ uname --- hname - */
@@ -62,18 +61,18 @@ export function Theme(argv) {
     };
 
     if (argv?.length >= 1) {
-        const theme = themes.find(e => e.name === argv[0]);
+        const theme = themes.find(t => t.name === argv[0]);
         if (theme) {
             setTheme(theme);
         } else {
-            addLine("Couldn't find theme: ", argv[0]);
+            addLine("Couldn't find theme: '", argv[0], "'");
         }
     } else {
         addLine();
-        for (const t of themes) {
-            const line = addLine("    ", t.name);
+        for (const theme of themes) {
+            const line = addLine("    ", theme.name);
             line.classList.add("nomark", "command");
-            line.addEventListener("click", (e) => setTheme(t));
+            line.addEventListener("click", (e) => setTheme(theme));
         }
         addLine();
     }
