@@ -81,7 +81,7 @@ export function validateInput(input) {
  * @param {any[]} checkItems Items to which item is compared to
  * @param {function(any): any} modifier Modifies items if specified
  *
- * @example isAnyOf("--help", [ argv[0] ], (e) => e.toLowerCase())
+ * @example isAnyOf("--help", argv, (e) => e.toLowerCase())
  */
 export function isAnyOf(item, checkItems, modifier = null) {
     for (const checkItem of checkItems) {

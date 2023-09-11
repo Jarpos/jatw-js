@@ -66,20 +66,20 @@ export const html = () => document.getElementsByTagName("html")[0];
  */
 export const uri = {
     /**
-     * Get href of current url (full url)
-     * @returns Href of current location
+     * Get `href` of current url (full url)
+     * @returns `href` of current location
      */
     href: () => document.location.href,
 
     /**
-     * Get the current hostname
-     * @returns hostname for current site
+     * Get the current `hostname`
+     * @returns `hostname` for current site
      */
     hostname: () => document.location.hostname,
 
     /**
      * Get the commands in the search query part of the uri
-     * @returns {string[]} All the ; seperated commands in the search query part of the string
+     * @returns {string[]} All the `;` seperated commands in the search query part of the string
      */
     commands: () => {
         return document.location.search
