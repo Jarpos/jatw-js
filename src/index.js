@@ -7,8 +7,6 @@ import { io, uri, body, cmdhistory, terminal } from "./globals.js";
 import { printRandomLogo, printBottomInfo } from "./logos.js";
 import { validateInput, newCurrentline, setAndExecuteCommand, isValidChar, addLine } from "./helpers.js";
 
-terminal().innerHTML = "";
-
 resetHandlers();
 printRandomLogo();
 printBottomInfo();
