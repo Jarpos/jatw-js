@@ -72,8 +72,8 @@ export class Folder_c {
  */
 export class File_c {
     /**
-     * File object constructor, beware of the relation between FILE_TYPE (t) and content (c)
-     * @param {string} t Filetype - See: FILE_TYPE
+     * File object constructor, beware of the relation between `FILE_TYPE` (`t`) and content (`c`)
+     * @param {string} t Filetype - See: `FILE_TYPE`
      * @param {string} n Filename
      * @param {string[] | string} c Content of file (or link to file on actual fs)
      *
