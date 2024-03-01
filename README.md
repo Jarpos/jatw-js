@@ -36,6 +36,7 @@ processing intensive things.
   - `viewer` to view pictures in current folder
 
 ## Todo
+- [ ] Add alt/id text for all the images
 - [ ] Add a simple text editor
 - [ ] Rework themeing
 - [ ] Add mobile support
